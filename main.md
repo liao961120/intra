@@ -797,14 +797,14 @@ In practice, the above attempts may all fail. After all, it is likely that at
 least some rapid-changing phenomena do not leave reliable traces in passive
 measures that could be monitored continuously. Given this difficult situation,
 it may be better to let go of the fixation on "quantitative" analysis. Indeed,
-in clinical practice, qualitative judgments inform treatment planning much
-more than quantitative assessments. There is no reason why these kinds of
-qualitative analyses cannot be employed in a temporally finer-grained manner.
-Voice recording along with highly accurate automated audio transcription
-technologies [e.g., @radford2022] have lowered the barrier for such qualitative
-data collection. Gathering qualitative data in such finer-grained details can
-better deal with reporting and recall biases and might reveal properties that
-are not visible or apparent in traditional therapy sessions.
+in clinical practice, qualitative judgments inform treatment planning much more
+than quantitative assessments. There is no reason why these kinds of qualitative
+analyses cannot be employed in a temporally fine-grained manner. Voice
+recording along with highly accurate automated audio transcription technologies
+[e.g., @radford2022] have lowered the barrier for collecting such qualitative
+data. Gathering qualitative data in such finer-grained details can better deal
+with reporting and recall biases and might reveal properties that are not
+visible or apparent in traditional therapy sessions.
 
 
 \nolinenumbers
