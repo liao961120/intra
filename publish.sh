@@ -1,7 +1,7 @@
 # Move files
 [[ -d docs ]] && rm -r docs
 mkdir docs
-mv -r *.pdf *.html *_files docs/
+mv *.pdf *.html *_files docs/
 mv docs/analysis.html docs/index.html
 bash zip.sh
 touch docs/.nojekyll
