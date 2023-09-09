@@ -1,0 +1,38 @@
+%\title{Using the forest package to create trees in LaTeX}
+% From http://tex.stackexchange.com/a/108728/23931 
+\documentclass[12pt,preview,border=0]{standalone}
+\usepackage[paperheight=10cm,paperwidth=14cm]{geometry}
+\usepackage{amsmath}
+% \usepackage{txfonts}  %pretty math font
+
+\begin{document}
+
+\begin{align*} 
+    \intertext{\centering \textbf{Process Model}}
+    &\begin{cases}
+        P_{t + \Delta t} = P_t + r P_t (1 - \frac{P_t}{K}) \Delta t \\
+        P_\text{t=0}  ~~ = P_0 \\
+    \end{cases} 
+    \\
+    &\begin{bmatrix}
+        N_1 \\
+        N_2 \\
+        \vdots \\
+        N_T
+    \end{bmatrix} \sim \text{MVNormal}( 
+        \begin{bmatrix}
+            0 \\
+            0 \\
+            \vdots \\
+            0
+        \end{bmatrix}, 
+    \textbf{K} ) 
+    \\
+    & ~~~ k_{i,j} = \eta ~ \text{exp}( -\rho \text{d}^\text{2}_{i,j} ) \label{eq:dgp} \tag{3} \\
+    \\
+    \intertext{\centering \textbf{Measurement Model}}
+    & \hphantom{xxxxx} \mathrm{ P_{t}^{obs} }  \sim \text{Normal}( M_t, \sigma )  \\
+    & \hphantom{xx} M_t                     =  b ~ \left[ a P_t - \left( 1 - a \right) N_t \right] - c 
+\end{align*}
+
+\end{document}
