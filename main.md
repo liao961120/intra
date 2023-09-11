@@ -35,18 +35,18 @@ relationships between variables from such data (for an overview, see
 models). These VAR models are often employed more or less as data-driven,
 theory-free inferential devices, in which the researchers place no prior
 assumptions on the dynamical processes underlying change and measurement. We
-note the danger of such practices and also raise an often-ignored issue of
-*relating measurement to theory*. When a measure is assumed to measure *only*
-the targeted construct plus some random noise, the results of an analysis can
-never inform---and lead to further refinements of---the measurement. Since the
-validity of the measurement is *given* in the analysis, it cannot be touched
-[@bringmann2016]. We illustrate this through a simple theory-driven analysis of
-change processes, in which the issue becomes magnified in a longitudinal
-setting. Through the analysis, it is shown that without explicit theoretical
-assumptions imposing constraints on how measurement and change processes might
-evolve and interact over time, the resulting inferred processes will inevitably
-conflate multiple untraceable sources of variation, obscuring the information
-that could be gained from statistical inference. 
+underscore the risks associated with such practices and emphasize the
+often-neglected issue of *connecting measurements to theory*---When a
+measurement is presumed to *cleanly* capture only the intended construct
+along with some random noise, the results of an analysis can never challenge,
+and therefore lead to refinements of, the measurement itself[@bringmann2016]. We
+illustrate this through a simple theory-driven analysis of change processes, in
+which the *purity* of the measurement is not assumed. Through the analysis, it
+is shown that without explicit theoretical assumptions imposing constraints on
+how measurement and change processes might evolve and interact over time, the
+resulting inferred processes will inevitably conflate multiple untraceable
+sources of variation originating from measurement errors and unintended processes, obscuring the information that could be gained from
+statistical inference. 
 
 Specifically, we are pointing to the importance of teasing out process variation
 from (pure) measurement errors. This is critical since change processes are
@@ -529,13 +529,13 @@ are nearly always employed in a cross-sectional manner. Thus, even for a
 well-validated scale, we do not know how the measured construct behaves over
 time when repeated measures are collected[^test-retest]. Indeed, it is
 reasonable to assume the construct being measured is actually a *mixture* of
-multiple processes, in which at least some of them are unrelated to the target
+multiple processes, in which at least some of them are unrelated to the
 construct the scale aims to measure. When cross-sectionally applying the scale
 *once*, this might not pose a problem provided that the processes unrelated to
-the target construct are *independent across individuals* such that they can be
+the intended construct are *independent across individuals* such that they can be
 safely treated as measurement errors. However, when the scale is used
 longitudinally, and when the (latent) score of the scale is taken to directly
-represent the target construct, it may obscure the target construct's true
+represent the intended construct, it may obscure the construct's true
 functional relationship with time.
 
 Taking our example in this article, a *skill set* (cognitive reappraisal) is
@@ -554,10 +554,10 @@ intertwined. Even if a measurement scale is well-established from previous
 studies, we have to be careful not to treat the latent score as the theoretical
 construct itself and base our reasoning on it, particularly in a longitudinal
 setting. The difficulty we face in applying established measurements
-longitudinally also indicates how little we know about the target constructs of
+longitudinally also indicates how little we know about the constructs of
 interest. The tools and procedures often applied for validating a new
-measurement provide no information about how a target construct changes over
-time. Indeed, the longitudinal change of a target construct is a *critical*
+measurement provide no information about how the construct changes over
+time. Indeed, the longitudinal change of a construct is a *critical*
 source of validity evidence that is rarely examined seriously.
 
 [^test-retest]: Repeated measures are sometimes collected for calculating
