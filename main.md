@@ -36,16 +36,15 @@ models). These VAR models are often employed more or less as data-driven,
 theory-free inferential devices, in which the researchers place no prior
 assumptions on the dynamical processes underlying change and measurement. We
 underscore the risks associated with such practices and emphasize the
-often-neglected issue of *connecting measurements to theory*---When a
-measurement is presumed to *cleanly* capture only the intended construct
-along with some random noise, the results of an analysis can never challenge,
-and therefore lead to refinements of, the measurement itself[@bringmann2016]. We
+often-neglected issue of *connecting measurements to theory*---when a
+measurement is presumed to capture *only* the intended construct, the resulting analysis can never challenge,
+and therefore lead to refinements of, the measurement itself [@bringmann2016]. We
 illustrate this through a simple theory-driven analysis of change processes, in
 which the *purity* of the measurement is not assumed. Through the analysis, it
 is shown that without explicit theoretical assumptions imposing constraints on
 how measurement and change processes might evolve and interact over time, the
 resulting inferred processes will inevitably conflate multiple untraceable
-sources of variation originating from measurement errors and unintended processes, obscuring the information that could be gained from
+sources of variation, obscuring the information that could be gained from
 statistical inference. 
 
 Specifically, we are pointing to the importance of teasing out process variation
@@ -53,7 +52,7 @@ from (pure) measurement errors. This is critical since change processes are
 *independent* of the measurement process---if the fluctuations observed in
 repeated measures of a process reflect *only* measurement errors rather than
 changes in that process, these observed decreases or increases will *not* carry
-over to the process's future states. However, complicating this is that
+over to the process's future states. However, complicating this is the fact that
 measurements are likely *not pure*. Instead of singly measuring the process of
 interest, psychological measurements are far from perfect that they probably
 also measure irrelevant processes to our dismay. Therefore, we are now faced
@@ -65,8 +64,7 @@ In this study, we illustrate the above-discussed scenario through statistical
 analyses of simulated data. The context and theory we choose, as later seen, are
 deliberately naive and simplified. This allows us to provide a simple yet clear
 demonstration of embedding theoretical assumptions into tailored statistical
-analysis. This also paves the way for further discussion of current practices of
-EMA data analyses. Implications for future research are also discussed.
+analysis. This also paves the way for further discussion of potentially problematic practices in EMA data analysis. Implications for future research are also discussed.
 
 
 What's in a Measure
@@ -554,11 +552,11 @@ intertwined. Even if a measurement scale is well-established from previous
 studies, we have to be careful not to treat the latent score as the theoretical
 construct itself and base our reasoning on it, particularly in a longitudinal
 setting. The difficulty we face in applying established measurements
-longitudinally also indicates how little we know about the constructs of
+longitudinally also indicates how little we know about the construct of
 interest. The tools and procedures often applied for validating a new
 measurement provide no information about how the construct changes over
 time. Indeed, the longitudinal change of a construct is a *critical*
-source of validity evidence that is rarely examined seriously.
+source of validity evidence that is rarely examined with care.
 
 [^test-retest]: Repeated measures are sometimes collected for calculating
     test-retest reliability, but note that the focus is on the reliability of
@@ -567,20 +565,21 @@ source of validity evidence that is rarely examined seriously.
 
 ### Issues of timescale
 
-Longitudinal modeling unavoidably raises issues of time. One of them is that the
-processes driving the observed time series may act at different time scales.
-Without some understanding or theorizing of the latent process dynamics, it
-would be impossible to separate and make inferences about such processes. For
-instance, in our preliminary illustration, the P-process, the N-process, and the
-measurement process are assumed to operate at a slow, a fast, and an instant
-timescale respectively, as labeled on the arrows in \textsc{Figure}
-\ref{fig:dag2}. The change in $P$ is assumed to be driven by therapy $T$, which
-occurs at the slowest timescale among all the processes. $N$, on the other hand,
-changes faster as the result of external environmental fluctuations $E$.
-Finally, all arrows pointing to and out from the latent measurement score $M$
-operate at the fastest timescale as they happen within minutes or even seconds
-when a measurement is made. The measurement process could thus be considered to
-occur *instantly* compared to the former two processes. 
+Longitudinal modeling unavoidably raises issues concerning time. One of them is
+that the latent processes driving the observed time series may act at different
+time scales. Without some understanding or theorizing of the latent process
+dynamics, it would be impossible to separate and make inferences about such
+processes. For instance, in our preliminary illustration, the P-process, the
+N-process, and the measurement process are assumed to operate at a slow, a fast,
+and an instant timescale respectively, as labeled on the arrows in
+\textsc{Figure} \ref{fig:dag2}. The change in $P$ is assumed to be driven by
+therapy $T$, which occurs at the slowest timescale among all the processes. $N$,
+on the other hand, changes faster as the result of external environmental
+fluctuations $E$. Finally, all arrows pointing to and out from the latent
+measurement score $M$ operate at the fastest timescale as they happen within
+minutes or even seconds when a measurement is made. The measurement process
+could thus be considered to occur *instantly* compared to the former two
+processes. 
 
 ![\scriptsize Timescales at which the P-process, the N-process, and the measurement process operate in our theory-driven analysis.](fig/dag2){#fig:dag2}
 
@@ -626,15 +625,14 @@ times corresponding to $N_1, N_2, \hdots, N_T$. The resulting effect of
 ![\scriptsize Reproduction of \textsc{Figure} \ref{fig:GP} with the added influence of $P$ on $N$ over time. The parameters for the growth of $P$ are $r = .3, P_0 = .01, K = 10$. The scaling parameter $\gamma$ for the influence of $P$ on the multivariate normal means is set to $.3$, and the parameters for the Gaussian kernel $\eta$ and $\rho$ are identical to those set for generating \textsc{Figure} \ref{fig:GP}.](fig/GaussianProcess2){#fig:GP2}
 
 Knowing at which timescales are the latent processes operating is not only
-important for constructing statistical models but also necessary information for
-data collection---how frequently should observations be collected to enable
-valid analyses? In studies applying VAR models[^case], theory-irrelevant reasons
-such as the amount of data needed for the models to converge and the frequency
-of prompts acceptable for the participants are sometimes used for determining
-the sampling rate. This is dangerous if the (theoretical) timescales at which
-the processes operate are not cautiously considered. Ignoring the timescale
-results in uninterpretable networks at best and completely misleading ones at
-worst.
+important for constructing statistical models but also necessary for data
+collection---how frequently should observations be collected to license valid
+analyses? In studies applying VAR models[^case], theory-irrelevant reasons such
+as the amount of data needed for the models to converge and the frequency of
+prompts acceptable for the participants are sometimes used for determining the
+sampling rate. This is dangerous if the (theoretical) timescales at which the
+processes operate are not cautiously considered. Ignoring the timescale results
+in uninterpretable networks at best and completely misleading ones at worst.
 
 [^case]: See @ong2022 and @burger2021 for attempts to derive individualized
     networks with VAR models to facilitate case conceptualization.
@@ -642,9 +640,9 @@ worst.
 To see why, consider a hypothetical example that two groups of researchers wish
 to study the relationship between lunch and blood sugar levels (suppose they do
 not know the impact of insulin on blood sugar levels). The first group measured
-blood sugar 30 minutes after lunch, and the second group measured it 2 hours
-after lunch. Since blood sugar level first rises and then returns to the
-homeostatic level in about 2 hours, the first group may conclude that lunch
+blood sugar concentration 30 minutes after lunch, and the second group measured
+it 2 hours after lunch. Since blood sugar level first rises and then returns to
+the homeostatic level in about 2 hours, the first group may conclude that lunch
 *increases* blood sugar level whereas the second group may end up inferring that
 lunch has *no* impact on (when the meal is starch-rich), or even *decreases*
 (when the meal is sucrose-rich), blood sugar level (see @daly1998,
@@ -659,15 +657,15 @@ latent processes driving the observed phenomena interact matters even more.
 Indeed, "Does lunch change blood sugar level and if so, in which direction?" is
 arguably a misplaced question. A better approach might be to first establish the
 functional relationship between blood sugar level and time, after which is it
-possible to theorize and search for processes that give rise to the observed
+possible to theorize and look for processes that give rise to the observed
 curve. The blood sugar example also makes clear the importance of observing at
 the _correct timing_---although it is obvious in such a setting that blood sugar
 level should be measured _after a meal_, in EMA studies where the time series is
 usually analyzed as a whole with VAR models, no special attention is paid to
-such important events. Instead, they are treated *homogeneously* and modeled as
-random forces that drive the time series away from its equilibrium. Whether this
-approach is justifiable is related to the issue of *open* and *closed* systems,
-which we turn to next.
+such important events. Instead, all events driving changes are treated
+*homogeneously* and modeled as random forces that drive the time series away
+from its equilibrium. Whether this approach is justifiable concerns the
+issue of *open* and *closed* systems, which we turn to next.
 
 
 ### Open vs. closed system
@@ -698,21 +696,21 @@ noise, these models essentially _homogenize_ the whole time series---no matter
 the causes or magnitude of the perturbations, the system is assumed to move back
 to equilibrium similarly, according to the governing equations. 
 
-To provide some context, let's take as an example theories of a "vicious cycle"
-often used to explain Panic Disorder. Borrowing the terminology from
+To provide some context, let's take as an example the theories of a "vicious
+cycle" often used to explain Panic Disorder. Borrowing the terminology from
 @robinaugh2019, a simplified hypothesis for the vicious cycle is given as
 follows: heightened physiological arousal ($A$) raises perceived threat ($T$),
-which in turn leads to even higher physiological arousal ($A$) and perceived
-threat, resulting in a positive-feedback loop between physiological arousal and
-perceived threat. A clinician might want to see if this vicious cycle can be
-shown empirically with data. Without further elaborating on the theory, however,
-an EMA study is planned to collect the measures of $A$ and $T$ quite
-densely---once every hour when awake for over 2 months---to infer a network of
-relationships among these variables. What can we learn from this empirical
-network? If the hypothesized network of relationships indeed exists and is
-*robust across situations* such that, for instance, heightened perceived threat
-leads to higher physiological arousal (and vice versa) *consistently under
-different situations*, the VAR model would be able to correctly infer the
+which in turn leads to even higher physiological arousal ($A$), resulting in a
+positive-feedback loop between physiological arousal and perceived threat that
+eventually leads to a panic attack. A clinician might want to see if this
+vicious cycle can be shown empirically with data. Without further elaborating on
+the theory, however, an EMA study is planned to collect the measures of $A$ and
+$T$ quite densely---once every hour in the daytime for 2 weeks---to infer a
+network of relationships among these variables. What can we learn from this
+empirical network? If the hypothesized network of relationships indeed exists
+and is *robust across situations* such that, for instance, heightened perceived
+threat leads to higher physiological arousal (and vice versa) *consistently
+under different situations*, the VAR model would be able to correctly infer the
 network. However, given that such robust phenomena across situations are rarely
 found at the behavioral level, the inferred network likely conflates multiple
 *different* response patterns, leading to an unreliable network whose
@@ -722,13 +720,12 @@ correspondence between statistical analysis and theory---the VAR models are
 designed to analyze time series data generated from a *homogeneous open* system,
 whereas the theorized relationships are implicitly conceptualized to operate
 within a very *specific* situation, which may be more appropriately modeled as a
-closed system (i.e., within this system, such as when in a crowded theater, (the
-stimulus of) heightened arousal is *given*, which then triggers subsequent
+closed system (i.e., within this system, such as when in a crowded theater, the (stimulus giving rise to) heightened arousal is *given*, which then triggers subsequent
 theorized behaviors). 
 
-To connect such a theory to data, it is necessary to either locate the
-*relevant* time windows in which the theorized cascades of behaviors are
-expected to happen or directly model the *heterogeneity* of the time
+To connect this theory of a vicious cycle to data, it is necessary to either
+locate the *relevant* time windows in which the theorized cascades of behaviors
+are expected to happen or directly model the *heterogeneity* of the time
 series[^ex], provided that the time series data already has the required
 resolution. No matter the approach though, it becomes instantly clear that the
 empirical data needed for validating the theory is extremely hard to collect in
@@ -744,26 +741,25 @@ respond to items in such a short period.
 ### How to proceed?
 
 A deeper consideration of theories along with their relations with statistical
-analysis, measurement, and data makes clear that time series analysis of EMA
-data has a rather shaky foundation. The development of more advanced statistical
-models is unlikely to provide fixes as the core difficulty lies in collecting
-data suitable for answering the right questions. The difficulty is twofold.
+analysis, measurement, and data makes clear that inference on EMA data has a rather shaky foundation. The development of more
+advanced statistical models is unlikely to provide fixes as the core difficulty
+lies in collecting data suitable for answering the right questions.
 
-First, the complexity of human behaviors in the first place makes it extremely
-hard to even establish phenomena that are robust and reliable [@eronen2021].
-Nonrobust phenomena, in turn, weakens the foundation of theory building, and
-verbal theories constructed from these phenomena are only vague at best.
-Finally, the vagueness in theories feeds back to the observation process---a
-vague theory loses its ability to direct us to the right places looking for
-answers. We may therefore end up looking for the key under the lamppost, basing
-our inference on misplaced data.
+The difficulty is threefold. First, the complexity of human behaviors in the
+first place makes it extremely hard to even establish phenomena that are robust
+and reliable [@eronen2021]. Nonrobust phenomena, in turn, weakens the foundation
+of theory building, and verbal theories constructed from these phenomena are
+only vague at best. Finally, the vagueness in theories feeds back to the
+observation process---a vague theory loses its ability to direct us to the right
+places looking for answers. We may therefore end up looking for the key under
+the lamppost, basing our inference on misplaced data.
 
 A possible first step for fixing this is to admit we know too little to conduct
 quantitative *inferential* studies. A high-quality quantitative study that aims
 at inferring variable relationships with statistical models requires a strong
-theoretical foundation, as illustrated throughout the article. Without a strong
-and explicit theory driving statistical analysis, the results from the analysis
-will be hard to interpret at best and misleading at worst.
+theoretical foundation, as argued throughout the article. Without a strong
+and explicit theory driving statistical analysis, the results of the analysis
+can only be ambiguous at best.
 
 Admitting our limited knowledge allows us to arrive at a logical next step---to
 establish robust phenomena. Within the context of EMA studies for instance, this
@@ -771,7 +767,7 @@ may be facilitated with the help of passive measures (e.g., skin conductance,
 heart rate, blood oxygen level, GPS coordinate, etc.) that could be continuously
 collected without needing active responses from the participants. Along with
 other traditional active EMA measures (i.e., responses to items), these data
-could be fed to purely data-driven machine-learning (ML) algorithms aiming at
+could be fed to purely data-driven Machine Learning (ML) algorithms aiming at
 prediction instead of inference. The goal is to hope that ML algorithms will
 squeeze out whatever useful information from the multivariate time series to
 allow the detection of critical time windows informative for further
@@ -799,12 +795,11 @@ measures that could be monitored continuously. Given this difficult situation,
 it may be better to let go of the fixation on "quantitative" analysis. Indeed,
 in clinical practice, qualitative judgments inform treatment planning much more
 than quantitative assessments. There is no reason why these kinds of qualitative
-analyses cannot be employed in a temporally fine-grained manner. Voice
+analyses cannot be brought into a temporally fine-grained setting. Voice
 recording along with highly accurate automated audio transcription technologies
 [e.g., @radford2022] have lowered the barrier for collecting such qualitative
 data. Gathering qualitative data in such finer-grained details can better deal
-with reporting and recall biases and might reveal properties that are not
-visible or apparent in traditional therapy sessions.
+with reporting and recall biases and might reveal properties that are not apparent or visible in traditional therapy sessions.
 
 
 \nolinenumbers
