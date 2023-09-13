@@ -729,7 +729,7 @@ are expected to happen or directly model the *heterogeneity* of the time
 series[^ex], provided that the time series data already has the required
 resolution. No matter the approach though, it becomes instantly clear that the
 empirical data needed for validating the theory is extremely hard to collect in
-the current example. Panic attacks come and go relatively quickly, usually
+the current example. Panic attacks come and go relatively quickly, typically
 within minutes. Relevant repeated observations need to be collected within these
 short time windows to match the resolution of the theory. It is unclear how this
 could be achieved, particularly when individuals are required to actively
