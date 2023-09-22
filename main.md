@@ -804,8 +804,8 @@ with reporting and recall biases and might reveal properties that are not appare
 
 \nolinenumbers
 
-References
-----------
+References {.unnumbered}
+------------------------
 
 \scriptsize
 
