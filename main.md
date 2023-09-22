@@ -448,11 +448,11 @@ one. We hypothesize that with more than one type of measure, and given that all
 measures at least capture part of the N-process, the model would then be better
 at distinguishing the sources of variation since it can now leverage the fact
 that measurement errors are independent across measure types, but the variations
-introduced by the N-process are shared across. 
+introduced by the N-process are shared across measure types. 
 
 To explore such a possibility, we modify the simulation to include another time
 series along with the original one. This is formally expressed as the expanded
-measurement model in (\ref{eq:measurement-model2}):
+measurement model in Eq (\ref{eq:measurement-model2}):
 
 \begin{equation}
     \begin{aligned}
