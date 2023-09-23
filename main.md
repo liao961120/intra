@@ -378,7 +378,7 @@ which is a product of the former two processes, is represented as the solid red
 curve, and the red dots scattering around the curve are the observed scores
 ($\mathrm{P_t^{obs}}$).
 
-![\scriptsize A run of the simulation specified Eq. (4) with parameter values in Table 1. To avoid cluttering the graph, the grayed dashed curve representing the N-process is shifted upwards by 5 units (it should be centered at zero originally).](fig/sim){#fig:sim}
+![\scriptsize A run of the simulation specified Eq. (4) with parameter values in Table 1. To avoid cluttering the graph, the grayed dashed curve representing the N-process is shifted upwards by 5 units (originally centered at zero).](fig/sim){#fig:sim}
 
 
 Inference
