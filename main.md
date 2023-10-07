@@ -567,7 +567,7 @@ source of validity evidence that is rarely examined with care.
 
 Longitudinal modeling unavoidably raises issues concerning time. One of them is
 that the latent processes driving the observed time series may act at different
-time scales. Without some understanding or theorizing of the latent process
+timescales. Without some understanding or theorizing of the latent process
 dynamics, it would be impossible to separate and make inferences about such
 processes. For instance, in our preliminary illustration, the P-process, the
 N-process, and the measurement process are assumed to operate at a slow, a fast,
@@ -594,9 +594,9 @@ guide us through. Since now two independent processes are driving $N$ at
 different timescales, we need to *simultaneously* model the short- and long-term
 change in $N$. This can be achieved by linking the influence of $P$ on $N$ to
 the means of the multivariate normal from which $N$ is drawn, as shown in the
-modified model (\ref{eq:dgp2}). $P^1, P^2, \hdots, P^T$ are values of $P$ at the
-times corresponding to $N_1, N_2, \hdots, N_T$. The resulting effect of
-(\ref{eq:dgp2}) is visualized in \textsc{Figure} \ref{fig:GP2}.
+modified model (\ref{eq:dgp2}), where the means of $N_1, N_2, \hdots, N_T$ are
+linked to the values of P at the corresponding times $P^1, P^2, \hdots, P^T$.
+The resulting effect of (\ref{eq:dgp2}) is visualized in \textsc{Figure} \ref{fig:GP2}.
 
 \begin{align*}
     &\begin{cases}
@@ -624,15 +624,16 @@ times corresponding to $N_1, N_2, \hdots, N_T$. The resulting effect of
 
 ![\scriptsize Reproduction of \textsc{Figure} \ref{fig:GP} with the added influence of $P$ on $N$ over time. The parameters for the growth of $P$ are $r = .3, P_0 = .01, K = 10$. The scaling parameter $\gamma$ for the influence of $P$ on the multivariate normal means is set to $.3$, and the parameters for the Gaussian kernel $\eta$ and $\rho$ are identical to those set for generating \textsc{Figure} \ref{fig:GP}.](fig/GaussianProcess2){#fig:GP2}
 
-Knowing at which timescales are the latent processes operating is not only
+Knowing at which timescales the latent processes operate is not only
 important for constructing statistical models but also necessary for data
-collection---how frequently should observations be collected to license valid
-analyses? In studies applying VAR models[^case], theory-irrelevant reasons such
-as the amount of data needed for the models to converge and the frequency of
-prompts acceptable for the participants are sometimes used for determining the
-sampling rate. This is dangerous if the (theoretical) timescales at which the
-processes operate are not cautiously considered. Ignoring the timescale results
-in uninterpretable networks at best and completely misleading ones at worst.
+collection---how frequently should observations be collected to license valid 
+analyses mapping well onto our theoretical assumptions? In studies applying VAR
+models[^case], theory-irrelevant reasons such as the amount of data needed for
+the models to converge and the frequency of prompts acceptable for the
+participants are sometimes used for determining the sampling rate. This is
+dangerous if the (theoretical) timescales at which the processes operate are not
+cautiously considered. Ignoring the timescale results in uninterpretable
+networks at best and completely misleading ones at worst.
 
 [^case]: See @ong2022 and @burger2021 for attempts to derive individualized
     networks with VAR models to facilitate case conceptualization.
@@ -658,7 +659,7 @@ Indeed, "Does lunch change blood sugar level and if so, in which direction?" is
 arguably a misplaced question. A better approach might be to first establish the
 functional relationship between blood sugar level and time, after which is it
 possible to theorize and look for processes that give rise to the observed
-curve. The blood sugar example also makes clear the importance of observing at
+pattern. The blood sugar example also makes clear the importance of observing at
 the _correct timing_---although it is obvious in such a setting that blood sugar
 level should be measured _after a meal_, in EMA studies where the time series is
 usually analyzed as a whole with VAR models, no special attention is paid to
@@ -694,9 +695,9 @@ driving of the system _back to_ equilibrium when perturbed by external forces
 [@ryan2022]. Since external perturbations are treated identically as random
 noise, these models essentially _homogenize_ the whole time series---no matter
 the causes or magnitude of the perturbations, the system is assumed to move back
-to equilibrium similarly, according to the governing equations. 
+to equilibrium in a similar fashion, according to the governing equations. 
 
-To provide some context, let's take as an example the theories of a "vicious
+To provide some context, let's consider the theories of a "vicious
 cycle" often used to explain Panic Disorder. Borrowing the terminology from
 @robinaugh2019, a simplified hypothesis for the vicious cycle is given as
 follows: heightened physiological arousal ($A$) raises perceived threat ($T$),
@@ -705,7 +706,7 @@ positive-feedback loop between physiological arousal and perceived threat that
 eventually leads to a panic attack. A clinician might want to see if this
 vicious cycle can be shown empirically with data. Without further elaborating on
 the theory, however, an EMA study is planned to collect the measures of $A$ and
-$T$ quite densely---once every hour in the daytime for 2 weeks---to infer a
+$T$ quite densely---once every hour during daytime for 2 weeks---to infer a
 network of relationships among these variables. What can we learn from this
 empirical network? If the hypothesized network of relationships indeed exists
 and is *robust across situations* such that, for instance, heightened perceived
@@ -720,8 +721,7 @@ correspondence between statistical analysis and theory---the VAR models are
 designed to analyze time series data generated from a *homogeneous open* system,
 whereas the theorized relationships are implicitly conceptualized to operate
 within a very *specific* situation, which may be more appropriately modeled as a
-closed system (i.e., within this system, such as when in a crowded theater, the (stimulus giving rise to) heightened arousal is *given*, which then triggers subsequent
-theorized behaviors). 
+closed system (i.e., within this system, such as when in a crowded theater, the heightened arousal is *given*, which then triggers subsequent theorized behaviors). 
 
 To connect this theory of a vicious cycle to data, it is necessary to either
 locate the *relevant* time windows in which the theorized cascades of behaviors
@@ -738,7 +738,7 @@ respond to items in such a short period.
 [^ex]: See e.g., @robinaugh2019 in which *context* is explicated in their model.
 
 
-### How to proceed?
+### Some ways forward
 
 A deeper consideration of theories along with their relations with statistical
 analysis, measurement, and data makes clear that inference on EMA data has a rather shaky foundation. The development of more
