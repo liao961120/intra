@@ -510,7 +510,7 @@ take us nowhere beyond vagueness.
 A theory-driven analysis also has the virtue of informing research planning. In
 addition to telling us what can be achieved through statistical analysis, the
 unambiguous nature of formalized theory also points out what *cannot* be
-answered by the current level of knowledge. Given the intertwined statuses of
+answered by our current level of knowledge. Given the intertwined statuses of
 theory, measurement, and data and the inherent difficulty psychological
 measurements face, this theory-driven perspective of quantitative analysis also
 hints at potential directions when stuck in the midst of complexity. We briefly
