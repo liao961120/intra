@@ -703,7 +703,7 @@ cycle" often used to explain Panic Disorder. Borrowing the terminology from
 follows: heightened physiological arousal ($A$) raises perceived threat ($T$),
 which in turn leads to even higher physiological arousal ($A$), resulting in a
 positive-feedback loop between physiological arousal and perceived threat that
-eventually leads to a panic attack. A clinician might want to see if this
+eventually culminates in a panic attack. A clinician might want to see if this
 vicious cycle can be shown empirically with data. Without further elaborating on
 the theory, however, an EMA study is planned to collect the measures of $A$ and
 $T$ quite densely---once every hour during daytime for 2 weeks---to infer a
@@ -782,14 +782,14 @@ Once zoomed in on the relevant locations where the phenomena of interest occur,
 we are in a better position to deal with harder questions. For instance, we can
 try to improve the measurement by asking how the measured scores change
 over time, theorizing potential processes influencing the measurement, and
-considering the potential of combining multiple measures to help deal with the
+considering the potential of pooling information from multiple measures to address the
 imperfect and noisy nature of psychological measurements. These attempts may not
 only lead to improvements in measurement. Indeed, measurement is *part of* the
 theory and should be refined hand in hand with the advancement of knowledge
 [@bringmann2016].
 
 In practice, the above attempts may all fail. After all, it is likely that at
-least some rapid-changing phenomena do not leave reliable traces in passive
+least some rapid-changing phenomena do not leave reliable traces in passive physiological 
 measures that could be monitored continuously. Given this difficult situation,
 it may be better to let go of the fixation on "quantitative" analysis. Indeed,
 in clinical practice, qualitative judgments inform treatment planning much more
