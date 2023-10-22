@@ -77,11 +77,11 @@ that leads to improved clinical outcomes during treatment. Here, we take
 *cognitive reappraisal* as an example. The second process type is of disinterest
 to the researchers but nevertheless sneaks into the measurement. For our current
 purpose, we assume this process to be a state-like process influenced by
-environmental triggers of stress and any potential aversive effects that lower
+environmental triggers of stress and any potential adverse effects that lower
 an individual's *evaluation* of his or her cognitive reappraisal ability[^just].
 Note the first process, *cognitive reappraisal*, is more of a trait-like,
 slow-changing construct as compared to the second state-like perceptual process.
-The distinguishing between state- and trait-like constructs, as shown later,
+Distinguishing between state- and trait-like constructs, as shown later,
 affects how we theorize and model the speed of change in these temporal
 processes.
 
@@ -93,13 +93,13 @@ cognitive reappraisal scale. As hinted previously, the measurement process
 inevitably conflates variation from three different sources. The first is the
 construct it purports to measure, that is, the true, trait-like ability of
 cognitive reappraisal. The second is the state-like, rapid-changing process
-reflecting the aversiveness of the surrounding environment. The remaining
+reflecting the adverseness of the surrounding environment. The remaining
 variation comes from pure measurement errors, which are introduced every time a
 measurement is made and are independent of the former two processes. 
 
 For the sake of simplicity, in the following text, the first process---the true
 ability of cognitive reappraisal---is termed the *P-process* and given the
-abbreviation $P$; the second process---the aversive impact of the surrounding on
+abbreviation $P$; the second process---the adverse impact of the surrounding on
 the evaluation of cognitive reappraisal---is termed the *N-process* and
 abbreviated as $N$; the latent construct measured by the cognitive reappraisal
 scale, which is a function of both $P$ and $N$, is abbreviated as $M$, and $S$
@@ -107,7 +107,7 @@ denotes the realized observations of $M$. \textsc{Figure} \ref{fig:dag}
 summarises these relationships between the aforementioned variables.
 
 
-![\scriptsize Presupposed relationships between *P-process* (cognitive reappraisal, $P$), *N-process* (aversive environmental impact on the evaluation of cognitive reappraisal, $N$), environmental fluctuation ($E$), latent ($M$), and observed ($S$) scores of the cognitive reappraisal scale. The arrows indicate the direction of influences. Circled and open nodes indicate unobserved and observed variables, respectively.](./fig/dag){#fig:dag}
+![\scriptsize Presupposed relationships between *P-process* (cognitive reappraisal, $P$), *N-process* (adverse environmental impact on the evaluation of cognitive reappraisal, $N$), environmental fluctuation ($E$), latent ($M$), and observed ($S$) scores of the cognitive reappraisal scale. The arrows indicate the direction of influences. Circled and open nodes indicate unobserved and observed variables, respectively.](./fig/dag){#fig:dag}
 
 
 Simulation
@@ -210,7 +210,7 @@ controlling how quickly $k_{i,j}$ decays as the distance
 $\text{d}^\text{2}_{i,j}$ increases.
 
 [^gp-tutorial]: See the supplementary analysis documentation for more details.
-    Also, refer to @wang2022 and Chap. 4 of @mcelreath2020 for an accessible
+    Also, refer to @wang2022 and Chapter 4 of @mcelreath2020 for an accessible
     introduction.
 
 \begin{equation}
@@ -251,10 +251,10 @@ independent fluctuations between distant states. This matches people's daily
 experiences. For instance, the current stress level is strongly predictive of
 the stress levels in future hours but is a bad predictor of stress levels weeks
 later. Likewise, there may be difficult times in life, such as when
-unpredictable major life events strike that people experience a sudden increased
-stress level. This experience of a relatively stable period intermitted with
+unpredictable major life events strike that people experience a sudden increase
+in stress level. This experience of a relatively stable period intermittent with
 rapid fluctuations can also be modeled with Gaussian processes. Take draw 2 in
-\textsc{Figure} \ref{fig:GP} for example, the steep dent around day 20 indicates
+\textsc{Figure} \ref{fig:GP} for example, the sharp dip around day 20 indicates
 a period of fast-changing states, whereas the states between day 35 and 45 are
 relatively stable.
 
@@ -263,10 +263,10 @@ contribution to the measurement from other sources. This is based on the
 assumption that psychological measurements partially measure unwanted
 constructs, which, in turn, is based on the intuition that, say, when a stressed
 individual is facing challenges one after another, the failure to handle some of
-these challenges can lower one's judgment of his/her ability. The decreased
+these challenges can lower one's judgment of his or her ability. The decreased
 measurement score thus does not necessarily indicate a measurement error or a
 drop in one's true ability but may rather be an indicator of environmental
-aversiveness.
+adverseness.
 
 
 ### Measurement process
@@ -287,7 +287,7 @@ scale collected at time $t$. The measurement model here assumes that the
 observed score $\mathrm{P_t^{obs}}$ distributes normally[^link-func] around the
 latent score $M_t$ with the standard deviation of measurement errors being
 $\sigma$. In addition, the latent score $M_t$ is itself a composite of multiple
-factors---the cognitive reappraisal skill ($P_t$) and the aversive environmental
+factors---the cognitive reappraisal skill ($P_t$) and the adverse environmental
 impact ($N_t$). The parameter $a$ (constrained between $0$ and $1$) specifies
 the contribution of $P_t$---relative to $N_t$---to $M_t$. The parameters $b$
 (scaling factor) and $c$ (intercept) work together to map the scale of the
@@ -369,13 +369,13 @@ Table: \scriptsize Parameter values for the simulation in Eq (\ref{eq:dgp}). The
 
 
 Running the simulation specified in Eq. (4) with the parameter values in Table 1
-gives \textsc{Figure} \ref{fig:sim}. The dashed curves in the figure sketch the
-trajectories of the *unobserved processes* over time---the gray curve plots the
+produces \textsc{Figure} \ref{fig:sim}. The dashed curves in the figure sketch the
+trajectories of the *unobserved processes* over time---the gray curve depicts the
 fluctuating environmental impacts on the measurement of cognitive reappraisal
-($N_t$), and the smooth red curve plots the growth of the cognitive reappraisal
+($N_t$), and the smooth red curve illustrates the growth of the cognitive reappraisal
 skill ($P_t$). The latent score of the cognitive reappraisal scale ($M_t$),
 which is a product of the former two processes, is represented as the solid red
-curve, and the red dots scattering around the curve are the observed scores
+curve, and the red dots scattered around the curve are the observed scores
 ($\mathrm{P_t^{obs}}$).
 
 ![\scriptsize A run of the simulation specified Eq. (4) with parameter values in Table 1. To avoid cluttering the graph, the grayed dashed curve representing the N-process is shifted upwards by 5 units (originally centered at zero).](fig/sim){#fig:sim}
@@ -433,7 +433,7 @@ pathologies of the posterior sampling. In sum, including more repeated measures,
 and even more *accurate* repeated measures, brings about a limited benefit to
 the inference of the latent dynamics. 
 
-![\scriptsize Posterior predictions generated from the fitted models. Model 1 is fitted to a single set of time series observations that has information about the P-process and the N-process. Model 2 is fitted to the same observations and another set that has information about the N-process. Each panel represents a fit with different configurations, as indicated by the plot titles. The thick red and black curves plot the trajectory of the true P- and N-processes respectively. The 20 thin curves scattering around a thick line are a set of 20 predictions computed from 20 draws of posterior samples. For the measurement, the red and black dots plot the time series observations, and the densely distributed curves underneath them are the posterior predictions of their latent scores. Note that to avoid cluttering the plots, the originally zero-centered black curves (the true and estimated N-process) are shifted downwards by 8 units. Otherwise, the thick black curves should perfectly match the dashed gray line in \textsc{Figure} \ref{fig:sim}.](fig/post_predict){#fig:post}
+![\scriptsize Posterior predictions generated from the fitted models. Model 1 is fitted to a single set of time series observations that have information about the P-process and the N-process. Model 2 is fitted to the same observations and another set that has information about the N-process. Each panel represents a fit with different configurations, as indicated by the plot titles. The thick red and black curves plot the trajectory of the true P- and N-processes respectively. The 20 thin curves scattering around a thick line are a set of 20 predictions computed from 20 draws of posterior samples. For the measurement, the red and black dots plot the time series observations, and the densely distributed curves underneath them are the posterior predictions of their latent scores. Note that to avoid cluttering the plots, the originally zero-centered black curves (the true and estimated N-process) are shifted downwards by 8 units. Otherwise, the thick black curves should perfectly match the dashed gray line in \textsc{Figure} \ref{fig:sim}.](fig/post_predict){#fig:post}
 
 
 [^mcmc]: See the *Inference* section of the supplementary analysis documentation.
@@ -442,15 +442,15 @@ the inference of the latent dynamics.
 
 As illustrated in the previous section, with only a single time series, the
 model cannot reliably recover the latent dynamics that give rise to the observed
-data, no matter the amount or accuracy of the measure. We therefore explore the
+data, regardless of the amount or accuracy of the measure. We therefore explore the
 potential of improving inference by adding measures _parallel to_ the existing
 one. We hypothesize that with more than one type of measure, and given that all
-measures at least capture part of the N-process, the model would then be better
+measures can at least capture part of the N-process, the model would then be better
 at distinguishing the sources of variation since it can now leverage the fact
 that measurement errors are independent across measure types, but the variations
 introduced by the N-process are shared across measure types. 
 
-To explore such a possibility, we modify the simulation to include another time
+To explore such a possibility, we modify the simulation to include an additional time
 series along with the original one. This is formally expressed as the expanded
 measurement model in Eq (\ref{eq:measurement-model2}):
 
@@ -495,7 +495,7 @@ Discussion
 
 This article has shown what could be gained from explicating the processes
 underlying measurement. Specifically, a theory of individuals' cognitive
-reappraisal growth and a theory of stochastic environmental impacts enables the
+reappraisal growth and a theory of stochastic environmental impacts enable the
 construction of a principled statistical analysis to tease out relevant latent
 processes from data. It also provides guidance on subsequent treatments when the
 statistical analysis *fails* to recover the processes. These treatments are by
@@ -586,7 +586,7 @@ processes.
 Now consider a potential influence that $P$ may have on $N$ in the long run, as
 shown in the dashed arrow pointing from $P$ to $N$. Specifically, this
 relationship intends to model the idea that cognitive reappraisal moderates the
-aversive impact of the environment on the individual, which is one of the
+adverse impact of the environment on the individual, which is one of the
 theoretical reasons why developing better reappraisal skills leads to improved
 outcomes. How, then, could we extend our previous model to incorporate this
 relationship? Holding on to the timescales at which the processes operate can
@@ -638,8 +638,8 @@ networks at best and completely misleading ones at worst.
 [^case]: See @ong2022 and @burger2021 for attempts to derive individualized
     networks with VAR models to facilitate case conceptualization.
 
-To see why, consider a hypothetical example that two groups of researchers wish
-to study the relationship between lunch and blood sugar levels (suppose they do
+To see why, consider a hypothetical example where two groups of researchers wish
+to study the relationship between lunch and blood sugar levels (suppose they did
 not know the impact of insulin on blood sugar levels). The first group measured
 blood sugar concentration 30 minutes after lunch, and the second group measured
 it 2 hours after lunch. Since blood sugar level first rises and then returns to
@@ -657,7 +657,7 @@ means indicates that being aware of the timescale fixes all problems. How the
 latent processes driving the observed phenomena interact matters even more.
 Indeed, "Does lunch change blood sugar level and if so, in which direction?" is
 arguably a misplaced question. A better approach might be to first establish the
-functional relationship between blood sugar level and time, after which is it
+functional relationship between blood sugar level and time, after which it is
 possible to theorize and look for processes that give rise to the observed
 pattern. The blood sugar example also makes clear the importance of observing at
 the _correct timing_---although it is obvious in such a setting that blood sugar
@@ -747,7 +747,7 @@ lies in collecting data suitable for answering the right questions.
 
 The difficulty is threefold. First, the complexity of human behaviors in the
 first place makes it extremely hard to even establish phenomena that are robust
-and reliable [@eronen2021]. Nonrobust phenomena, in turn, weakens the foundation
+and reliable [@eronen2021]. Non-robust phenomena, in turn, weaken the foundation
 of theory building, and verbal theories constructed from these phenomena are
 only vague at best. Finally, the vagueness in theories feeds back to the
 observation process---a vague theory loses its ability to direct us to the right
@@ -762,27 +762,26 @@ and explicit theory driving statistical analysis, the results of the analysis
 can only be ambiguous at best.
 
 Admitting our limited knowledge allows us to arrive at a logical next step---to
-establish robust phenomena. Within the context of EMA studies for instance, this
+establish robust phenomena. Within the context of EMA studies, for instance, this
 may be facilitated with the help of passive measures (e.g., skin conductance,
-heart rate, blood oxygen level, GPS coordinate, etc.) that could be continuously
+heart rate, blood oxygen level, GPS coordinates, etc.) that could be continuously
 collected without needing active responses from the participants. Along with
 other traditional active EMA measures (i.e., responses to items), these data
-could be fed to purely data-driven Machine Learning (ML) algorithms aiming at
+could be fed to purely data-driven Machine Learning (ML) algorithms aimed at
 prediction instead of inference. The goal is to hope that ML algorithms will
-squeeze out whatever useful information from the multivariate time series to
+extract whatever useful information from the multivariate time series to
 allow the detection of critical time windows informative for further
 investigation. For instance, with active measures of emotional states acting as
 the labeling data for ML algorithms, the algorithms may be able to learn subtle
 patterns contained in other (passive) measures that can reliably predict or
 forecast, say, rapid emotional shifts. Being able to accurately and reliably
-predict such events is preliminary evidence that some phenomena exist. Though
-very little is known about the nature of the phenomena, at least it is now
-clearer where we should look at.
+predict such events is initial evidence that some phenomena exist. Though
+very little is known about the nature of the phenomena, at least it is now clearer where we should focus.
 
 Once zoomed in on the relevant locations where the phenomena of interest occur,
 we are in a better position to deal with harder questions. For instance, we can
 try to improve the measurement by asking how the measured scores change
-temporally, theorizing potential processes influencing the measurement, and
+over time, theorizing potential processes influencing the measurement, and
 considering the potential of combining multiple measures to help deal with the
 imperfect and noisy nature of psychological measurements. These attempts may not
 only lead to improvements in measurement. Indeed, measurement is *part of* the
