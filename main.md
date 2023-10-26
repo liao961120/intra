@@ -79,7 +79,7 @@ to the researchers but nevertheless sneaks into the measurement. For our current
 purpose, we assume this process to be a state-like process influenced by
 environmental triggers of stress and any potential adverse effects that lower
 an individual's *evaluation* of his or her cognitive reappraisal ability[^just].
-Note the first process, *cognitive reappraisal*, is more of a trait-like,
+Note that the first process, *cognitive reappraisal*, is more of a trait-like,
 slow-changing construct as compared to the second state-like perceptual process.
 Distinguishing between state- and trait-like constructs, as shown later,
 affects how we theorize and model the speed of change in these temporal
@@ -93,7 +93,7 @@ cognitive reappraisal scale. As hinted previously, the measurement process
 inevitably conflates variation from three different sources. The first is the
 construct it purports to measure, that is, the true, trait-like ability of
 cognitive reappraisal. The second is the state-like, rapid-changing process
-reflecting the adverseness of the surrounding environment. The remaining
+reflecting the adversity of the surrounding environment. The remaining
 variation comes from pure measurement errors, which are introduced every time a
 measurement is made and are independent of the former two processes. 
 
@@ -266,7 +266,7 @@ individual is facing challenges one after another, the failure to handle some of
 these challenges can lower one's judgment of his or her ability. The decreased
 measurement score thus does not necessarily indicate a measurement error or a
 drop in one's true ability but may rather be an indicator of environmental
-adverseness.
+adversity.
 
 
 ### Measurement process
