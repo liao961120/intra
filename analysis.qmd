@@ -326,7 +326,7 @@ Inference
 <!-- Justification of priors -->
 
 Two statistical models were constructed following the description of the main
-article. The first model, which infers parameters from a single set of time
+article. The first model, which infers the parameter values from a single set of time
 series data, was fitted three times---the first was fitted with 49 observations
 and the second and third with 98 observations. The simulated observations for
 the first and second fit have a higher measurement error ($\sigma = 0.5$)
@@ -343,9 +343,7 @@ the code to fit the models.
 Four MCMC chains were used for each fit, with 150 collected samples and 300
 warmup samples for each chain. All fits, except for the fit with a lower
 measurement error, proceeded smoothly with no divergent transitions and maximum
-tree depth reached. From the inspection of the trace plots, the four chains
-mix well for all fits[^trace]. We list the diagnostic summaries for the four fits
-below:
+tree depth reached and exhibited well mixing of the chains, as indicated by the trace plots[^trace]. We list the diagnostic summaries for the four fits below:
 
 [^trace]: To inspect the trace plots, run the code in `model/diagnose.R` for
     each of the fitted models by modifying the path to the fitted model

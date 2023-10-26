@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.2.313">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,10 +19,9 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -49,19 +48,48 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
+    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging-indent div.csl-entry {
+.hanging div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -75,7 +103,8 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}</style>
+}
+</style>
 
 
 <script src="analysis_files/libs/clipboard/clipboard.min.js"></script>
@@ -112,14 +141,14 @@ div.csl-indent {
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+  <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#logistic-growth" id="toc-logistic-growth" class="nav-link active" data-scroll-target="#logistic-growth"><span class="header-section-number">1</span> Logistic Growth</a></li>
-  <li><a href="#gaussian-processes" id="toc-gaussian-processes" class="nav-link" data-scroll-target="#gaussian-processes"><span class="header-section-number">2</span> Gaussian Processes</a></li>
-  <li><a href="#sec-simulation" id="toc-sec-simulation" class="nav-link" data-scroll-target="#sec-simulation"><span class="header-section-number">3</span> Simulation</a></li>
-  <li><a href="#inference" id="toc-inference" class="nav-link" data-scroll-target="#inference"><span class="header-section-number">4</span> Inference</a></li>
+  <li><a href="#logistic-growth" id="toc-logistic-growth" class="nav-link active" data-scroll-target="#logistic-growth"><span class="toc-section-number">1</span>  Logistic Growth</a></li>
+  <li><a href="#gaussian-processes" id="toc-gaussian-processes" class="nav-link" data-scroll-target="#gaussian-processes"><span class="toc-section-number">2</span>  Gaussian Processes</a></li>
+  <li><a href="#sec-simulation" id="toc-sec-simulation" class="nav-link" data-scroll-target="#sec-simulation"><span class="toc-section-number">3</span>  Simulation</a></li>
+  <li><a href="#inference" id="toc-inference" class="nav-link" data-scroll-target="#inference"><span class="toc-section-number">4</span>  Inference</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   <li><a href="#computing-environment" id="toc-computing-environment" class="nav-link" data-scroll-target="#computing-environment">Computing Environment</a></li>
   </ul>
@@ -181,7 +210,7 @@ div.csl-indent {
 <p>In R, expression (1.3) can be implemented with the numerical integrators provided in the <code>deSolve</code> package. The code below uses <code>deSolve</code> to compute the trajectory of <span class="math inline">P_t</span> over 49 days and reproduces <span class="sc">Figure</span> 4 in the main article.</p>
 <div class="cell" data-fig.dim="[12,6]">
 <details>
-<summary>Code</summary>
+<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(deSolve)   <span class="co"># ODE numerical solvers</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"utils.R"</span>)  <span class="co"># helper functions</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -235,7 +264,7 @@ k = \eta ~ \text{exp}( -\rho \text{d}^\text{2} ) \tag{2.1}
 </span></p>
 <div class="cell">
 <details>
-<summary>Code</summary>
+<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(latex2exp)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>( <span class="dv">2</span> <span class="sc">*</span> <span class="fu">exp</span>( <span class="sc">-</span> <span class="fl">0.2</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> ), <span class="at">from=</span><span class="dv">0</span>, <span class="at">to=</span><span class="fl">9.5</span>, <span class="at">lwd=</span><span class="dv">2</span>,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">"K (covariance)"</span>, <span class="at">xlab =</span> <span class="st">"distance"</span> ) </span>
@@ -248,7 +277,7 @@ k = \eta ~ \text{exp}( -\rho \text{d}^\text{2} ) \tag{2.1}
 <div id="fig-kernel-fun" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="analysis_files/figure-html/fig-kernel-fun-1.svg" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: Gaussian process kernel</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Gaussian process kernel</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -276,7 +305,7 @@ k = \eta ~ \text{exp}( -\rho \text{d}^\text{2} ) \tag{2.1}
 <p>The code below reproduces <span class="sc">Figure</span> 3 in the main article, in which four independent sets of time series are drawn from a common multivariate normal, whose covariance matrix is generated by a kernel with the parameter <span class="math inline">\eta=2</span> and <span class="math inline">\rho=.15</span>.</p>
 <div class="cell" data-fig.dim="[9,6]">
 <details>
-<summary>Code</summary>
+<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate time series with Gaussian process</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>GP <span class="ot">=</span> <span class="cf">function</span>(max_cov, rate, distMat, <span class="at">delta=</span><span class="dv">0</span>) {  <span class="co"># Gaussian kernel function</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    m <span class="ot">=</span> max_cov <span class="sc">*</span> <span class="fu">exp</span>( <span class="sc">-</span> rate <span class="sc">*</span> distMat<span class="sc">^</span><span class="dv">2</span> )   </span>
@@ -333,7 +362,7 @@ k = \eta ~ \text{exp}( -\rho \text{d}^\text{2} ) \tag{2.1}
 <p>The code below implements (4.1) and reproduces <span class="sc">Figure</span> 7 in the main article.</p>
 <div class="cell" data-fig.dim="[9,6]">
 <details>
-<summary>Code</summary>
+<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Integrated form of logistic growth</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>P_growth <span class="ot">=</span> <span class="cf">function</span>(t, r, K, P0)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    K <span class="sc">/</span> ( <span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>r<span class="sc">*</span>t)<span class="sc">*</span>(K<span class="sc">-</span>P0)<span class="sc">/</span>P0 )  <span class="co"># "K" is carrying capacity here</span></span>
@@ -362,7 +391,7 @@ k = \eta ~ \text{exp}( -\rho \text{d}^\text{2} ) \tag{2.1}
 <p>The simulation as described in the main article is conducted in two steps. First, the 98 observations of the N-process are simulated with R <span class="citation" data-cites="rcoreteam2022">(<a href="#ref-rcoreteam2022" role="doc-biblioref">R Core Team, 2022</a>)</span>, as documented in the <code>get_params()</code> function in <code>model/utils.R</code>. Subsequently, using <code>cmdstanr</code> <span class="citation" data-cites="gabry2023">(<a href="#ref-gabry2023" role="doc-biblioref">Gabry, Češnovar, &amp; Johnson, 2023</a>)</span> as the interface, the parameter values, as well as the simulated N-process, are passed in as data to Stan <span class="citation" data-cites="carpenter2017">(<a href="#ref-carpenter2017" role="doc-biblioref">Carpenter et al., 2017</a>)</span> to conduct the remaining simulation. The code for the second part of the simulation is available in <code>model/sim.stan</code>. We reproduce the simulation and <span class="sc">Figure 4</span> of the main article below.</p>
 <div class="cell" data-fig.dim="[9,6]">
 <details>
-<summary>Code</summary>
+<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"utils.R"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1024</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -401,7 +430,7 @@ Chain 1 Iteration: 1 / 1 [100%]  (Sampling)
 Chain 1 finished in 0.0 seconds.</code></pre>
 </div>
 <details>
-<summary>Code</summary>
+<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot Figure 4</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>idx_obs <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">1</span>, sim<span class="sc">$</span>params<span class="sc">$</span>n_obs_times, <span class="at">by=</span><span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.integer</span>() <span class="sc">|&gt;</span> <span class="fu">unique</span>()</span>
@@ -434,14 +463,14 @@ Chain 1 finished in 0.0 seconds.</code></pre>
 <section id="inference" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="inference"><span class="header-section-number">4</span> Inference</h2>
 <!-- Justification of priors -->
-<p>Two statistical models were constructed following the description of the main article. The first model, which infers parameters from a single set of time series data, was fitted three times—the first was fitted with 49 observations and the second and third with 98 observations. The simulated observations for the first and second fit have a higher measurement error (<span class="math inline">\sigma = 0.5</span>) whereas the simulated observations for the third fit have a lower measurement error (<span class="math inline">\sigma = 0.1</span>). The second model, extended from the first model to include two parallel time series observations, was fitted with a total of 98 observations, with 49 observations for each time series. See <code>model/fit.R</code> for the code to fit the models.</p>
+<p>Two statistical models were constructed following the description of the main article. The first model, which infers the parameter values from a single set of time series data, was fitted three times—the first was fitted with 49 observations and the second and third with 98 observations. The simulated observations for the first and second fit have a higher measurement error (<span class="math inline">\sigma = 0.5</span>) whereas the simulated observations for the third fit have a lower measurement error (<span class="math inline">\sigma = 0.1</span>). The second model, extended from the first model to include two parallel time series observations, was fitted with a total of 98 observations, with 49 observations for each time series. See <code>model/fit.R</code> for the code to fit the models.</p>
 <section id="mcmc-diagnostics" class="level3">
 <h3 class="anchored" data-anchor-id="mcmc-diagnostics">MCMC Diagnostics</h3>
 <!-- MCMC diagnostics -->
-<p>Four MCMC chains were used for each fit, with 150 collected samples and 300 warmup samples for each chain. All fits, except for the fit with a lower measurement error, proceeded smoothly with no divergent transitions and maximum tree depth reached. From the inspection of the trace plots, the four chains mix well for all fits<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. We list the diagnostic summaries for the four fits below:</p>
+<p>Four MCMC chains were used for each fit, with 150 collected samples and 300 warmup samples for each chain. All fits, except for the fit with a lower measurement error, proceeded smoothly with no divergent transitions and maximum tree depth reached and exhibited well mixing of the chains, as indicated by the trace plots<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. We list the diagnostic summaries for the four fits below:</p>
 <div class="cell">
 <details>
-<summary>Code</summary>
+<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>m1<span class="fl">.49</span>    <span class="ot">=</span> <span class="fu">readRDS</span>(<span class="st">"data/m1-49.RDS"</span>)     <span class="co"># 1st model with 49 obs.</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>m1<span class="fl">.98</span>    <span class="ot">=</span> <span class="fu">readRDS</span>(<span class="st">"data/m1-98.RDS"</span>)     <span class="co"># 1st model with 98 obs.</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>m1.<span class="fl">98.</span>sd <span class="ot">=</span> <span class="fu">readRDS</span>(<span class="st">"data/m1-98-sd.RDS"</span>)  <span class="co"># 1st model with 98 obs. &amp; low measurement error</span></span>
@@ -514,7 +543,7 @@ $ebfmi
 <p>In Bayesian inference, samples drawn from the parameters’ posterior distribution (i.e., posterior samples) are available after the model is fitted to the data, which can then be used for generating predictions that are compared to empirical data. The posterior distribution can be thought of as the fitted model’s belief of the parameters’ true values. To generate predictions according to the posterior, we simply pass in the posterior samples as data to the simulation described in <a href="#sec-simulation">Section&nbsp;3</a>. For each of our fitted models, 600 sets of posterior samples are available (150 sets <span class="math inline">\times</span> 4 chains). The size of a set of posterior samples corresponds to the number of parameters in the model. To avoid cluttering the plot, we draw only 20 sets of posterior samples for plotting. See <code>model/post_predict_cache.R</code> for the code to collect posterior samples. We reproduce <span class="sc">Figure 5</span> in the main article below.</p>
 <div class="cell">
 <details>
-<summary>Code</summary>
+<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"post_predict.R"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -549,14 +578,14 @@ Chain 1 finished in 0.0 seconds.</code></pre>
 </section>
 <section id="references" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list">
-<div id="ref-carpenter2017" class="csl-entry" role="listitem">
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
+<div id="ref-carpenter2017" class="csl-entry" role="doc-biblioentry">
 Carpenter, B., Gelman, A., Hoffman, M. D., Lee, D., Goodrich, B., Betancourt, M., … Riddell, A. (2017). Stan: <span>A Probabilistic Programming Language</span>. <em>Journal of Statistical Software</em>, <em>76</em>, 1. <a href="https://doi.org/10.18637/jss.v076.i01">https://doi.org/10.18637/jss.v076.i01</a>
 </div>
-<div id="ref-gabry2023" class="csl-entry" role="listitem">
+<div id="ref-gabry2023" class="csl-entry" role="doc-biblioentry">
 Gabry, J., Češnovar, R., &amp; Johnson, A. (2023). <em>Cmdstanr: <span>R</span> interface to ’<span>CmdStan</span>’</em> [Manual].
 </div>
-<div id="ref-rcoreteam2022" class="csl-entry" role="listitem">
+<div id="ref-rcoreteam2022" class="csl-entry" role="doc-biblioentry">
 R Core Team. (2022). <em>R: <span>A</span> language and environment for statistical computing</em> [Manual]. <span>Vienna, Austria</span>: <span>R Foundation for Statistical Computing</span>. Retrieved from <a href="https://www.R-project.org/">https://www.R-project.org/</a>
 </div>
 </div>
@@ -571,46 +600,45 @@ R Core Team. (2022). <em>R: <span>A</span> language and environment for statisti
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>cmdstanr<span class="sc">::</span><span class="fu">cmdstan_version</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2.31.0"</code></pre>
+<pre><code>[1] "2.32.1"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.2.1 (2022-06-23)
-Platform: aarch64-apple-darwin20 (64-bit)
-Running under: macOS Monterey 12.6
+<pre><code>R version 4.1.3 (2022-03-10)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 19045)
 
 Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.2-arm64/Resources/lib/libRblas.0.dylib
-LAPACK: /Library/Frameworks/R.framework/Versions/4.2-arm64/Resources/lib/libRlapack.dylib
 
 locale:
-[1] C/en_US.UTF-8/C/C/C/C
+[1] C
+system code page: 950
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] latex2exp_0.9.6 deSolve_1.36   
+[1] latex2exp_0.9.6 deSolve_1.35   
 
 loaded via a namespace (and not attached):
- [1] compiler_4.2.1       pillar_1.8.1         cmdstanr_0.5.3      
- [4] tools_4.2.1          digest_0.6.29        jsonlite_1.8.2      
- [7] evaluate_0.16        lifecycle_1.0.3      tibble_3.1.8        
-[10] checkmate_2.1.0      gtable_0.3.1         pkgconfig_2.0.3     
-[13] rlang_1.1.1          cli_3.4.1            parallel_4.2.1      
-[16] yaml_2.3.5           stom_0.0.0.9000      xfun_0.33           
-[19] fastmap_1.1.0        withr_2.5.0          dplyr_1.0.10        
-[22] stringr_1.5.0        knitr_1.40           generics_0.1.3      
-[25] vctrs_0.6.3          htmlwidgets_1.6.1    systemfonts_1.0.4   
-[28] tidyselect_1.2.0     grid_4.2.1           data.table_1.14.6   
-[31] svglite_2.1.1        glue_1.6.2           R6_2.5.1            
-[34] processx_3.8.0       fansi_1.0.3          distributional_0.3.1
-[37] rmarkdown_2.16       tensorA_0.36.2       farver_2.1.1        
-[40] ggplot2_3.4.2        posterior_1.3.1      magrittr_2.0.3      
-[43] ps_1.7.2             backports_1.4.1      scales_1.2.1        
-[46] htmltools_0.5.4      MASS_7.3-57          abind_1.4-5         
-[49] colorspace_2.0-3     utf8_1.2.2           stringi_1.7.8       
-[52] munsell_0.5.0       </code></pre>
+ [1] compiler_4.1.3       pillar_1.9.0         cmdstanr_0.6.0      
+ [4] tools_4.1.3          digest_0.6.31        jsonlite_1.8.4      
+ [7] evaluate_0.21        lifecycle_1.0.3      tibble_3.2.1        
+[10] checkmate_2.1.0      gtable_0.3.3         pkgconfig_2.0.3     
+[13] rlang_1.1.0          cli_3.6.1            rstudioapi_0.14     
+[16] parallel_4.1.3       yaml_2.3.7           stom_0.0.0.9000     
+[19] xfun_0.39            fastmap_1.1.1        withr_2.5.0         
+[22] dplyr_1.1.2          stringr_1.5.0        knitr_1.42          
+[25] generics_0.1.3       vctrs_0.6.1          htmlwidgets_1.6.2   
+[28] systemfonts_1.0.4    tidyselect_1.2.0     grid_4.1.3          
+[31] data.table_1.14.8    svglite_2.1.1        glue_1.6.2          
+[34] R6_2.5.1             processx_3.8.1       fansi_1.0.4         
+[37] distributional_0.3.2 rmarkdown_2.21       tensorA_0.36.2      
+[40] farver_2.1.1         ggplot2_3.4.2        posterior_1.4.1     
+[43] magrittr_2.0.3       ps_1.7.5             backports_1.4.1     
+[46] scales_1.2.1         htmltools_0.5.5      MASS_7.3-55         
+[49] abind_1.4-5          colorspace_2.1-0     utf8_1.2.3          
+[52] stringi_1.7.12       munsell_0.5.0       </code></pre>
 </div>
 </div>
 <style>
@@ -659,23 +687,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
   });
   clipboard.on('success', function(e) {
@@ -740,92 +754,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
