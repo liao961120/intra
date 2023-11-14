@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Yongfu Liao" />
+  <meta name="dcterms.date" content="2023-08-12" />
+  <title>Process, Measurement, and Environmental Fluctuation All at Once: A Naive Theory-Driven Analysis of Intra-individual Dynamics</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!--
+https://yihui.org/en/2023/10/html-article/
+-->
+
+<!--
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils/js/sidenotes.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils/js/appendix.min.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/gh/rstudio/markdown@1.11/inst/resources/default.min.css,npm/@xiee/utils/css/article.min.css">
+-->
+
+<script src="https://cdn.jsdelivr.net/combine/npm/@xiee/utils/js/sidenotes.min.js,npm/@xiee/utils/js/appendix.min.js,npm/@xiee/utils/js/right-quote.min.js" defer></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/gh/rstudio/markdown@1.11/inst/resources/default.min.css,npm/@xiee/utils/css/article.min.css,npm/@xiee/utils/css/heading-anchor.min.css">
+<style type="text/css">
+    header{text-align: center;}
+    html {scroll-behavior: smooth;}
+</style>
+
+<header id="title-block-header">
+<h1 class="title"><p>Process, Measurement, and<br />
+Environmental Fluctuation<br />
+All at Once:<br />
+A Naive Theory-Driven Analysis of Intra-individual Dynamics</p></h1>
+<p class="author">Yongfu Liao</p>
+<p class="date">November 14, 2023</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#introduction" id="toc-introduction"><span
+class="toc-section-number">1</span> Introduction</a></li>
+<li><a href="#whats-in-a-measure" id="toc-whats-in-a-measure"><span
+class="toc-section-number">2</span> What’s in a Measure</a></li>
+<li><a href="#simulation" id="toc-simulation"><span
+class="toc-section-number">3</span> Simulation</a>
+<ul>
+<li><a href="#growth-of-cognitive-reappraisal"
+id="toc-growth-of-cognitive-reappraisal"><span
+class="toc-section-number">3.1</span> Growth of cognitive
+reappraisal</a></li>
+<li><a href="#n-process" id="toc-n-process"><span
+class="toc-section-number">3.2</span> Fluctuating environmental
+impact</a></li>
+<li><a href="#measurement-process" id="toc-measurement-process"><span
+class="toc-section-number">3.3</span> Measurement process</a></li>
+<li><a href="#data-generating-process"
+id="toc-data-generating-process"><span
+class="toc-section-number">3.4</span> Data-generating process</a></li>
+</ul></li>
+<li><a href="#inference" id="toc-inference"><span
+class="toc-section-number">4</span> Inference</a>
+<ul>
+<li><a href="#more-observations-better-inference"
+id="toc-more-observations-better-inference"><span
+class="toc-section-number">4.1</span> More observations, better
+inference?</a></li>
+<li><a href="#the-power-of-parallel-measurement"
+id="toc-the-power-of-parallel-measurement"><span
+class="toc-section-number">4.2</span> The power of parallel
+measurement</a></li>
+</ul></li>
+<li><a href="#discussion" id="toc-discussion"><span
+class="toc-section-number">5</span> Discussion</a>
+<ul>
+<li><a href="#what-are-we-measuring"
+id="toc-what-are-we-measuring"><span
+class="toc-section-number">5.1</span> What are we measuring?</a></li>
+<li><a href="#issues-of-timescale" id="toc-issues-of-timescale"><span
+class="toc-section-number">5.2</span> Issues of timescale</a></li>
+<li><a href="#open-vs.-closed-system"
+id="toc-open-vs.-closed-system"><span
+class="toc-section-number">5.3</span> Open vs. closed system</a></li>
+<li><a href="#some-ways-forward" id="toc-some-ways-forward"><span
+class="toc-section-number">5.4</span> Some ways forward</a></li>
+</ul></li>
+<li><a href="#references" id="toc-references">References</a></li>
+</ul>
+</nav>
+<section id="introduction" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span>
+Introduction</h1>
+<p>The surge of ecological momentary assessment (EMA) studies in
+clinical sciences has called for new statistical methods to analyze
+intra-individual (i.e., idiographic) longitudinal data. A variety of
+techniques, such as vector autoregressive (VAR) models, have been
+proposed to infer the (Granger) causal relationships between variables
+from such data (for an overview, see <span class="citation"
+data-cites="bringmann2021">Bringmann (2021)</span> and <span
+class="citation" data-cites="piccirillo2019">Piccirillo &amp; Rodebaugh
+(2019)</span>; also see <span class="citation"
+data-cites="ryan2022">Ryan &amp; Hamaker (2022)</span> for
+continuous-time VAR models). These VAR models are often employed more or
+less as data-driven, theory-free inferential devices, in which the
+researchers place no prior assumptions on the dynamical processes
+underlying change and measurement. We underscore the risks associated
+with such practices and emphasize the often-neglected issue of
+<em>connecting measurements to theory</em>—when a measurement is
+presumed to capture <em>only</em> the intended construct, the resulting
+analysis can never challenge, and therefore lead to refinements of, the
+measurement itself <span class="citation"
+data-cites="bringmann2016">(Bringmann &amp; Eronen, 2016)</span>. We
+illustrate this through a simple theory-driven analysis of change
+processes, in which the <em>purity</em> of the measurement is not
+assumed. Through the analysis, it is shown that without explicit
+theoretical assumptions imposing constraints on how measurement and
+change processes might evolve and interact over time, the resulting
+inferred processes will inevitably conflate multiple untraceable sources
+of variation, obscuring the information that could be gained from
+statistical inference.</p>
+<p>Specifically, we are pointing to the importance of teasing out
+process variation from (pure) measurement errors. This is critical since
+change processes are <em>independent</em> of the measurement process—if
+the fluctuations observed in repeated measures of a process reflect
+<em>only</em> measurement errors rather than changes in that process,
+these observed decreases or increases will <em>not</em> carry over to
+the process’s future states. However, complicating this is the fact that
+measurements are likely <em>not pure</em>. Instead of singly measuring
+the process of interest, psychological measurements are far from perfect
+that they probably also measure irrelevant processes to our dismay.
+Therefore, we are now faced with the confusing variation observed in a
+time series—it could either arise from measurement errors, changes in
+the process of interest, changes in the process of disinterest, or a
+combination of any of the former.</p>
+<p>In this study, we illustrate the above-discussed scenario through
+statistical analyses of simulated data. The context and theory we
+choose, as later seen, are deliberately naive and simplified. This
+allows us to provide a simple yet clear demonstration of embedding
+theoretical assumptions into tailored statistical analysis. This also
+paves the way for further discussion of potentially problematic
+practices in EMA data analysis. Implications for future research are
+also discussed.</p>
+</section>
+<section id="whats-in-a-measure" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> What’s
+in a Measure</h1>
+<p>In the present article, we distinguish between two types of processes
+and measurement errors. The first process type is what the researchers
+are interested in studying. In a clinical setting, this might be a
+theorized process that leads to improved clinical outcomes during
+treatment. Here, we take <em>cognitive reappraisal</em> as an example.
+The second process type is of disinterest to the researchers but
+nevertheless sneaks into the measurement. For our current purpose, we
+assume this process to be a state-like process influenced by
+environmental triggers of stress and any potential adverse effects that
+lower an individual’s <em>evaluation</em> of his or her cognitive
+reappraisal ability<a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>. Note that the first process,
+<em>cognitive reappraisal</em>, is more of a trait-like, slow-changing
+construct as compared to the second state-like perceptual process.
+Distinguishing between state- and trait-like constructs, as shown later,
+affects how we theorize and model the speed of change in these temporal
+processes.</p>
+<p>Finally, the measurement tool in the current context would be a
+hypothetical cognitive reappraisal scale. As hinted previously, the
+measurement process inevitably conflates variation from three different
+sources. The first is the construct it purports to measure, that is, the
+true, trait-like ability of cognitive reappraisal. The second is the
+state-like, rapid-changing process reflecting the adversity of the
+surrounding environment. The remaining variation comes from pure
+measurement errors, which are introduced every time a measurement is
+made and are independent of the former two processes.</p>
+<p>For the sake of simplicity, in the following text, the first
+process—the true ability of cognitive reappraisal—is termed the
+<em>P-process</em> and given the abbreviation <span
+class="math inline">P</span>; the second process—the adverse impact of
+the surrounding on the evaluation of cognitive reappraisal—is termed the
+<em>N-process</em> and abbreviated as <span
+class="math inline">N</span>; the latent construct measured by the
+cognitive reappraisal scale, which is a function of both <span
+class="math inline">P</span> and <span class="math inline">N</span>, is
+abbreviated as <span class="math inline">M</span>, and <span
+class="math inline">S</span> denotes the realized observations of <span
+class="math inline">M</span>. summarises these relationships between the
+aforementioned variables.</p>
+<figure id="fig:dag">
+<img src="./fig/dag.svg"
+alt="Presupposed relationships between P-process (cognitive reappraisal, P), N-process (adverse environmental impact on the evaluation of cognitive reappraisal, N), environmental fluctuation (E), latent (M), and observed (S) scores of the cognitive reappraisal scale. The arrows indicate the direction of influences. Circled and open nodes indicate unobserved and observed variables, respectively." />
+<figcaption aria-hidden="true">Presupposed relationships between
+<em>P-process</em> (cognitive reappraisal, <span
+class="math inline">P</span>), <em>N-process</em> (adverse environmental
+impact on the evaluation of cognitive reappraisal, <span
+class="math inline">N</span>), environmental fluctuation (<span
+class="math inline">E</span>), latent (<span
+class="math inline">M</span>), and observed (<span
+class="math inline">S</span>) scores of the cognitive reappraisal scale.
+The arrows indicate the direction of influences. Circled and open nodes
+indicate unobserved and observed variables, respectively.</figcaption>
+</figure>
+</section>
+<section id="simulation" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span>
+Simulation</h1>
+<p>In this section, we describe the simulation of each variable in and
+the data-generating process of the full model. Later in section , we
+describe the statistical inference for parameter recovery from the
+simulated data.</p>
+<p>To provide some context, consider the scenario in which a
+hypothetical individual, Jane, was receiving CBT for the treatment of
+mild depression. During the 49 days between the first and the last
+session, Jane completed the cognitive reappraisal scale daily to assess
+her progress. In this hypothetical scenario, the cognitive reappraisal
+scale is the <em>only</em> collected measure. Later, we relax this
+assumption and explore the benefits of collecting multiple measures.</p>
+<p>In the simulation described below, we will be simulating 98
+consecutive scores (2 per day) of the cognitive reappraisal scale. Note
+that the observations do not need to be equally spaced for the
+statistical model to work since we will be using a continuous-time
+model. This also means that missing data are handled automatically and
+will not bias inference, as long as they are missing at random.</p>
+<section id="growth-of-cognitive-reappraisal" class="level2"
+data-number="3.1">
+<h2 data-number="3.1"><span class="header-section-number">3.1</span>
+Growth of cognitive reappraisal</h2>
+<p>We conceptualize cognitive reappraisal as a skill that gradually
+develops during the treatment. Therefore, cognitive reappraisal is
+modeled to grow smoothly during the 49-day period. In particular, the
+trajectory of the growth is modeled as a logistic function, which can be
+more informatively expressed as a differential equation in (1).</p>
+<p><span class="math display">\begin{equation}
+  \frac{d P}{dt} = r P (1 - \frac{P}{K})
+\end{equation}</span></p>
+<p>Equation (1) is known as the logistic population growth, which is
+often used to model the growth of the population size of a species in
+Biology and Ecology. The left-hand side of Eq. (1), <span
+class="math inline">\frac{dP}{dt}</span>, could be read as the <em>rate
+of change</em> in <span class="math inline">P</span>. The right-hand
+side of Eq. (1) indicates that this rate of change is the product of
+three components: (a) the intrinsic growth rate parameter <span
+class="math inline">r</span>, (b) the current size of <span
+class="math inline">P</span>, and (c) the size of the current <span
+class="math inline">P</span> relative to the carrying capacity parameter
+<span class="math inline">K</span> <span class="citation"
+data-cites="gotelli2008">(Gotelli, 2008)</span>.</p>
+<p> illustrates the trajectories of logistic growth with different
+configurations of <span class="math inline">r</span> and <span
+class="math inline">K</span> when the initial size of <span
+class="math inline">P</span> is set to <span
+class="math inline">0.01</span>. Qualitatively, the intrinsic growth
+rate <span class="math inline">r</span> determines how <em>fast</em>,
+when given a fixed <span class="math inline">K</span> and <span
+class="math inline">P</span>, <span class="math inline">P</span> grows.
+With a larger value of <span class="math inline">r</span>, <span
+class="math inline">P</span> approaches its potential maximum more
+quickly. This is revealed by the three logistic growth curves with a
+different <span class="math inline">r</span> in the left panel of . On
+the other hand, the carrying capacity <span class="math inline">K</span>
+represents the upper bound of <span class="math inline">P</span>. As
+<span class="math inline">P</span> increases and approaches <span
+class="math inline">K</span>, the term <span class="math inline">1 -
+\frac{P}{K}</span> approaches zero, and so does the growth rate <span
+class="math inline">\frac{dP}{dt}</span>. The right panel of illustrates
+three growth curves with a different upper bound <span
+class="math inline">K</span>.</p>
+<figure>
+<img src="fig/logistic_growth.svg"
+alt="Logistic growth of P according to different configurations of r and K. The initial value of P is set to 0.01 for all trajectories." />
+<figcaption aria-hidden="true">Logistic growth of <span
+class="math inline">P</span> according to different configurations of
+<span class="math inline">r</span> and <span
+class="math inline">K</span>. The initial value of <span
+class="math inline">P</span> is set to <span
+class="math inline">0.01</span> for all trajectories.</figcaption>
+</figure>
+<p>Modeling the growth of cognitive reappraisal as a logistic growth
+curve is an <em>ideal</em> assumption, just as a linear growth
+assumption is in most models. Logistic growth, however, is arguably more
+realistic than linear growth in that it models the boundaries of growth
+(<span class="math inline">0 &lt; P &lt; K</span>) and the deceleration
+of growth when approaching the boundaries. The shape of the growth over
+time approximated by a logistic function is thus suitable for modeling a
+wide range of growth phenomena in nature.</p>
+</section>
+<section id="n-process" class="level2" data-number="3.2">
+<h2 data-number="3.2"><span class="header-section-number">3.2</span>
+Fluctuating environmental impact</h2>
+<p>A state-like process is proposed to model the impacts introduced by
+external stochastic factors on the measurement of cognitive reappraisal.
+These external impacts are however different from random measurement
+errors in that they are <em>continuous and locally dependent</em>—the
+impact left on individuals carries on to the immediate and near future
+but dissipates as time goes by. On the contrary, measurement errors are
+<em>discontinued and independent</em>—measurement errors only occur when
+measurements are made, and the current magnitude of an error provides no
+information about any of the future or past measures. The <em>continuous
+and local-dependent</em> property allows the modeling of an individual’s
+experience as a continuum and is based on the idea that, for instance,
+the stress level experienced by a person currently and 5 seconds later
+should be nearly identical.</p>
+<p>To model this formally, Gaussian processes are used<a href="#fn2"
+class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.
+Gaussian processes allow one to model the covariances between a set of
+observations as a function of the distances between them. This is
+illustrated in Equation (2), in which the drawing of a set of time
+series observations with the help of Gaussian Processes is formulated.
+The first line in Eq. (2) specifies that <span
+class="math inline">T</span> observations are drawn from a zero mean
+multivariate normal distribution with a covariance matrix <span
+class="math inline">\textbf{K}</span>. The essence of Gaussian processes
+is a covariance function (a.k.a Gaussian process kernel) that defines
+how the covariance matrix <span class="math inline">\textbf{K}</span> is
+constructed. This is shown in the second line of Eq. (2), in which <span
+class="math inline">k_{i,j}</span> denotes the entry on the ith row and
+jth column in <span class="math inline">\textbf{K}</span>. The
+expression on the right-hand side specifies how <span
+class="math inline">k_{i,j}</span> is calculated. <span
+class="math inline">\text{d}^\text{2}_{i,j}</span> denotes the squared
+distance between <span class="math inline">N_i</span> and <span
+class="math inline">N_j</span>, which is defined as the squared
+difference between the times at which <span
+class="math inline">N_i</span> and <span class="math inline">N_j</span>
+are recorded. <span class="math inline">\eta</span> can be intuitively
+interpreted as an upper-bound value for all <span
+class="math inline">k_{i,j}</span> (since <span
+class="math inline">\text{exp}( -\rho \text{d}^\text{2}_{i,j} ) &lt;
+1</span>), and <span class="math inline">\rho</span> can be thought of
+as a parameter controlling how quickly <span
+class="math inline">k_{i,j}</span> decays as the distance <span
+class="math inline">\text{d}^\text{2}_{i,j}</span> increases.</p>
+<p><span class="math display">\begin{equation}
+  \begin{aligned}
+    \begin{bmatrix}
+        N_1 \\
+        N_2 \\
+        \vdots \\
+        N_T
+    \end{bmatrix} &amp;\sim \text{MVNormal}(
+        \begin{bmatrix}
+            0 \\
+            0 \\
+            \vdots \\
+            0
+        \end{bmatrix},
+    \textbf{K} ) \\
+    k_{i,j} &amp;= \eta ~ \text{exp}( -\rho \text{d}^\text{2}_{i,j} ) \\
+  \end{aligned} \label{eq:GP}
+\end{equation}</span></p>
+<p> sketches four independent draws of time series observations from the
+same 150-dimensional multivariate normal distribution. This multivariate
+normal has its covariance matrix <span
+class="math inline">\textbf{K}</span> generated by a kernel function
+with parameters <span class="math inline">\eta=2</span> and <span
+class="math inline">\rho=.15</span> and <span class="math inline">150
+\times 150</span> pairs of distances calculated from the 150
+observations sampled at a fixed frequency (<span
+class="math inline">\frac{150}{49} \approx 3.06</span> times per day).
+Therefore, for each draw of the time series observations in , the
+timespan between each pair of adjacent observations is about 7.8 hours
+(<span class="math inline">24 ~\text{hours} \times
+\frac{49}{150}</span>).</p>
+<figure id="fig:GP">
+<img src="fig/GaussianProcess.svg"
+alt="Four independent sets of time series drawn from a zero mean multivariate normal, whose covariance matrix is generated by a Gaussian process kernel in Eq. () with parameters \eta = 2 and \rho=.15." />
+<figcaption aria-hidden="true">Four independent sets of time series
+drawn from a zero mean multivariate normal, whose covariance matrix is
+generated by a Gaussian process kernel in Eq. () with parameters <span
+class="math inline">\eta = 2</span> and <span
+class="math inline">\rho=.15</span>.</figcaption>
+</figure>
+<p>The characteristics of Gaussian processes enable us to naturally
+model the smooth transition between nearby states and, at the same time,
+the (nearly) independent fluctuations between distant states. This
+matches people’s daily experiences. For instance, the current stress
+level is strongly predictive of the stress levels in future hours but is
+a bad predictor of stress levels weeks later. Likewise, there may be
+difficult times in life, such as when unpredictable major life events
+strike that people experience a sudden increase in stress level. This
+experience of a relatively stable period intermittent with rapid
+fluctuations can also be modeled with Gaussian processes. Take draw 2 in
+for example, the sharp dip around day 20 indicates a period of
+fast-changing states, whereas the states between day 35 and 45 are
+relatively stable.</p>
+<p>The purpose of modeling the impacts of such experiences is to
+separate their contribution to the measurement from other sources. This
+is based on the assumption that psychological measurements partially
+measure unwanted constructs, which, in turn, is based on the intuition
+that, say, when a stressed individual is facing challenges one after
+another, the failure to handle some of these challenges can lower one’s
+judgment of his or her ability. The decreased measurement score thus
+does not necessarily indicate a measurement error or a drop in one’s
+true ability but may rather be an indicator of environmental
+adversity.</p>
+</section>
+<section id="measurement-process" class="level2" data-number="3.3">
+<h2 data-number="3.3"><span class="header-section-number">3.3</span>
+Measurement process</h2>
+<p>The measurement process conflates the former two processes—the
+<em>P-process</em> and the <em>N-process</em>—and adds in some random
+noise every time a measurement is made. This is formulated in Equation
+(3).</p>
+<p><span class="math display">\begin{equation}
+    \begin{gathered}
+        \mathrm{ P_{t}^{obs} } \sim \text{Normal}( M_t, \sigma )  \\
+        M_t                    =  b ~ \left[ a P_t - \left( 1 - a
+\right) N_t \right] - c
+    \end{gathered} \label{eq:measurement-model}
+\end{equation}</span></p>
+<p><span class="math inline">\mathrm{P_t^{obs}}</span> represents the
+observed score of the cognitive reappraisal scale collected at time
+<span class="math inline">t</span>. The measurement model here assumes
+that the observed score <span
+class="math inline">\mathrm{P_t^{obs}}</span> distributes normally<a
+href="#fn3" class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a> around the latent score <span
+class="math inline">M_t</span> with the standard deviation of
+measurement errors being <span class="math inline">\sigma</span>. In
+addition, the latent score <span class="math inline">M_t</span> is
+itself a composite of multiple factors—the cognitive reappraisal skill
+(<span class="math inline">P_t</span>) and the adverse environmental
+impact (<span class="math inline">N_t</span>). The parameter <span
+class="math inline">a</span> (constrained between <span
+class="math inline">0</span> and <span class="math inline">1</span>)
+specifies the contribution of <span
+class="math inline">P_t</span>—relative to <span
+class="math inline">N_t</span>—to <span class="math inline">M_t</span>.
+The parameters <span class="math inline">b</span> (scaling factor) and
+<span class="math inline">c</span> (intercept) work together to map the
+scale of the underlying processes to that of <span
+class="math inline">M_t</span>.</p>
+</section>
+<section id="data-generating-process" class="level2" data-number="3.4">
+<h2 data-number="3.4"><span class="header-section-number">3.4</span>
+Data-generating process</h2>
+<p>Gathering the above three processes gives the full data-generating
+process for our simulation, represented formally in Equation (4). The
+formulas in Eq. (4) are identical to those in the previous equations
+except for Eq. (1). Here, Eq. (1) is reexpressed as a forward Euler form
+in which the computation of <span class="math inline">P</span> over time
+is more straightforwardly conveyed—the immediate next state <span
+class="math inline">P_{t+\Delta t}</span> equals the current state <span
+class="math inline">P_{t}</span> plus a tiny change <span
+class="math inline">r P_t (1 - \frac{P_t}{K}) \Delta t</span>. Iterating
+this formula, starting with the initial value <span
+class="math inline">P_0</span>, over 49 days results in a collection of
+<span class="math inline">P</span>s over this period.</p>
+<p><span class="math display">\begin{align*}
+    \intertext{\centering \textbf{Process Model}}
+    &amp;\begin{cases}
+        P_\text{t=0}  ~~ = P_0 \\
+        P_{t + \Delta t} = P_t + r P_t (1 - \frac{P_t}{K}) \Delta t \\
+    \end{cases}
+    \\
+    &amp;\begin{bmatrix}
+        N_1 \\
+        N_2 \\
+        \vdots \\
+        N_T
+    \end{bmatrix} \sim \text{MVNormal}(
+        \begin{bmatrix}
+            0 \\
+            0 \\
+            \vdots \\
+            0
+        \end{bmatrix},
+    \textbf{K} )  \label{eq:dgp} \tag{4}
+    \\
+    &amp; ~~~ k_{i,j} = \eta ~ \text{exp}( -\rho \text{d}^\text{2}_{i,j}
+) \\
+    \\
+    \intertext{\centering \textbf{Measurement Model}}
+    &amp; \hphantom{xxxxx} \mathrm{ P_{t}^{obs} }  \sim \text{Normal}(
+M_t, \sigma )  \\
+    &amp; \hphantom{xx} M_t                     =  b ~ \left[ a P_t -
+\left( 1 - a \right) N_t \right] - c \\
+\end{align*}</span></p>
+<p>Table 1 lists the parameters and their values for the simulation. The
+number of observations <span class="math inline">T</span> is set to
+<span class="math inline">98</span>, meaning that two observations are
+simulated for each day. For convenience, the time intervals between
+consecutive observations are set to be equal. Thus, with <span
+class="math inline">T</span> and a fixed interval between observations,
+the timestamps for the observations could be determined, which are then
+used to compute the distances between all pairs of the observations for
+the Gaussian process kernel.</p>
+<table>
+<caption>Parameter values for the simulation in Eq (). The last column
+specifies the prior distributions assigned to the parameters in the
+statistical model described in section . </caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter</th>
+<th style="text-align: center;">Coded Name</th>
+<th style="text-align: center;">True Value</th>
+<th style="text-align: left;">Prior</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">r</span></td>
+<td style="text-align: center;"><code>r</code></td>
+<td style="text-align: center;">0.30</td>
+<td style="text-align: left;"><span
+class="math inline">\mathrm{Beta}(1.7, 2)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">K</span></td>
+<td style="text-align: center;"><code>K</code></td>
+<td style="text-align: center;">10.0</td>
+<td style="text-align: left;"><span
+class="math inline">\mathrm{Normal}(10, 3)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span
+class="math inline">P_0</span></td>
+<td style="text-align: center;"><code>P0</code></td>
+<td style="text-align: center;">0.01</td>
+<td style="text-align: left;"><span
+class="math inline">\mathrm{Normal^+}(0, 0.5)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span
+class="math inline">\eta</span></td>
+<td style="text-align: center;"><code>max_cov</code></td>
+<td style="text-align: center;">2.00</td>
+<td style="text-align: left;"><span
+class="math inline">\mathrm{Normal^+}(0, 3)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span
+class="math inline">\rho</span></td>
+<td style="text-align: center;"><code>rate</code></td>
+<td style="text-align: center;">0.20</td>
+<td style="text-align: left;"><span
+class="math inline">\mathrm{Normal^+}(0, 0.3)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span
+class="math inline">\sigma</span></td>
+<td style="text-align: center;"><code>s1</code></td>
+<td style="text-align: center;">0.50</td>
+<td style="text-align: left;"><span
+class="math inline">\mathrm{Normal^+}(0, 1)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">a</span></td>
+<td style="text-align: center;"><code>a1</code></td>
+<td style="text-align: center;">0.78</td>
+<td style="text-align: left;"><span
+class="math inline">\mathrm{Beta}(3.8, 2.5)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">b</span></td>
+<td style="text-align: center;"><code>b1</code></td>
+<td style="text-align: center;">0.74</td>
+<td style="text-align: left;"><span class="math inline">\mathrm{Beta}(2,
+1)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">c</span></td>
+<td style="text-align: center;"><code>c1</code></td>
+<td style="text-align: center;">3.14</td>
+<td style="text-align: left;"><span
+class="math inline">\mathrm{Normal^+}(0, 2)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Running the simulation specified in Eq. (4) with the parameter values
+in Table 1 produces . The dashed curves in the figure sketch the
+trajectories of the <em>unobserved processes</em> over time—the gray
+curve depicts the fluctuating environmental impacts on the measurement
+of cognitive reappraisal (<span class="math inline">N_t</span>), and the
+smooth red curve illustrates the growth of the cognitive reappraisal
+skill (<span class="math inline">P_t</span>). The latent score of the
+cognitive reappraisal scale (<span class="math inline">M_t</span>),
+which is a product of the former two processes, is represented as the
+solid red curve, and the red dots scattered around the curve are the
+observed scores (<span
+class="math inline">\mathrm{P_t^{obs}}</span>).</p>
+<figure id="fig:sim">
+<img src="fig/sim.svg"
+alt="A run of the simulation specified Eq. (4) with parameter values in Table 1. To avoid cluttering the graph, the grayed dashed curve representing the N-process is shifted upwards by 5 units (originally centered at zero)." />
+<figcaption aria-hidden="true">A run of the simulation specified Eq. (4)
+with parameter values in Table 1. To avoid cluttering the graph, the
+grayed dashed curve representing the N-process is shifted upwards by 5
+units (originally centered at zero).</figcaption>
+</figure>
+</section>
+</section>
+<section id="inference" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span>
+Inference</h1>
+<p>To infer the parameters from the observed time series, a Bayesian
+statistical model assuming the same data-generating process of the
+simulation (i.e., Eq. () ) is constructed and implemented in the
+probabilistic programming language Stan <span class="citation"
+data-cites="carpenter2017">(Carpenter et al., 2017)</span>. A Bayesian
+model is used here since our data-generating process includes an
+ordinary differential equation (ODE) to model the nonlinear growth of
+the P-process. Such ODE-based models are harder to fit within a
+frequentist framework and require specialized software. In addition,
+Bayesian models are more transparent concerning issues such as
+identifiability and model convergence. When fitting complex models that
+include nonlinearity and multiple latent variables, it is nearly
+impossible to not run into convergence problems. Bayesian models—Stan
+models in particular—provide valuable information such as MCMC traces
+and warnings of problematic posterior sampling (e.g., divergent
+transitions) for diagnosing potential causes of the model’s pathological
+behaviors.</p>
+<p>We code the data-generating process in Eq. () into our statistical
+model and assign weakly informative prior distributions to the
+parameters. The last column in Table lists the assigned priors. The
+superscript “<span class="math inline">+</span>” on some of the priors
+indicates that they are restricted to positive values.</p>
+<section id="more-observations-better-inference" class="level2"
+data-number="4.1">
+<h2 data-number="4.1"><span class="header-section-number">4.1</span>
+More observations, better inference?</h2>
+<p>In section , we simulated <span class="math inline">98</span> time
+series observations. To test the ability of our statistical model under
+different conditions, we first use <em>half</em> of the observations to
+fit the model and inspect how well the parameters are recovered. We then
+include all the <span class="math inline">98</span> observations to see
+how the inference benefits from more repeated measures.</p>
+<p>Although adding more data does improve the recovery of parameters,
+the recovery is far from satisfying—the posterior predictions of the
+N-process do not converge to the true values, thus failing to separate
+the sources of variation in the time series. This is even true after we
+attempted lowering the variation in the measurement error and refitted
+the model. In fact, lowering the measurement error leads to pathological
+behaviors in the MCMC samplers, which signals that the model may have
+identifiability issues<a href="#fn4" class="footnote-ref" id="fnref4"
+role="doc-noteref"><sup>4</sup></a>. The first 3 panels (the panels with
+titles beginning with “Model 1”) in plot the predictions computed from
+<span class="math inline">20</span> draws of the posterior samples
+against the true (i.e., simulated) values. As shown in the plots on the
+first row, increasing the sample size from 49 to 98 does not help the
+thin gray lines (20 draws of the N-process posterior predictions)
+converge to the thick gray line (the true N-process). Although the lower
+left plot seems to indicate a better inference when the model is fitted
+with data from more accurate measures, the inference cannot be trusted
+due to the aforementioned pathologies of the posterior sampling. In sum,
+including more repeated measures, and even more <em>accurate</em>
+repeated measures, brings about a limited benefit to the inference of
+the latent dynamics.</p>
+<figure id="fig:post">
+<img src="fig/post_predict.svg"
+alt="Posterior predictions generated from the fitted models. Model 1 is fitted to a single set of time series observations that have information about the P-process and the N-process. Model 2 is fitted to the same observations and another set that has information about the N-process. Each panel represents a fit with different configurations, as indicated by the plot titles. The thick red and black curves plot the trajectory of the true P- and N-processes respectively. The 20 thin curves scattering around a thick line are a set of 20 predictions computed from 20 draws of posterior samples. For the measurement, the red and black dots plot the time series observations, and the densely distributed curves underneath them are the posterior predictions of their latent scores. Note that to avoid cluttering the plots, the originally zero-centered black curves (the true and estimated N-process) are shifted downwards by 8 units. Otherwise, the thick black curves should perfectly match the dashed gray line in  ." />
+<figcaption aria-hidden="true">Posterior predictions generated from the
+fitted models. Model 1 is fitted to a single set of time series
+observations that have information about the P-process and the
+N-process. Model 2 is fitted to the same observations and another set
+that has information about the N-process. Each panel represents a fit
+with different configurations, as indicated by the plot titles. The
+thick red and black curves plot the trajectory of the true P- and
+N-processes respectively. The 20 thin curves scattering around a thick
+line are a set of 20 predictions computed from 20 draws of posterior
+samples. For the measurement, the red and black dots plot the time
+series observations, and the densely distributed curves underneath them
+are the posterior predictions of their latent scores. Note that to avoid
+cluttering the plots, the originally zero-centered black curves (the
+true and estimated N-process) are shifted downwards by 8 units.
+Otherwise, the thick black curves should perfectly match the dashed gray
+line in .</figcaption>
+</figure>
+</section>
+<section id="the-power-of-parallel-measurement" class="level2"
+data-number="4.2">
+<h2 data-number="4.2"><span class="header-section-number">4.2</span> The
+power of parallel measurement</h2>
+<p>As illustrated in the previous section, with only a single time
+series, the model cannot reliably recover the latent dynamics that give
+rise to the observed data, regardless of the amount or accuracy of the
+measure. We therefore explore the potential of improving inference by
+adding measures <em>parallel to</em> the existing one. We hypothesize
+that with more than one type of measure, and given that all measures can
+at least capture part of the N-process, the model would then be better
+at distinguishing the sources of variation since it can now leverage the
+fact that measurement errors are independent across measure types, but
+the variations introduced by the N-process are shared across measure
+types.</p>
+<p>To explore such a possibility, we modify the simulation to include an
+additional time series along with the original one. This is formally
+expressed as the expanded measurement model in Eq ():</p>
+<p><span class="math display">\begin{equation}
+    \begin{aligned}
+        \mathrm{ P_{t}^{obs} } &amp; \sim \text{Normal}( M_t^1, \sigma_1
+)  \\
+        M_t^1                  &amp; =  b ~ \left[ a_1 P_t - \left( 1 -
+a_1 \right) N_t \right] - c_1 \\
+        \mathrm{ N_{t}^{obs} } &amp; \sim \text{Normal}( M_t^2, \sigma_2
+)  \\
+        M_t^2                  &amp; =  a_2 N_t - c_2  \\
+    \end{aligned} \label{eq:measurement-model2} \tag{5}
+\end{equation}</span></p>
+<p>The first two lines of Eq. () are identical to those in Eq. () except
+for the indices added to distinguish them from the parameters of the new
+measure. The model for the newly added measure is shown in the remaining
+lines of Eq. (). Here, the parameter <span
+class="math inline">a_2</span> specifies the contribution of the
+N-process to the latent score <span class="math inline">M_t^2</span>.
+Together with the intercept <span class="math inline">c_2</span> and the
+standard deviation of the measurement error <span
+class="math inline">\sigma_2</span>, <span
+class="math inline">a_2</span> maps the N-process to the observed scores
+<span class="math inline">\mathrm{N_t^{obs}}</span>.</p>
+<p>The parameters of the extended simulation have values identical to
+the original simulation. For newly added parameters, their values are
+set to <span class="math inline">a_2=0.6</span>, <span
+class="math inline">c_2=0</span>, and <span
+class="math inline">\sigma_2=0.5</span>. Likewise, the statistical model
+is expanded to incorporate the new measurement model. The new parameters
+are assigned the priors listed below:</p>
+<p><span class="math display">\begin{align*}
+    a_2      &amp; \sim \text{Beta}(3, 3)   \\
+    c_2      &amp; \sim \text{Normal}(0,1)  \\
+    \sigma_2 &amp; \sim \text{Normal}(0,1)
+\end{align*}</span></p>
+<p>Refitting the extended model with two sets of time series
+observations confirms our reasoning. The model now greatly improves in
+separating the N-process from measurement errors and better recovers the
+true variation of the environmental impact, as shown in the lower right
+panel of .</p>
+</section>
+</section>
+<section id="discussion" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span>
+Discussion</h1>
+<p>This article has shown what could be gained from explicating the
+processes underlying measurement. Specifically, a theory of individuals’
+cognitive reappraisal growth and a theory of stochastic environmental
+impacts enable the construction of a principled statistical analysis to
+tease out relevant latent processes from data. It also provides guidance
+on subsequent treatments when the statistical analysis <em>fails</em> to
+recover the processes. These treatments are by no means intuitive and
+cannot be deduced through <em>verbal reasoning</em> alone—simply
+including more observations does not help even when measurement error is
+low. This conclusion is only reachable by iterative simulation and
+statistical modeling that systematically explore the logical
+consequences of modifying the theory. In short, without a concrete, and
+ideally, <em>formalized</em> theory in <em>quantitative</em> analysis to
+provide guidance, an analysis is likely to take us nowhere beyond
+vagueness.</p>
+<p>A theory-driven analysis also has the virtue of informing research
+planning. In addition to telling us what can be achieved through
+statistical analysis, the unambiguous nature of formalized theory also
+points out what <em>cannot</em> be answered by our current level of
+knowledge. Given the intertwined statuses of theory, measurement, and
+data and the inherent difficulty psychological measurements face, this
+theory-driven perspective of quantitative analysis also hints at
+potential directions when stuck in the midst of complexity. We briefly
+discuss related issues in the following sections.</p>
+<section id="what-are-we-measuring" class="level2" data-number="5.1">
+<h2 data-number="5.1"><span class="header-section-number">5.1</span>
+What are we measuring?</h2>
+<p>Validity has always been a fundamental issue for psychological
+measurements. To validate a new measurement, many procedures are often
+used to provide different sources of validity evidence such as
+criterion-referenced validity, convergent and discriminant validity,
+internal consistency, etc. These procedures, however, are nearly always
+employed in a cross-sectional manner. Thus, even for a well-validated
+scale, we do not know how the measured construct behaves over time when
+repeated measures are collected<a href="#fn5" class="footnote-ref"
+id="fnref5" role="doc-noteref"><sup>5</sup></a>. Indeed, it is
+reasonable to assume the construct being measured is actually a
+<em>mixture</em> of multiple processes, in which at least some of them
+are unrelated to the construct the scale aims to measure. When
+cross-sectionally applying the scale <em>once</em>, this might not pose
+a problem provided that the processes unrelated to the intended
+construct are <em>independent across individuals</em> such that they can
+be safely treated as measurement errors. However, when the scale is used
+longitudinally, and when the (latent) score of the scale is taken to
+directly represent the intended construct, it may obscure the
+construct’s true functional relationship with time.</p>
+<p>Taking our example in this article, a <em>skill set</em> (cognitive
+reappraisal) is theorized to <em>only grow</em> during a period of
+learning/training (psychotherapy). Together with another theory of
+fluctuating environmental impact on skill measurement, this allows us to
+explain the phenomenon of temporary high or low scores occurring in
+batches in intensive longitudinal data. This phenomenon is difficult to
+explain if we simply take the measurement score as the skill level—the
+temporary drops or rises of the skill can at best be treated as
+measurement errors, but since measurement errors are supposedly
+independent across measurement occasions, how do we explain the stark
+correlations between nearby scores?</p>
+<p>From this perspective, it becomes apparent that measurement and
+theorizing are intertwined. Even if a measurement scale is
+well-established from previous studies, we have to be careful not to
+treat the latent score as the theoretical construct itself and base our
+reasoning on it, particularly in a longitudinal setting. The difficulty
+we face in applying established measurements longitudinally also
+indicates how little we know about the construct of interest. The tools
+and procedures often applied for validating a new measurement provide no
+information about how the construct changes over time. Indeed, the
+longitudinal change of a construct is a <em>critical</em> source of
+validity evidence that is rarely examined with care.</p>
+</section>
+<section id="issues-of-timescale" class="level2" data-number="5.2">
+<h2 data-number="5.2"><span class="header-section-number">5.2</span>
+Issues of timescale</h2>
+<p>Longitudinal modeling unavoidably raises issues concerning time. One
+of them is that the latent processes driving the observed time series
+may act at different timescales. Without some understanding or
+theorizing of the latent process dynamics, it would be impossible to
+separate and make inferences about such processes. For instance, in our
+preliminary illustration, the P-process, the N-process, and the
+measurement process are assumed to operate at a slow, a fast, and an
+instant timescale respectively, as labeled on the arrows in . The change
+in <span class="math inline">P</span> is assumed to be driven by therapy
+<span class="math inline">T</span>, which occurs at the slowest
+timescale among all the processes. <span class="math inline">N</span>,
+on the other hand, changes faster as the result of external
+environmental fluctuations <span class="math inline">E</span>. Finally,
+all arrows pointing to and out from the latent measurement score <span
+class="math inline">M</span> operate at the fastest timescale as they
+happen within minutes or even seconds when a measurement is made. The
+measurement process could thus be considered to occur <em>instantly</em>
+compared to the former two processes.</p>
+<figure id="fig:dag2">
+<img src="fig/dag2.svg"
+alt="Timescales at which the P-process, the N-process, and the measurement process operate in our theory-driven analysis." />
+<figcaption aria-hidden="true">Timescales at which the P-process, the
+N-process, and the measurement process operate in our theory-driven
+analysis.</figcaption>
+</figure>
+<p>Now consider a potential influence that <span
+class="math inline">P</span> may have on <span
+class="math inline">N</span> in the long run, as shown in the dashed
+arrow pointing from <span class="math inline">P</span> to <span
+class="math inline">N</span>. Specifically, this relationship intends to
+model the idea that cognitive reappraisal moderates the adverse impact
+of the environment on the individual, which is one of the theoretical
+reasons why developing better reappraisal skills leads to improved
+outcomes. How, then, could we extend our previous model to incorporate
+this relationship? Holding on to the timescales at which the processes
+operate can guide us through. Since now two independent processes are
+driving <span class="math inline">N</span> at different timescales, we
+need to <em>simultaneously</em> model the short- and long-term change in
+<span class="math inline">N</span>. This can be achieved by linking the
+influence of <span class="math inline">P</span> on <span
+class="math inline">N</span> to the means of the multivariate normal
+from which <span class="math inline">N</span> is drawn, as shown in the
+modified model (), where the means of <span class="math inline">N_1,
+N_2, \hdots, N_T</span> are linked to the values of P at the
+corresponding times <span class="math inline">P^1, P^2, \hdots,
+P^T</span>. The resulting effect of () is visualized in .</p>
+<p><span class="math display">\begin{align*}
+    &amp;\begin{cases}
+        P_\text{t=0}  ~~ = P_0 \\
+        P_{t + \Delta t} = P_t + r P_t (1 - \frac{P_t}{K}) \Delta t \\
+    \end{cases}
+    \\
+    &amp; \begin{bmatrix}
+        N_1 \\
+        N_2 \\
+        \vdots \\
+        N_T
+    \end{bmatrix} \sim \text{MVNormal}(
+        - \gamma
+        \begin{bmatrix}
+            P^1 \\
+            P^2 \\
+            \vdots \\
+            P^T
+        \end{bmatrix},
+    \textbf{K} )   \label{eq:dgp2} \tag{4.1}
+    \\
+    &amp; ~~~~ k_{i,j} = \eta ~ \text{exp}( -\rho
+\text{d}^\text{2}_{i,j} ) \\
+\end{align*}</span></p>
+<figure id="fig:GP2">
+<img src="fig/GaussianProcess2.svg"
+alt="Reproduction of   with the added influence of P on N over time. The parameters for the growth of P are r = .3, P_0 = .01, K = 10. The scaling parameter \gamma for the influence of P on the multivariate normal means is set to .3, and the parameters for the Gaussian kernel \eta and \rho are identical to those set for generating  ." />
+<figcaption aria-hidden="true">Reproduction of with the added influence
+of <span class="math inline">P</span> on <span
+class="math inline">N</span> over time. The parameters for the growth of
+<span class="math inline">P</span> are <span class="math inline">r = .3,
+P_0 = .01, K = 10</span>. The scaling parameter <span
+class="math inline">\gamma</span> for the influence of <span
+class="math inline">P</span> on the multivariate normal means is set to
+<span class="math inline">.3</span>, and the parameters for the Gaussian
+kernel <span class="math inline">\eta</span> and <span
+class="math inline">\rho</span> are identical to those set for
+generating .</figcaption>
+</figure>
+<p>Knowing at which timescales the latent processes operate is not only
+important for constructing statistical models but also necessary for
+data collection—how frequently should observations be collected to
+license valid analyses mapping well onto our theoretical assumptions? In
+studies applying VAR models<a href="#fn6" class="footnote-ref"
+id="fnref6" role="doc-noteref"><sup>6</sup></a>, theory-irrelevant
+reasons such as the amount of data needed for the models to converge and
+the frequency of prompts acceptable for the participants are sometimes
+used for determining the sampling rate. This is dangerous if the
+(theoretical) timescales at which the processes operate are not
+cautiously considered. Ignoring the timescale results in uninterpretable
+networks at best and completely misleading ones at worst.</p>
+<p>To see why, consider a hypothetical example where two groups of
+researchers wish to study the relationship between lunch and blood sugar
+levels (suppose they did not know the impact of insulin on blood sugar
+levels). The first group measured blood sugar concentration 30 minutes
+after lunch, and the second group measured it 2 hours after lunch. Since
+blood sugar level first rises and then returns to the homeostatic level
+in about 2 hours, the first group may conclude that lunch
+<em>increases</em> blood sugar level whereas the second group may end up
+inferring that lunch has <em>no</em> impact on (when the meal is
+starch-rich), or even <em>decreases</em> (when the meal is
+sucrose-rich), blood sugar level (see <span class="citation"
+data-cites="daly1998">Daly et al. (1998)</span>, 2).</p>
+<p>This toy example of blood sugar dynamics illustrates that simply
+establishing the temporal sequence of events does not automatically
+license valid causal inference. It also highlights that relationships
+between variables and time are often nonlinear, and being mindless of
+the timescale hides this. But this by no means indicates that being
+aware of the timescale fixes all problems. How the latent processes
+driving the observed phenomena interact matters even more. Indeed, “Does
+lunch change blood sugar level and if so, in which direction?” is
+arguably a misplaced question. A better approach might be to first
+establish the functional relationship between blood sugar level and
+time, after which it is possible to theorize and look for processes that
+give rise to the observed pattern. The blood sugar example also makes
+clear the importance of observing at the <em>correct
+timing</em>—although it is obvious in such a setting that blood sugar
+level should be measured <em>after a meal</em>, in EMA studies where the
+time series is usually analyzed as a whole with VAR models, no special
+attention is paid to such important events. Instead, all events driving
+changes are treated <em>homogeneously</em> and modeled as random forces
+that drive the time series away from its equilibrium. Whether this
+approach is justifiable concerns the issue of <em>open</em> and
+<em>closed</em> systems, which we turn to next.</p>
+</section>
+<section id="open-vs.-closed-system" class="level2" data-number="5.3">
+<h2 data-number="5.3"><span class="header-section-number">5.3</span>
+Open vs. closed system</h2>
+<p>A closed system is a system in which the processes within are
+unaffected by external forces. An open system, on the other hand, is
+subject to influences from the outside. Taking the previous blood sugar
+example, the system that regulates blood sugar can be regarded as an
+<em>open</em> system—the food intake leads to a heightened blood sugar
+level, which then stimulates the secretion of insulin to drive the blood
+sugar level back to homeostasis. Note, however, that within a
+<em>restricted</em> time window, it is possible to treat an open system
+as a closed one—once food is consumed, that is, when external forces are
+exerted, subsequent physiological responses for blood sugar regulations
+are irrelevant to the external factors. In other words, in this
+restricted time window, external forces are controlled for and do not
+perturb the system, thus it is fine to treat the system as closed.</p>
+<p>Most VAR models in the literature model the whole time series as an
+open system. Specifically, the multivariate time series is modeled as a
+system of stochastic differential or difference equations. The time
+series is assumed to be <em>stationary</em> (i.e., no trending) and
+fluctuates randomly around the equilibrium. These random fluctuations,
+represented through the stochastic components of the equations, are used
+to model external perturbations pushing the system <em>away from</em>
+its equilibrium. The non-stochastic components of the equations model
+the driving of the system <em>back to</em> equilibrium when perturbed by
+external forces <span class="citation" data-cites="ryan2022">(Ryan &amp;
+Hamaker, 2022)</span>. Since external perturbations are treated
+identically as random noise, these models essentially
+<em>homogenize</em> the whole time series—no matter the causes or
+magnitude of the perturbations, the system is assumed to move back to
+equilibrium in a similar fashion, according to the governing
+equations.</p>
+<p>To provide some context, let’s consider the theories of a “vicious
+cycle” often used to explain Panic Disorder. Borrowing the terminology
+from <span class="citation" data-cites="robinaugh2019">Robinaugh et al.
+(2019)</span>, a simplified hypothesis for the vicious cycle is given as
+follows: heightened physiological arousal (<span
+class="math inline">A</span>) raises perceived threat (<span
+class="math inline">T</span>), which in turn leads to even higher
+physiological arousal (<span class="math inline">A</span>), resulting in
+a positive-feedback loop between physiological arousal and perceived
+threat that eventually culminates in a panic attack. A clinician might
+want to see if this vicious cycle can be shown empirically with data.
+Without further elaborating on the theory, however, an EMA study is
+planned to collect the measures of <span class="math inline">A</span>
+and <span class="math inline">T</span> quite densely—once every hour
+during daytime for 2 weeks—to infer a network of relationships among
+these variables. What can we learn from this empirical network? If the
+hypothesized network of relationships indeed exists and is <em>robust
+across situations</em> such that, for instance, heightened perceived
+threat leads to higher physiological arousal (and vice versa)
+<em>consistently under different situations</em>, the VAR model would be
+able to correctly infer the network. However, given that such robust
+phenomena across situations are rarely found at the behavioral level,
+the inferred network likely conflates multiple <em>different</em>
+response patterns, leading to an unreliable network whose implications
+are unclear. Therefore, whether the empirical and the hypothesized
+networks match or not may not be very informative here, due to a lack of
+correspondence between statistical analysis and theory—the VAR models
+are designed to analyze time series data generated from a
+<em>homogeneous open</em> system, whereas the theorized relationships
+are implicitly conceptualized to operate within a very <em>specific</em>
+situation, which may be more appropriately modeled as a closed system
+(i.e., within this system, such as when in a crowded theater, the
+heightened arousal is <em>given</em>, which then triggers subsequent
+theorized behaviors).</p>
+<p>To connect this theory of a vicious cycle to data, it is necessary to
+either locate the <em>relevant</em> time windows in which the theorized
+cascades of behaviors are expected to happen or directly model the
+<em>heterogeneity</em> of the time series<a href="#fn7"
+class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>,
+provided that the time series data already has the required resolution.
+No matter the approach though, it becomes instantly clear that the
+empirical data needed for validating the theory is extremely hard to
+collect in the current example. Panic attacks come and go relatively
+quickly, typically within minutes. Relevant repeated observations need
+to be collected within these short time windows to match the resolution
+of the theory. It is unclear how this could be achieved, particularly
+when individuals are required to actively respond to items in such a
+short period.</p>
+</section>
+<section id="some-ways-forward" class="level2" data-number="5.4">
+<h2 data-number="5.4"><span class="header-section-number">5.4</span>
+Some ways forward</h2>
+<p>A deeper consideration of theories along with their relations with
+statistical analysis, measurement, and data makes clear that inference
+on EMA data has a rather shaky foundation. The development of more
+advanced statistical models is unlikely to provide fixes as the core
+difficulty lies in collecting data suitable for answering the right
+questions.</p>
+<p>The difficulty is threefold. First, the complexity of human behaviors
+in the first place makes it extremely hard to even establish phenomena
+that are robust and reliable <span class="citation"
+data-cites="eronen2021">(Eronen &amp; Bringmann, 2021)</span>.
+Non-robust phenomena, in turn, weaken the foundation of theory building,
+and verbal theories constructed from these phenomena are only vague at
+best. Finally, the vagueness in theories feeds back to the observation
+process—a vague theory loses its ability to direct us to the right
+places looking for answers. We may therefore end up looking for the key
+under the lamppost, basing our inference on misplaced data.</p>
+<p>A possible first step for fixing this is to admit we know too little
+to conduct quantitative <em>inferential</em> studies. A high-quality
+quantitative study that aims at inferring variable relationships with
+statistical models requires a strong theoretical foundation, as argued
+throughout the article. Without a strong and explicit theory driving
+statistical analysis, the results of the analysis can only be ambiguous
+at best.</p>
+<p>Admitting our limited knowledge allows us to arrive at a logical next
+step—to establish robust phenomena. Within the context of EMA studies,
+for instance, this may be facilitated with the help of passive measures
+(e.g., skin conductance, heart rate, blood oxygen level, GPS
+coordinates, etc.) that could be continuously collected without needing
+active responses from the participants. Along with other traditional
+active EMA measures (i.e., responses to items), these data could be fed
+to purely data-driven Machine Learning (ML) algorithms aimed at
+prediction instead of inference. The goal is to hope that ML algorithms
+will extract whatever useful information from the multivariate time
+series to allow the detection of critical time windows informative for
+further investigation. For instance, with active measures of emotional
+states acting as the labeling data for ML algorithms, the algorithms may
+be able to learn subtle patterns contained in other (passive) measures
+that can reliably predict or forecast, say, rapid emotional shifts.
+Being able to accurately and reliably predict such events is initial
+evidence that some phenomena exist. Though very little is known about
+the nature of the phenomena, at least it is now clearer where we should
+focus.</p>
+<p>Once zoomed in on the relevant locations where the phenomena of
+interest occur, we are in a better position to deal with harder
+questions. For instance, we can try to improve the measurement by asking
+how the measured scores change over time, theorizing potential processes
+influencing the measurement, and considering the potential of pooling
+information from multiple measures to address the imperfect and noisy
+nature of psychological measurements. These attempts may not only lead
+to improvements in measurement. Indeed, measurement is <em>part of</em>
+the theory and should be refined hand in hand with the advancement of
+knowledge <span class="citation" data-cites="bringmann2016">(Bringmann
+&amp; Eronen, 2016)</span>.</p>
+<p>In practice, the above attempts may all fail. After all, it is likely
+that at least some rapid-changing phenomena do not leave reliable traces
+in passive physiological measures that could be monitored continuously.
+Given this difficult situation, it may be better to let go of the
+fixation on “quantitative” analysis. Indeed, in clinical practice,
+qualitative judgments inform treatment planning much more than
+quantitative assessments. There is no reason why these kinds of
+qualitative analyses cannot be brought into a temporally fine-grained
+setting. Voice recording along with highly accurate automated audio
+transcription technologies <span class="citation"
+data-cites="radford2022">(e.g., Radford et al., 2022)</span> have
+lowered the barrier for collecting such qualitative data. Gathering
+qualitative data in such finer-grained details can better deal with
+reporting and recall biases and might reveal properties that are not
+apparent or visible in traditional therapy sessions.</p>
+</section>
+</section>
+<section id="references" class="level1 unnumbered">
+<h1 class="unnumbered">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent"
+data-line-spacing="2" role="list">
+<div id="ref-bringmann2021" class="csl-entry" role="listitem">
+Bringmann, L. F. (2021). Person-specific networks in psychopathology:
+<span>Past</span>, present, and future. <em>Psychopathology</em>,
+<em>41</em>, 59–64. <a
+href="https://doi.org/10.1016/j.copsyc.2021.03.004">https://doi.org/10.1016/j.copsyc.2021.03.004</a>
+</div>
+<div id="ref-bringmann2016" class="csl-entry" role="listitem">
+Bringmann, L. F., &amp; Eronen, M. I. (2016). Heating up the measurement
+debate: <span>What</span> psychologists can learn from the history of
+physics. <em>Theory &amp; Psychology</em>, <em>26</em>(1), 27–43. <a
+href="https://doi.org/10.1177/0959354315617253">https://doi.org/10.1177/0959354315617253</a>
+</div>
+<div id="ref-burger2021" class="csl-entry" role="listitem">
+Burger, J., Epskamp, S., van der Veen, D. C., Dablander, F., Schoevers,
+R. A., Fried, E. I., &amp; Riese, H. (2021). <em>A clinical
+<span>PREMISE</span> for personalized models: <span>Towards</span> a
+formal integration of case formulations and statistical networks</em>.
+<span>PsyArXiv</span>. <a
+href="https://doi.org/10.31234/osf.io/bdrs7">https://doi.org/10.31234/osf.io/bdrs7</a>
+</div>
+<div id="ref-carpenter2017" class="csl-entry" role="listitem">
+Carpenter, B., Gelman, A., Hoffman, M. D., Lee, D., Goodrich, B.,
+Betancourt, M., … Riddell, A. (2017). Stan: <span>A Probabilistic
+Programming Language</span>. <em>Journal of Statistical Software</em>,
+<em>76</em>, 1. <a
+href="https://doi.org/10.18637/jss.v076.i01">https://doi.org/10.18637/jss.v076.i01</a>
+</div>
+<div id="ref-daly1998" class="csl-entry" role="listitem">
+Daly, M., Vale, C., Walker, M., Littlefield, A., Alberti, K., &amp;
+Mathers, J. (1998). Acute effects on insulin sensitivity and diurnal
+metabolic profiles of a high-sucrose compared with a high-starch diet.
+<em>The American Journal of Clinical Nutrition</em>, <em>67</em>(6),
+1186–1196. <a
+href="https://doi.org/10.1093/ajcn/67.6.1186">https://doi.org/10.1093/ajcn/67.6.1186</a>
+</div>
+<div id="ref-eronen2021" class="csl-entry" role="listitem">
+Eronen, M. I., &amp; Bringmann, L. F. (2021). The <span>Theory
+Crisis</span> in <span>Psychology</span>: <span>How</span> to <span>Move
+Forward</span>. <em>Perspectives on Psychological Science</em>,
+<em>16</em>(4), 779–788. <a
+href="https://doi.org/10.1177/1745691620970586">https://doi.org/10.1177/1745691620970586</a>
+</div>
+<div id="ref-gotelli2008" class="csl-entry" role="listitem">
+Gotelli, N. J. (2008). <em>A primer of ecology</em> (4th ed.).
+<span>Sinauer Associates</span>.
+</div>
+<div id="ref-mcelreath2020" class="csl-entry" role="listitem">
+McElreath, R. (2020). <em>Statistical rethinking: <span>A
+Bayesian</span> course with examples in <span>R</span> and
+<span>Stan</span></em> (2nd ed.). <span>Chapman &amp; Hall/CRC</span>.
+</div>
+<div id="ref-ong2022" class="csl-entry" role="listitem">
+Ong, C. W., Hayes, S. C., &amp; Hofmann, S. G. (2022). A process-based
+approach to cognitive behavioral therapy: <span>A</span> theory-based
+case illustration. <em>Frontiers in Psychology</em>, <em>13</em>. <a
+href="https://doi.org/10.3389/fpsyg.2022.1002849">https://doi.org/10.3389/fpsyg.2022.1002849</a>
+</div>
+<div id="ref-piccirillo2019" class="csl-entry" role="listitem">
+Piccirillo, M. L., &amp; Rodebaugh, T. L. (2019). Foundations of
+idiographic methods in psychology and applications for psychotherapy.
+<em>Clinical Psychology Review</em>, <em>71</em>, 90–100. <a
+href="https://doi.org/10.1016/j.cpr.2019.01.002">https://doi.org/10.1016/j.cpr.2019.01.002</a>
+</div>
+<div id="ref-radford2022" class="csl-entry" role="listitem">
+Radford, A., Kim, J. W., Xu, T., Brockman, G., McLeavey, C., &amp;
+Sutskever, I. (2022). <em>Robust speech recognition via large-scale weak
+supervision</em>. Retrieved from <a
+href="https://arxiv.org/abs/2212.04356">https://arxiv.org/abs/2212.04356</a>
+</div>
+<div id="ref-robinaugh2019" class="csl-entry" role="listitem">
+Robinaugh, D., Haslbeck, J. M. B., Waldorp, L., Kossakowski, J. J.,
+Fried, E. I., Millner, A., … al., et. (2019). <em>Advancing the network
+theory of mental disorders: <span>A</span> computational model of panic
+disorder</em>. <span>PsyArXiv</span>. <a
+href="https://doi.org/10.31234/osf.io/km37w">https://doi.org/10.31234/osf.io/km37w</a>
+</div>
+<div id="ref-ryan2022" class="csl-entry" role="listitem">
+Ryan, O., &amp; Hamaker, E. L. (2022). Time to <span>Intervene</span>:
+<span>A Continuous-Time Approach</span> to <span>Network Analysis</span>
+and <span>Centrality</span>. <em>Psychometrika</em>, <em>87</em>(1),
+214–252. <a
+href="https://doi.org/10.1007/s11336-021-09767-0">https://doi.org/10.1007/s11336-021-09767-0</a>
+</div>
+<div id="ref-wang2022" class="csl-entry" role="listitem">
+Wang, J. (2022). <em>An intuitive tutorial to gaussian processes
+regression</em>. Retrieved from <a
+href="https://arxiv.org/abs/2009.10862">https://arxiv.org/abs/2009.10862</a>
+</div>
+</div>
+</section>
+<aside id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>We further elaborate on and justify this treatment in
+section .<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>See the supplementary analysis documentation for more
+details. Also, refer to <span class="citation"
+data-cites="wang2022">Wang (2022)</span> and Chapter 4 of <span
+class="citation" data-cites="mcelreath2020">McElreath (2020)</span> for
+an accessible introduction.<a href="#fnref2" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>A better alternative is to model the <span
+class="math inline">\mathrm{P_t^{obs}}</span> as <em>ratings</em>, which
+would then require a distribution other than the normal to map the
+latent <span class="math inline">M_t</span> to the observed <span
+class="math inline">\mathrm{P_t^{obs}}</span>. For the sake of
+simplicity, we adopt the normal distribution for modeling measurement
+errors.<a href="#fnref3" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>See the <em>Inference</em> section of the supplementary
+analysis documentation.<a href="#fnref4" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Repeated measures are sometimes collected for
+calculating test-retest reliability, but note that the focus is on the
+reliability of <em>the scale</em>, not the <em>change</em> of the
+measured construct over time.<a href="#fnref5" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>See <span class="citation" data-cites="ong2022">Ong,
+Hayes, &amp; Hofmann (2022)</span> and <span class="citation"
+data-cites="burger2021">Burger et al. (2021)</span> for attempts to
+derive individualized networks with VAR models to facilitate case
+conceptualization.<a href="#fnref6" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>See e.g., <span class="citation"
+data-cites="robinaugh2019">Robinaugh et al. (2019)</span> in which
+<em>context</em> is explicated in their model.<a href="#fnref7"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
+<!--
+Markdeep Diagram parser
+    Parses all code blocks with `.goat` className as Markdeep diagram.
+-->
+<script>window.markdeepOptions = {mode: 'script', detectMath: false};</script>
+<script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js"></script>
+<script>
+  document.querySelectorAll(".goat").forEach(e => {
+    var dag = e.querySelector("code").innerText;
+    let graph = document.createElement("div");
+    graph.className = "markdeep-dag";
+    graph.innerHTML = window.markdeep.formatDiagram(dag, "undefined");
+    graph.querySelectorAll('path').forEach( p => {
+      p.setAttribute("stroke", "currentcolor");
+    });
+    e.after(graph);
+    e.remove();
+  })
+</script>
+
+<!--
+Hack to apply the style of <https://cran.r-project.org/web/packages/markdown/vignettes/article.html>
+-->
+<script>
+    // Add body style
+    var newElem = document.createElement('div');
+    newElem.className = "body";
+    Array.prototype.forEach.call(document.querySelectorAll('section'), function(c){
+        newElem.appendChild(c);
+    });
+    document.body.appendChild(newElem);
+
+    // Add header style
+    document.getElementById('title-block-header').className = "frontmatter";
+
+    // Add anchor
+    document.querySelectorAll('section').forEach(h => {
+      if (h.id) h.querySelector('h1,h2,h3,h4,h5,h6').innerHTML += ` <span class="anchor"><a href="#${h.id}">#</a></span>`;
+    });
+</script>
+</body>
+</html>
