@@ -137,12 +137,10 @@ intra-individual (i.e., idiographic) longitudinal data. A variety of
 techniques, such as vector autoregressive (VAR) models, have been
 proposed to infer the (Granger) causal relationships between variables
 from such data (for an overview, see <span class="citation"
-data-cites="bringmann2021">Bringmann (<a href="#ref-bringmann2021"
-role="doc-biblioref">2021</a>)</span> and <span class="citation"
-data-cites="piccirillo2019">Piccirillo &amp; Rodebaugh (<a
-href="#ref-piccirillo2019" role="doc-biblioref">2019</a>)</span>; also
-see <span class="citation" data-cites="ryan2022">Ryan &amp; Hamaker (<a
-href="#ref-ryan2022" role="doc-biblioref">2022</a>)</span> for
+data-cites="bringmann2021">Bringmann (2021)</span> and <span
+class="citation" data-cites="piccirillo2019">Piccirillo &amp; Rodebaugh
+(2019)</span>; also see <span class="citation"
+data-cites="ryan2022">Ryan &amp; Hamaker (2022)</span> for
 continuous-time VAR models). These VAR models are often employed more or
 less as data-driven, theory-free inferential devices, in which the
 researchers place no prior assumptions on the dynamical processes
@@ -151,16 +149,16 @@ with such practices and emphasize the often-neglected issue of
 <em>connecting measurements to theory</em>—when a measurement is
 presumed to capture <em>only</em> the intended construct, the resulting
 analysis can never challenge, and therefore lead to refinements of, the
-measurement itself <span class="citation" data-cites="bringmann2016">(<a
-href="#ref-bringmann2016" role="doc-biblioref">Bringmann &amp; Eronen,
-2016</a>)</span>. We illustrate this through a simple theory-driven
-analysis of change processes, in which the <em>purity</em> of the
-measurement is not assumed. Through the analysis, it is shown that
-without explicit theoretical assumptions imposing constraints on how
-measurement and change processes might evolve and interact over time,
-the resulting inferred processes will inevitably conflate multiple
-untraceable sources of variation, obscuring the information that could
-be gained from statistical inference.</p>
+measurement itself <span class="citation"
+data-cites="bringmann2016">(Bringmann &amp; Eronen, 2016)</span>. We
+illustrate this through a simple theory-driven analysis of change
+processes, in which the <em>purity</em> of the measurement is not
+assumed. Through the analysis, it is shown that without explicit
+theoretical assumptions imposing constraints on how measurement and
+change processes might evolve and interact over time, the resulting
+inferred processes will inevitably conflate multiple untraceable sources
+of variation, obscuring the information that could be gained from
+statistical inference.</p>
 <p>Specifically, we are pointing to the importance of teasing out
 process variation from (pure) measurement errors. This is critical since
 change processes are <em>independent</em> of the measurement process—if
@@ -290,8 +288,7 @@ intrinsic growth rate parameter <span class="math inline">\(r\)</span>,
 the size of the current <span class="math inline">\(P\)</span> relative
 to the carrying capacity parameter <span
 class="math inline">\(K\)</span> <span class="citation"
-data-cites="gotelli2008">(<a href="#ref-gotelli2008"
-role="doc-biblioref">Gotelli, 2008</a>)</span>.</p>
+data-cites="gotelli2008">(Gotelli, 2008)</span>.</p>
 <p><span class="smallcaps">Figure 2</span> illustrates the trajectories
 of logistic growth with different configurations of <span
 class="math inline">\(r\)</span> and <span
@@ -671,20 +668,19 @@ Inference</h1>
 statistical model assuming the same data-generating process of the
 simulation (i.e., Eq. (<a href="#eq:dgp">4</a>) ) is constructed and
 implemented in the probabilistic programming language Stan <span
-class="citation" data-cites="carpenter2017">(<a
-href="#ref-carpenter2017" role="doc-biblioref">Carpenter et al.,
-2017</a>)</span>. A Bayesian model is used here since our
-data-generating process includes an ordinary differential equation (ODE)
-to model the nonlinear growth of the P-process. Such ODE-based models
-are harder to fit within a frequentist framework and require specialized
-software. In addition, Bayesian models are more transparent concerning
-issues such as identifiability and model convergence. When fitting
-complex models that include nonlinearity and multiple latent variables,
-it is nearly impossible to not run into convergence problems. Bayesian
-models—Stan models in particular—provide valuable information such as
-MCMC traces and warnings of problematic posterior sampling (e.g.,
-divergent transitions) for diagnosing potential causes of the model’s
-pathological behaviors.</p>
+class="citation" data-cites="carpenter2017">(Carpenter et al.,
+2017)</span>. A Bayesian model is used here since our data-generating
+process includes an ordinary differential equation (ODE) to model the
+nonlinear growth of the P-process. Such ODE-based models are harder to
+fit within a frequentist framework and require specialized software. In
+addition, Bayesian models are more transparent concerning issues such as
+identifiability and model convergence. When fitting complex models that
+include nonlinearity and multiple latent variables, it is nearly
+impossible to not run into convergence problems. Bayesian models—Stan
+models in particular—provide valuable information such as MCMC traces
+and warnings of problematic posterior sampling (e.g., divergent
+transitions) for diagnosing potential causes of the model’s pathological
+behaviors.</p>
 <p>We code the data-generating process in Eq. (<a href="#eq:dgp">4</a>)
 into our statistical model and assign weakly informative prior
 distributions to the parameters. The last column in Table <a
@@ -1000,8 +996,7 @@ in about 2 hours, the first group may conclude that lunch
 inferring that lunch has <em>no</em> impact on (when the meal is
 starch-rich), or even <em>decreases</em> (when the meal is
 sucrose-rich), blood sugar level (see <span class="citation"
-data-cites="daly1998">Daly et al. (<a href="#ref-daly1998"
-role="doc-biblioref">1998</a>)</span>, <span
+data-cites="daly1998">Daly et al. (1998)</span>, <span
 class="smallcaps">Figure</span> 2).</p>
 <p>This toy example of blood sugar dynamics illustrates that simply
 establishing the temporal sequence of events does not automatically
@@ -1050,19 +1045,18 @@ represented through the stochastic components of the equations, are used
 to model external perturbations pushing the system <em>away from</em>
 its equilibrium. The non-stochastic components of the equations model
 the driving of the system <em>back to</em> equilibrium when perturbed by
-external forces <span class="citation" data-cites="ryan2022">(<a
-href="#ref-ryan2022" role="doc-biblioref">Ryan &amp; Hamaker,
-2022</a>)</span>. Since external perturbations are treated identically
-as random noise, these models essentially <em>homogenize</em> the whole
-time series—no matter the causes or magnitude of the perturbations, the
-system is assumed to move back to equilibrium in a similar fashion,
-according to the governing equations.</p>
+external forces <span class="citation" data-cites="ryan2022">(Ryan &amp;
+Hamaker, 2022)</span>. Since external perturbations are treated
+identically as random noise, these models essentially
+<em>homogenize</em> the whole time series—no matter the causes or
+magnitude of the perturbations, the system is assumed to move back to
+equilibrium in a similar fashion, according to the governing
+equations.</p>
 <p>To provide some context, let’s consider the theories of a “vicious
 cycle” often used to explain Panic Disorder. Borrowing the terminology
 from <span class="citation" data-cites="robinaugh2019">Robinaugh et al.
-(<a href="#ref-robinaugh2019" role="doc-biblioref">2019</a>)</span>, a
-simplified hypothesis for the vicious cycle is given as follows:
-heightened physiological arousal (<span
+(2019)</span>, a simplified hypothesis for the vicious cycle is given as
+follows: heightened physiological arousal (<span
 class="math inline">\(A\)</span>) raises perceived threat (<span
 class="math inline">\(T\)</span>), which in turn leads to even higher
 physiological arousal (<span class="math inline">\(A\)</span>),
@@ -1120,8 +1114,7 @@ questions.</p>
 <p>The difficulty is threefold. First, the complexity of human behaviors
 in the first place makes it extremely hard to even establish phenomena
 that are robust and reliable <span class="citation"
-data-cites="eronen2021">(<a href="#ref-eronen2021"
-role="doc-biblioref">Eronen &amp; Bringmann, 2021</a>)</span>.
+data-cites="eronen2021">(Eronen &amp; Bringmann, 2021)</span>.
 Non-robust phenomena, in turn, weaken the foundation of theory building,
 and verbal theories constructed from these phenomena are only vague at
 best. Finally, the vagueness in theories feeds back to the observation
@@ -1163,9 +1156,8 @@ information from multiple measures to address the imperfect and noisy
 nature of psychological measurements. These attempts may not only lead
 to improvements in measurement. Indeed, measurement is <em>part of</em>
 the theory and should be refined hand in hand with the advancement of
-knowledge <span class="citation" data-cites="bringmann2016">(<a
-href="#ref-bringmann2016" role="doc-biblioref">Bringmann &amp; Eronen,
-2016</a>)</span>.</p>
+knowledge <span class="citation" data-cites="bringmann2016">(Bringmann
+&amp; Eronen, 2016)</span>.</p>
 <p>In practice, the above attempts may all fail. After all, it is likely
 that at least some rapid-changing phenomena do not leave reliable traces
 in passive physiological measures that could be monitored continuously.
@@ -1176,12 +1168,11 @@ quantitative assessments. There is no reason why these kinds of
 qualitative analyses cannot be brought into a temporally fine-grained
 setting. Voice recording along with highly accurate automated audio
 transcription technologies <span class="citation"
-data-cites="radford2022">(e.g., <a href="#ref-radford2022"
-role="doc-biblioref">Radford et al., 2022</a>)</span> have lowered the
-barrier for collecting such qualitative data. Gathering qualitative data
-in such finer-grained details can better deal with reporting and recall
-biases and might reveal properties that are not apparent or visible in
-traditional therapy sessions.</p>
+data-cites="radford2022">(e.g., Radford et al., 2022)</span> have
+lowered the barrier for collecting such qualitative data. Gathering
+qualitative data in such finer-grained details can better deal with
+reporting and recall biases and might reveal properties that are not
+apparent or visible in traditional therapy sessions.</p>
 </section>
 </section>
 <section id="references" class="level1 unnumbered">
@@ -1287,11 +1278,9 @@ section <a href="#sec:n-process">3.2</a>.<a href="#fnref1"
 class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>See the supplementary analysis documentation for more
 details. Also, refer to <span class="citation"
-data-cites="wang2022">Wang (<a href="#ref-wang2022"
-role="doc-biblioref">2022</a>)</span> and Chapter 4 of <span
-class="citation" data-cites="mcelreath2020">McElreath (<a
-href="#ref-mcelreath2020" role="doc-biblioref">2020</a>)</span> for an
-accessible introduction.<a href="#fnref2" class="footnote-back"
+data-cites="wang2022">Wang (2022)</span> and Chapter 4 of <span
+class="citation" data-cites="mcelreath2020">McElreath (2020)</span> for
+an accessible introduction.<a href="#fnref2" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>A better alternative is to model the <span
 class="math inline">\(\mathrm{P_t^{obs}}\)</span> as <em>ratings</em>,
@@ -1310,16 +1299,13 @@ reliability of <em>the scale</em>, not the <em>change</em> of the
 measured construct over time.<a href="#fnref5" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>See <span class="citation" data-cites="ong2022">Ong,
-Hayes, &amp; Hofmann (<a href="#ref-ong2022"
-role="doc-biblioref">2022</a>)</span> and <span class="citation"
-data-cites="burger2021">Burger et al. (<a href="#ref-burger2021"
-role="doc-biblioref">2021</a>)</span> for attempts to derive
-individualized networks with VAR models to facilitate case
+Hayes, &amp; Hofmann (2022)</span> and <span class="citation"
+data-cites="burger2021">Burger et al. (2021)</span> for attempts to
+derive individualized networks with VAR models to facilitate case
 conceptualization.<a href="#fnref6" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
 <li id="fn7"><p>See e.g., <span class="citation"
-data-cites="robinaugh2019">Robinaugh et al. (<a
-href="#ref-robinaugh2019" role="doc-biblioref">2019</a>)</span> in which
+data-cites="robinaugh2019">Robinaugh et al. (2019)</span> in which
 <em>context</em> is explicated in their model.<a href="#fnref7"
 class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
