@@ -42,24 +42,10 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <script defer=""
-  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -89,7 +75,7 @@ Environmental Fluctuation<br />
 All at Once:<br />
 A Naive Theory-Driven Analysis of Intra-individual Dynamics</p></h1>
 <p class="author">Yongfu Liao</p>
-<p class="date">November 14, 2023</p>
+<p class="date">August 12, 2023</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -97,14 +83,14 @@ A Naive Theory-Driven Analysis of Intra-individual Dynamics</p></h1>
 class="toc-section-number">1</span> Introduction</a></li>
 <li><a href="#whats-in-a-measure" id="toc-whats-in-a-measure"><span
 class="toc-section-number">2</span> What’s in a Measure</a></li>
-<li><a href="#simulation" id="toc-simulation"><span
+<li><a href="#sec:simulation" id="toc-sec:simulation"><span
 class="toc-section-number">3</span> Simulation</a>
 <ul>
 <li><a href="#growth-of-cognitive-reappraisal"
 id="toc-growth-of-cognitive-reappraisal"><span
 class="toc-section-number">3.1</span> Growth of cognitive
 reappraisal</a></li>
-<li><a href="#n-process" id="toc-n-process"><span
+<li><a href="#sec:n-process" id="toc-sec:n-process"><span
 class="toc-section-number">3.2</span> Fluctuating environmental
 impact</a></li>
 <li><a href="#measurement-process" id="toc-measurement-process"><span
@@ -113,7 +99,7 @@ class="toc-section-number">3.3</span> Measurement process</a></li>
 id="toc-data-generating-process"><span
 class="toc-section-number">3.4</span> Data-generating process</a></li>
 </ul></li>
-<li><a href="#inference" id="toc-inference"><span
+<li><a href="#sec:inference" id="toc-sec:inference"><span
 class="toc-section-number">4</span> Inference</a>
 <ul>
 <li><a href="#more-observations-better-inference"
@@ -151,10 +137,12 @@ intra-individual (i.e., idiographic) longitudinal data. A variety of
 techniques, such as vector autoregressive (VAR) models, have been
 proposed to infer the (Granger) causal relationships between variables
 from such data (for an overview, see <span class="citation"
-data-cites="bringmann2021">Bringmann (2021)</span> and <span
-class="citation" data-cites="piccirillo2019">Piccirillo &amp; Rodebaugh
-(2019)</span>; also see <span class="citation"
-data-cites="ryan2022">Ryan &amp; Hamaker (2022)</span> for
+data-cites="bringmann2021">Bringmann (<a href="#ref-bringmann2021"
+role="doc-biblioref">2021</a>)</span> and <span class="citation"
+data-cites="piccirillo2019">Piccirillo &amp; Rodebaugh (<a
+href="#ref-piccirillo2019" role="doc-biblioref">2019</a>)</span>; also
+see <span class="citation" data-cites="ryan2022">Ryan &amp; Hamaker (<a
+href="#ref-ryan2022" role="doc-biblioref">2022</a>)</span> for
 continuous-time VAR models). These VAR models are often employed more or
 less as data-driven, theory-free inferential devices, in which the
 researchers place no prior assumptions on the dynamical processes
@@ -163,16 +151,16 @@ with such practices and emphasize the often-neglected issue of
 <em>connecting measurements to theory</em>—when a measurement is
 presumed to capture <em>only</em> the intended construct, the resulting
 analysis can never challenge, and therefore lead to refinements of, the
-measurement itself <span class="citation"
-data-cites="bringmann2016">(Bringmann &amp; Eronen, 2016)</span>. We
-illustrate this through a simple theory-driven analysis of change
-processes, in which the <em>purity</em> of the measurement is not
-assumed. Through the analysis, it is shown that without explicit
-theoretical assumptions imposing constraints on how measurement and
-change processes might evolve and interact over time, the resulting
-inferred processes will inevitably conflate multiple untraceable sources
-of variation, obscuring the information that could be gained from
-statistical inference.</p>
+measurement itself <span class="citation" data-cites="bringmann2016">(<a
+href="#ref-bringmann2016" role="doc-biblioref">Bringmann &amp; Eronen,
+2016</a>)</span>. We illustrate this through a simple theory-driven
+analysis of change processes, in which the <em>purity</em> of the
+measurement is not assumed. Through the analysis, it is shown that
+without explicit theoretical assumptions imposing constraints on how
+measurement and change processes might evolve and interact over time,
+the resulting inferred processes will inevitably conflate multiple
+untraceable sources of variation, obscuring the information that could
+be gained from statistical inference.</p>
 <p>Specifically, we are pointing to the importance of teasing out
 process variation from (pure) measurement errors. This is critical since
 change processes are <em>independent</em> of the measurement process—if
@@ -228,38 +216,42 @@ made and are independent of the former two processes.</p>
 <p>For the sake of simplicity, in the following text, the first
 process—the true ability of cognitive reappraisal—is termed the
 <em>P-process</em> and given the abbreviation <span
-class="math inline">P</span>; the second process—the adverse impact of
-the surrounding on the evaluation of cognitive reappraisal—is termed the
-<em>N-process</em> and abbreviated as <span
-class="math inline">N</span>; the latent construct measured by the
+class="math inline">\(P\)</span>; the second process—the adverse impact
+of the surrounding on the evaluation of cognitive reappraisal—is termed
+the <em>N-process</em> and abbreviated as <span
+class="math inline">\(N\)</span>; the latent construct measured by the
 cognitive reappraisal scale, which is a function of both <span
-class="math inline">P</span> and <span class="math inline">N</span>, is
-abbreviated as <span class="math inline">M</span>, and <span
-class="math inline">S</span> denotes the realized observations of <span
-class="math inline">M</span>. summarises these relationships between the
-aforementioned variables.</p>
+class="math inline">\(P\)</span> and <span
+class="math inline">\(N\)</span>, is abbreviated as <span
+class="math inline">\(M\)</span>, and <span
+class="math inline">\(S\)</span> denotes the realized observations of
+<span class="math inline">\(M\)</span>. <span
+class="smallcaps">Figure</span> <a href="#fig:dag">1</a> summarises
+these relationships between the aforementioned variables.</p>
 <figure id="fig:dag">
 <img src="./fig/dag.svg"
 alt="Presupposed relationships between P-process (cognitive reappraisal, P), N-process (adverse environmental impact on the evaluation of cognitive reappraisal, N), environmental fluctuation (E), latent (M), and observed (S) scores of the cognitive reappraisal scale. The arrows indicate the direction of influences. Circled and open nodes indicate unobserved and observed variables, respectively." />
-<figcaption aria-hidden="true">Presupposed relationships between
+<figcaption>Figure 1: Presupposed relationships between
 <em>P-process</em> (cognitive reappraisal, <span
-class="math inline">P</span>), <em>N-process</em> (adverse environmental
-impact on the evaluation of cognitive reappraisal, <span
-class="math inline">N</span>), environmental fluctuation (<span
-class="math inline">E</span>), latent (<span
-class="math inline">M</span>), and observed (<span
-class="math inline">S</span>) scores of the cognitive reappraisal scale.
-The arrows indicate the direction of influences. Circled and open nodes
-indicate unobserved and observed variables, respectively.</figcaption>
+class="math inline">\(P\)</span>), <em>N-process</em> (adverse
+environmental impact on the evaluation of cognitive reappraisal, <span
+class="math inline">\(N\)</span>), environmental fluctuation (<span
+class="math inline">\(E\)</span>), latent (<span
+class="math inline">\(M\)</span>), and observed (<span
+class="math inline">\(S\)</span>) scores of the cognitive reappraisal
+scale. The arrows indicate the direction of influences. Circled and open
+nodes indicate unobserved and observed variables,
+respectively.</figcaption>
 </figure>
 </section>
-<section id="simulation" class="level1" data-number="3">
+<section id="sec:simulation" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span>
 Simulation</h1>
-<p>In this section, we describe the simulation of each variable in and
-the data-generating process of the full model. Later in section , we
-describe the statistical inference for parameter recovery from the
-simulated data.</p>
+<p>In this section, we describe the simulation of each variable in <span
+class="smallcaps">Figure 1</span> and the data-generating process of the
+full model. Later in section <a href="#sec:inference">4</a>, we describe
+the statistical inference for parameter recovery from the simulated
+data.</p>
 <p>To provide some context, consider the scenario in which a
 hypothetical individual, Jane, was receiving CBT for the treatment of
 mild depression. During the 49 days between the first and the last
@@ -282,61 +274,67 @@ develops during the treatment. Therefore, cognitive reappraisal is
 modeled to grow smoothly during the 49-day period. In particular, the
 trajectory of the growth is modeled as a logistic function, which can be
 more informatively expressed as a differential equation in (1).</p>
-<p><span class="math display">\begin{equation}
+<p><span id="eq:logistic"><span class="math display">\[
   \frac{d P}{dt} = r P (1 - \frac{P}{K})
-\end{equation}</span></p>
+\qquad{(1)}\]</span></span></p>
 <p>Equation (1) is known as the logistic population growth, which is
 often used to model the growth of the population size of a species in
-Biology and Ecology. The left-hand side of Eq. (1), <span
-class="math inline">\frac{dP}{dt}</span>, could be read as the <em>rate
-of change</em> in <span class="math inline">P</span>. The right-hand
-side of Eq. (1) indicates that this rate of change is the product of
-three components: (a) the intrinsic growth rate parameter <span
-class="math inline">r</span>, (b) the current size of <span
-class="math inline">P</span>, and (c) the size of the current <span
-class="math inline">P</span> relative to the carrying capacity parameter
-<span class="math inline">K</span> <span class="citation"
-data-cites="gotelli2008">(Gotelli, 2008)</span>.</p>
-<p> illustrates the trajectories of logistic growth with different
-configurations of <span class="math inline">r</span> and <span
-class="math inline">K</span> when the initial size of <span
-class="math inline">P</span> is set to <span
-class="math inline">0.01</span>. Qualitatively, the intrinsic growth
-rate <span class="math inline">r</span> determines how <em>fast</em>,
-when given a fixed <span class="math inline">K</span> and <span
-class="math inline">P</span>, <span class="math inline">P</span> grows.
-With a larger value of <span class="math inline">r</span>, <span
-class="math inline">P</span> approaches its potential maximum more
-quickly. This is revealed by the three logistic growth curves with a
-different <span class="math inline">r</span> in the left panel of . On
-the other hand, the carrying capacity <span class="math inline">K</span>
-represents the upper bound of <span class="math inline">P</span>. As
-<span class="math inline">P</span> increases and approaches <span
-class="math inline">K</span>, the term <span class="math inline">1 -
-\frac{P}{K}</span> approaches zero, and so does the growth rate <span
-class="math inline">\frac{dP}{dt}</span>. The right panel of illustrates
-three growth curves with a different upper bound <span
-class="math inline">K</span>.</p>
+Biology and Ecology. The left-hand side of Eq. (<a
+href="#eq:logistic">1</a>), <span
+class="math inline">\(\frac{dP}{dt}\)</span>, could be read as the
+<em>rate of change</em> in <span class="math inline">\(P\)</span>. The
+right-hand side of Eq. (<a href="#eq:logistic">1</a>) indicates that
+this rate of change is the product of three components: (a) the
+intrinsic growth rate parameter <span class="math inline">\(r\)</span>,
+(b) the current size of <span class="math inline">\(P\)</span>, and (c)
+the size of the current <span class="math inline">\(P\)</span> relative
+to the carrying capacity parameter <span
+class="math inline">\(K\)</span> <span class="citation"
+data-cites="gotelli2008">(<a href="#ref-gotelli2008"
+role="doc-biblioref">Gotelli, 2008</a>)</span>.</p>
+<p><span class="smallcaps">Figure 2</span> illustrates the trajectories
+of logistic growth with different configurations of <span
+class="math inline">\(r\)</span> and <span
+class="math inline">\(K\)</span> when the initial size of <span
+class="math inline">\(P\)</span> is set to <span
+class="math inline">\(0.01\)</span>. Qualitatively, the intrinsic growth
+rate <span class="math inline">\(r\)</span> determines how
+<em>fast</em>, when given a fixed <span class="math inline">\(K\)</span>
+and <span class="math inline">\(P\)</span>, <span
+class="math inline">\(P\)</span> grows. With a larger value of <span
+class="math inline">\(r\)</span>, <span class="math inline">\(P\)</span>
+approaches its potential maximum more quickly. This is revealed by the
+three logistic growth curves with a different <span
+class="math inline">\(r\)</span> in the left panel of <span
+class="smallcaps">Figure 2</span>. On the other hand, the carrying
+capacity <span class="math inline">\(K\)</span> represents the upper
+bound of <span class="math inline">\(P\)</span>. As <span
+class="math inline">\(P\)</span> increases and approaches <span
+class="math inline">\(K\)</span>, the term <span class="math inline">\(1
+- \frac{P}{K}\)</span> approaches zero, and so does the growth rate
+<span class="math inline">\(\frac{dP}{dt}\)</span>. The right panel of
+<span class="smallcaps">Figure 2</span> illustrates three growth curves
+with a different upper bound <span class="math inline">\(K\)</span>.</p>
 <figure>
 <img src="fig/logistic_growth.svg"
 alt="Logistic growth of P according to different configurations of r and K. The initial value of P is set to 0.01 for all trajectories." />
 <figcaption aria-hidden="true">Logistic growth of <span
-class="math inline">P</span> according to different configurations of
-<span class="math inline">r</span> and <span
-class="math inline">K</span>. The initial value of <span
-class="math inline">P</span> is set to <span
-class="math inline">0.01</span> for all trajectories.</figcaption>
+class="math inline">\(P\)</span> according to different configurations
+of <span class="math inline">\(r\)</span> and <span
+class="math inline">\(K\)</span>. The initial value of <span
+class="math inline">\(P\)</span> is set to <span
+class="math inline">\(0.01\)</span> for all trajectories.</figcaption>
 </figure>
 <p>Modeling the growth of cognitive reappraisal as a logistic growth
 curve is an <em>ideal</em> assumption, just as a linear growth
 assumption is in most models. Logistic growth, however, is arguably more
 realistic than linear growth in that it models the boundaries of growth
-(<span class="math inline">0 &lt; P &lt; K</span>) and the deceleration
-of growth when approaching the boundaries. The shape of the growth over
-time approximated by a logistic function is thus suitable for modeling a
-wide range of growth phenomena in nature.</p>
+(<span class="math inline">\(0 &lt; P &lt; K\)</span>) and the
+deceleration of growth when approaching the boundaries. The shape of the
+growth over time approximated by a logistic function is thus suitable
+for modeling a wide range of growth phenomena in nature.</p>
 </section>
-<section id="n-process" class="level2" data-number="3.2">
+<section id="sec:n-process" class="level2" data-number="3.2">
 <h2 data-number="3.2"><span class="header-section-number">3.2</span>
 Fluctuating environmental impact</h2>
 <p>A state-like process is proposed to model the impacts introduced by
@@ -359,31 +357,33 @@ observations as a function of the distances between them. This is
 illustrated in Equation (2), in which the drawing of a set of time
 series observations with the help of Gaussian Processes is formulated.
 The first line in Eq. (2) specifies that <span
-class="math inline">T</span> observations are drawn from a zero mean
+class="math inline">\(T\)</span> observations are drawn from a zero mean
 multivariate normal distribution with a covariance matrix <span
-class="math inline">\textbf{K}</span>. The essence of Gaussian processes
-is a covariance function (a.k.a Gaussian process kernel) that defines
-how the covariance matrix <span class="math inline">\textbf{K}</span> is
-constructed. This is shown in the second line of Eq. (2), in which <span
-class="math inline">k_{i,j}</span> denotes the entry on the ith row and
-jth column in <span class="math inline">\textbf{K}</span>. The
+class="math inline">\(\textbf{K}\)</span>. The essence of Gaussian
+processes is a covariance function (a.k.a Gaussian process kernel) that
+defines how the covariance matrix <span
+class="math inline">\(\textbf{K}\)</span> is constructed. This is shown
+in the second line of Eq. (<a href="#eq:GP">2</a>), in which <span
+class="math inline">\(k_{i,j}\)</span> denotes the entry on the ith row
+and jth column in <span class="math inline">\(\textbf{K}\)</span>. The
 expression on the right-hand side specifies how <span
-class="math inline">k_{i,j}</span> is calculated. <span
-class="math inline">\text{d}^\text{2}_{i,j}</span> denotes the squared
-distance between <span class="math inline">N_i</span> and <span
-class="math inline">N_j</span>, which is defined as the squared
-difference between the times at which <span
-class="math inline">N_i</span> and <span class="math inline">N_j</span>
-are recorded. <span class="math inline">\eta</span> can be intuitively
-interpreted as an upper-bound value for all <span
-class="math inline">k_{i,j}</span> (since <span
-class="math inline">\text{exp}( -\rho \text{d}^\text{2}_{i,j} ) &lt;
-1</span>), and <span class="math inline">\rho</span> can be thought of
-as a parameter controlling how quickly <span
-class="math inline">k_{i,j}</span> decays as the distance <span
-class="math inline">\text{d}^\text{2}_{i,j}</span> increases.</p>
-<p><span class="math display">\begin{equation}
-  \begin{aligned}
+class="math inline">\(k_{i,j}\)</span> is calculated. <span
+class="math inline">\(\text{d}^\text{2}_{i,j}\)</span> denotes the
+squared distance between <span class="math inline">\(N_i\)</span> and
+<span class="math inline">\(N_j\)</span>, which is defined as the
+squared difference between the times at which <span
+class="math inline">\(N_i\)</span> and <span
+class="math inline">\(N_j\)</span> are recorded. <span
+class="math inline">\(\eta\)</span> can be intuitively interpreted as an
+upper-bound value for all <span class="math inline">\(k_{i,j}\)</span>
+(since <span class="math inline">\(\text{exp}( -\rho
+\text{d}^\text{2}_{i,j} ) &lt; 1\)</span>), and <span
+class="math inline">\(\rho\)</span> can be thought of as a parameter
+controlling how quickly <span class="math inline">\(k_{i,j}\)</span>
+decays as the distance <span
+class="math inline">\(\text{d}^\text{2}_{i,j}\)</span> increases.</p>
+<p><span id="eq:GP"><span class="math display">\[
+\begin{aligned}
     \begin{bmatrix}
         N_1 \\
         N_2 \\
@@ -398,29 +398,30 @@ class="math inline">\text{d}^\text{2}_{i,j}</span> increases.</p>
         \end{bmatrix},
     \textbf{K} ) \\
     k_{i,j} &amp;= \eta ~ \text{exp}( -\rho \text{d}^\text{2}_{i,j} ) \\
-  \end{aligned} \label{eq:GP}
-\end{equation}</span></p>
-<p> sketches four independent draws of time series observations from the
-same 150-dimensional multivariate normal distribution. This multivariate
-normal has its covariance matrix <span
-class="math inline">\textbf{K}</span> generated by a kernel function
-with parameters <span class="math inline">\eta=2</span> and <span
-class="math inline">\rho=.15</span> and <span class="math inline">150
-\times 150</span> pairs of distances calculated from the 150
-observations sampled at a fixed frequency (<span
-class="math inline">\frac{150}{49} \approx 3.06</span> times per day).
-Therefore, for each draw of the time series observations in , the
-timespan between each pair of adjacent observations is about 7.8 hours
-(<span class="math inline">24 ~\text{hours} \times
-\frac{49}{150}</span>).</p>
+\end{aligned}
+\qquad{(2)}\]</span></span></p>
+<p><span class="smallcaps">Figure 3</span> sketches four independent
+draws of time series observations from the same 150-dimensional
+multivariate normal distribution. This multivariate normal has its
+covariance matrix <span class="math inline">\(\textbf{K}\)</span>
+generated by a kernel function with parameters <span
+class="math inline">\(\eta=2\)</span> and <span
+class="math inline">\(\rho=.15\)</span> and <span
+class="math inline">\(150 \times 150\)</span> pairs of distances
+calculated from the 150 observations sampled at a fixed frequency (<span
+class="math inline">\(\frac{150}{49} \approx 3.06\)</span> times per
+day). Therefore, for each draw of the time series observations in <span
+class="smallcaps">Figure 3</span>, the timespan between each pair of
+adjacent observations is about 7.8 hours (<span class="math inline">\(24
+~\text{hours} \times \frac{49}{150}\)</span>).</p>
 <figure id="fig:GP">
 <img src="fig/GaussianProcess.svg"
-alt="Four independent sets of time series drawn from a zero mean multivariate normal, whose covariance matrix is generated by a Gaussian process kernel in Eq. () with parameters \eta = 2 and \rho=.15." />
-<figcaption aria-hidden="true">Four independent sets of time series
-drawn from a zero mean multivariate normal, whose covariance matrix is
-generated by a Gaussian process kernel in Eq. () with parameters <span
-class="math inline">\eta = 2</span> and <span
-class="math inline">\rho=.15</span>.</figcaption>
+alt="Four independent sets of time series drawn from a zero mean multivariate normal, whose covariance matrix is generated by a Gaussian process kernel in Eq. (2) with parameters \eta = 2 and \rho=.15." />
+<figcaption>Figure 2: Four independent sets of time series drawn from a
+zero mean multivariate normal, whose covariance matrix is generated by a
+Gaussian process kernel in Eq. (<a href="#eq:GP">2</a>) with parameters
+<span class="math inline">\(\eta = 2\)</span> and <span
+class="math inline">\(\rho=.15\)</span>.</figcaption>
 </figure>
 <p>The characteristics of Gaussian processes enable us to naturally
 model the smooth transition between nearby states and, at the same time,
@@ -432,9 +433,10 @@ difficult times in life, such as when unpredictable major life events
 strike that people experience a sudden increase in stress level. This
 experience of a relatively stable period intermittent with rapid
 fluctuations can also be modeled with Gaussian processes. Take draw 2 in
-for example, the sharp dip around day 20 indicates a period of
-fast-changing states, whereas the states between day 35 and 45 are
-relatively stable.</p>
+<span class="smallcaps">Figure</span> <a href="#fig:GP">2</a> for
+example, the sharp dip around day 20 indicates a period of fast-changing
+states, whereas the states between day 35 and 45 are relatively
+stable.</p>
 <p>The purpose of modeling the impacts of such experiences is to
 separate their contribution to the measurement from other sources. This
 is based on the assumption that psychological measurements partially
@@ -453,56 +455,60 @@ Measurement process</h2>
 <em>P-process</em> and the <em>N-process</em>—and adds in some random
 noise every time a measurement is made. This is formulated in Equation
 (3).</p>
-<p><span class="math display">\begin{equation}
-    \begin{gathered}
-        \mathrm{ P_{t}^{obs} } \sim \text{Normal}( M_t, \sigma )  \\
-        M_t                    =  b ~ \left[ a P_t - \left( 1 - a
-\right) N_t \right] - c
-    \end{gathered} \label{eq:measurement-model}
-\end{equation}</span></p>
-<p><span class="math inline">\mathrm{P_t^{obs}}</span> represents the
-observed score of the cognitive reappraisal scale collected at time
-<span class="math inline">t</span>. The measurement model here assumes
-that the observed score <span
-class="math inline">\mathrm{P_t^{obs}}</span> distributes normally<a
+<p><span id="eq:measurement-model"><span class="math display">\[
+\begin{gathered}
+    \mathrm{ P_{t}^{obs} } \sim \text{Normal}( M_t, \sigma )  \\
+    M_t                    =  b ~ \left[ a P_t - \left( 1 - a \right)
+N_t \right] - c
+\end{gathered} %\label{eq:measurement-model}
+\qquad{(3)}\]</span></span></p>
+<p><span class="math inline">\(\mathrm{P_t^{obs}}\)</span> represents
+the observed score of the cognitive reappraisal scale collected at time
+<span class="math inline">\(t\)</span>. The measurement model here
+assumes that the observed score <span
+class="math inline">\(\mathrm{P_t^{obs}}\)</span> distributes normally<a
 href="#fn3" class="footnote-ref" id="fnref3"
 role="doc-noteref"><sup>3</sup></a> around the latent score <span
-class="math inline">M_t</span> with the standard deviation of
-measurement errors being <span class="math inline">\sigma</span>. In
-addition, the latent score <span class="math inline">M_t</span> is
+class="math inline">\(M_t\)</span> with the standard deviation of
+measurement errors being <span class="math inline">\(\sigma\)</span>. In
+addition, the latent score <span class="math inline">\(M_t\)</span> is
 itself a composite of multiple factors—the cognitive reappraisal skill
-(<span class="math inline">P_t</span>) and the adverse environmental
-impact (<span class="math inline">N_t</span>). The parameter <span
-class="math inline">a</span> (constrained between <span
-class="math inline">0</span> and <span class="math inline">1</span>)
-specifies the contribution of <span
-class="math inline">P_t</span>—relative to <span
-class="math inline">N_t</span>—to <span class="math inline">M_t</span>.
-The parameters <span class="math inline">b</span> (scaling factor) and
-<span class="math inline">c</span> (intercept) work together to map the
+(<span class="math inline">\(P_t\)</span>) and the adverse environmental
+impact (<span class="math inline">\(N_t\)</span>). The parameter <span
+class="math inline">\(a\)</span> (constrained between <span
+class="math inline">\(0\)</span> and <span
+class="math inline">\(1\)</span>) specifies the contribution of <span
+class="math inline">\(P_t\)</span>—relative to <span
+class="math inline">\(N_t\)</span>—to <span
+class="math inline">\(M_t\)</span>. The parameters <span
+class="math inline">\(b\)</span> (scaling factor) and <span
+class="math inline">\(c\)</span> (intercept) work together to map the
 scale of the underlying processes to that of <span
-class="math inline">M_t</span>.</p>
+class="math inline">\(M_t\)</span>.</p>
 </section>
 <section id="data-generating-process" class="level2" data-number="3.4">
 <h2 data-number="3.4"><span class="header-section-number">3.4</span>
 Data-generating process</h2>
 <p>Gathering the above three processes gives the full data-generating
-process for our simulation, represented formally in Equation (4). The
-formulas in Eq. (4) are identical to those in the previous equations
-except for Eq. (1). Here, Eq. (1) is reexpressed as a forward Euler form
-in which the computation of <span class="math inline">P</span> over time
-is more straightforwardly conveyed—the immediate next state <span
-class="math inline">P_{t+\Delta t}</span> equals the current state <span
-class="math inline">P_{t}</span> plus a tiny change <span
-class="math inline">r P_t (1 - \frac{P_t}{K}) \Delta t</span>. Iterating
-this formula, starting with the initial value <span
-class="math inline">P_0</span>, over 49 days results in a collection of
-<span class="math inline">P</span>s over this period.</p>
-<p><span class="math display">\begin{align*}
-    \intertext{\centering \textbf{Process Model}}
+process for our simulation, represented formally in Equation (<a
+href="#eq:dgp">4</a>). The formulas in Eq. (<a href="#eq:dgp">4</a>) are
+identical to those in the previous equations except for Eq. (<a
+href="#eq:logistic">1</a>). Here, Eq. (<a href="#eq:logistic">1</a>) is
+reexpressed as a forward Euler form in which the computation of <span
+class="math inline">\(P\)</span> over time is more straightforwardly
+conveyed—the immediate next state <span
+class="math inline">\(P_{t+\Delta t}\)</span> equals the current state
+<span class="math inline">\(P_{t}\)</span> plus a tiny change <span
+class="math inline">\(r P_t (1 - \frac{P_t}{K}) \Delta t\)</span>.
+Iterating this formula, starting with the initial value <span
+class="math inline">\(P_0\)</span>, over 49 days results in a collection
+of <span class="math inline">\(P\)</span>s over this period.</p>
+<p><span class="math display">\[
+\begin{aligned}
+    &amp; \hphantom{xxxxx} \textbf{Process Model} \\
     &amp;\begin{cases}
-        P_\text{t=0}  ~~ = P_0 \\
         P_{t + \Delta t} = P_t + r P_t (1 - \frac{P_t}{K}) \Delta t \\
+        P_\text{t=0}  ~~ = P_0 \\
     \end{cases}
     \\
     &amp;\begin{bmatrix}
@@ -517,30 +523,40 @@ class="math inline">P_0</span>, over 49 days results in a collection of
             \vdots \\
             0
         \end{bmatrix},
-    \textbf{K} )  \label{eq:dgp} \tag{4}
+    \textbf{K} )
     \\
     &amp; ~~~ k_{i,j} = \eta ~ \text{exp}( -\rho \text{d}^\text{2}_{i,j}
 ) \\
-    \\
-    \intertext{\centering \textbf{Measurement Model}}
+    \end{aligned}
+\]</span></p>
+<p><span id="eq:dgp"><span class="math display">\[
+\hphantom{xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx}
+\qquad{(4)}\]</span></span></p>
+<p><span class="math display">\[
+\begin{aligned}
+    &amp; \hphantom{xxxx} \textbf{Measurement Model} \\
     &amp; \hphantom{xxxxx} \mathrm{ P_{t}^{obs} }  \sim \text{Normal}(
 M_t, \sigma )  \\
     &amp; \hphantom{xx} M_t                     =  b ~ \left[ a P_t -
-\left( 1 - a \right) N_t \right] - c \\
-\end{align*}</span></p>
-<p>Table 1 lists the parameters and their values for the simulation. The
-number of observations <span class="math inline">T</span> is set to
-<span class="math inline">98</span>, meaning that two observations are
+\left( 1 - a \right) N_t \right] - c
+\end{aligned}
+\]</span> </p>
+<p>Table <a href="#tbl:params">1</a> lists the parameters and their
+values for the simulation. The number of observations <span
+class="math inline">\(T\)</span> is set to <span
+class="math inline">\(98\)</span>, meaning that two observations are
 simulated for each day. For convenience, the time intervals between
 consecutive observations are set to be equal. Thus, with <span
-class="math inline">T</span> and a fixed interval between observations,
-the timestamps for the observations could be determined, which are then
-used to compute the distances between all pairs of the observations for
-the Gaussian process kernel.</p>
+class="math inline">\(T\)</span> and a fixed interval between
+observations, the timestamps for the observations could be determined,
+which are then used to compute the distances between all pairs of the
+observations for the Gaussian process kernel.</p>
+<div id="tbl:params">
 <table>
-<caption>Parameter values for the simulation in Eq (). The last column
-specifies the prior distributions assigned to the parameters in the
-statistical model described in section . </caption>
+<caption>Table 1: Parameter values for the simulation in Eq (<a
+href="#eq:dgp">4</a>). The last column specifies the prior distributions
+assigned to the parameters in the statistical model described in section
+<a href="#sec:inference">4</a>.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Parameter</th>
@@ -551,131 +567,141 @@ statistical model described in section . </caption>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><span class="math inline">r</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(r\)</span></td>
 <td style="text-align: center;"><code>r</code></td>
 <td style="text-align: center;">0.30</td>
 <td style="text-align: left;"><span
-class="math inline">\mathrm{Beta}(1.7, 2)</span></td>
+class="math inline">\(\mathrm{Beta}(1.7, 2)\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><span class="math inline">K</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(K\)</span></td>
 <td style="text-align: center;"><code>K</code></td>
 <td style="text-align: center;">10.0</td>
 <td style="text-align: left;"><span
-class="math inline">\mathrm{Normal}(10, 3)</span></td>
+class="math inline">\(\mathrm{Normal}(10, 3)\)</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><span
-class="math inline">P_0</span></td>
+class="math inline">\(P_0\)</span></td>
 <td style="text-align: center;"><code>P0</code></td>
 <td style="text-align: center;">0.01</td>
 <td style="text-align: left;"><span
-class="math inline">\mathrm{Normal^+}(0, 0.5)</span></td>
+class="math inline">\(\mathrm{Normal^+}(0, 0.5)\)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><span
-class="math inline">\eta</span></td>
+class="math inline">\(\eta\)</span></td>
 <td style="text-align: center;"><code>max_cov</code></td>
 <td style="text-align: center;">2.00</td>
 <td style="text-align: left;"><span
-class="math inline">\mathrm{Normal^+}(0, 3)</span></td>
+class="math inline">\(\mathrm{Normal^+}(0, 3)\)</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><span
-class="math inline">\rho</span></td>
+class="math inline">\(\rho\)</span></td>
 <td style="text-align: center;"><code>rate</code></td>
 <td style="text-align: center;">0.20</td>
 <td style="text-align: left;"><span
-class="math inline">\mathrm{Normal^+}(0, 0.3)</span></td>
+class="math inline">\(\mathrm{Normal^+}(0, 0.3)\)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><span
-class="math inline">\sigma</span></td>
+class="math inline">\(\sigma\)</span></td>
 <td style="text-align: center;"><code>s1</code></td>
 <td style="text-align: center;">0.50</td>
 <td style="text-align: left;"><span
-class="math inline">\mathrm{Normal^+}(0, 1)</span></td>
+class="math inline">\(\mathrm{Normal^+}(0, 1)\)</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><span class="math inline">a</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(a\)</span></td>
 <td style="text-align: center;"><code>a1</code></td>
 <td style="text-align: center;">0.78</td>
 <td style="text-align: left;"><span
-class="math inline">\mathrm{Beta}(3.8, 2.5)</span></td>
+class="math inline">\(\mathrm{Beta}(3.8, 2.5)\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><span class="math inline">b</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(b\)</span></td>
 <td style="text-align: center;"><code>b1</code></td>
 <td style="text-align: center;">0.74</td>
-<td style="text-align: left;"><span class="math inline">\mathrm{Beta}(2,
-1)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(\mathrm{Beta}(2, 1)\)</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><span class="math inline">c</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(c\)</span></td>
 <td style="text-align: center;"><code>c1</code></td>
 <td style="text-align: center;">3.14</td>
 <td style="text-align: left;"><span
-class="math inline">\mathrm{Normal^+}(0, 2)</span></td>
+class="math inline">\(\mathrm{Normal^+}(0, 2)\)</span></td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>Running the simulation specified in Eq. (4) with the parameter values
-in Table 1 produces . The dashed curves in the figure sketch the
+in Table 1 produces <span class="smallcaps">Figure</span> <a
+href="#fig:sim">3</a>. The dashed curves in the figure sketch the
 trajectories of the <em>unobserved processes</em> over time—the gray
 curve depicts the fluctuating environmental impacts on the measurement
-of cognitive reappraisal (<span class="math inline">N_t</span>), and the
-smooth red curve illustrates the growth of the cognitive reappraisal
-skill (<span class="math inline">P_t</span>). The latent score of the
-cognitive reappraisal scale (<span class="math inline">M_t</span>),
-which is a product of the former two processes, is represented as the
-solid red curve, and the red dots scattered around the curve are the
-observed scores (<span
-class="math inline">\mathrm{P_t^{obs}}</span>).</p>
+of cognitive reappraisal (<span class="math inline">\(N_t\)</span>), and
+the smooth red curve illustrates the growth of the cognitive reappraisal
+skill (<span class="math inline">\(P_t\)</span>). The latent score of
+the cognitive reappraisal scale (<span
+class="math inline">\(M_t\)</span>), which is a product of the former
+two processes, is represented as the solid red curve, and the red dots
+scattered around the curve are the observed scores (<span
+class="math inline">\(\mathrm{P_t^{obs}}\)</span>).</p>
 <figure id="fig:sim">
 <img src="fig/sim.svg"
 alt="A run of the simulation specified Eq. (4) with parameter values in Table 1. To avoid cluttering the graph, the grayed dashed curve representing the N-process is shifted upwards by 5 units (originally centered at zero)." />
-<figcaption aria-hidden="true">A run of the simulation specified Eq. (4)
-with parameter values in Table 1. To avoid cluttering the graph, the
-grayed dashed curve representing the N-process is shifted upwards by 5
-units (originally centered at zero).</figcaption>
+<figcaption>Figure 3: A run of the simulation specified Eq. (4) with
+parameter values in Table 1. To avoid cluttering the graph, the grayed
+dashed curve representing the N-process is shifted upwards by 5 units
+(originally centered at zero).</figcaption>
 </figure>
 </section>
 </section>
-<section id="inference" class="level1" data-number="4">
+<section id="sec:inference" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span>
 Inference</h1>
 <p>To infer the parameters from the observed time series, a Bayesian
 statistical model assuming the same data-generating process of the
-simulation (i.e., Eq. () ) is constructed and implemented in the
-probabilistic programming language Stan <span class="citation"
-data-cites="carpenter2017">(Carpenter et al., 2017)</span>. A Bayesian
-model is used here since our data-generating process includes an
-ordinary differential equation (ODE) to model the nonlinear growth of
-the P-process. Such ODE-based models are harder to fit within a
-frequentist framework and require specialized software. In addition,
-Bayesian models are more transparent concerning issues such as
-identifiability and model convergence. When fitting complex models that
-include nonlinearity and multiple latent variables, it is nearly
-impossible to not run into convergence problems. Bayesian models—Stan
-models in particular—provide valuable information such as MCMC traces
-and warnings of problematic posterior sampling (e.g., divergent
-transitions) for diagnosing potential causes of the model’s pathological
-behaviors.</p>
-<p>We code the data-generating process in Eq. () into our statistical
-model and assign weakly informative prior distributions to the
-parameters. The last column in Table lists the assigned priors. The
-superscript “<span class="math inline">+</span>” on some of the priors
-indicates that they are restricted to positive values.</p>
+simulation (i.e., Eq. (<a href="#eq:dgp">4</a>) ) is constructed and
+implemented in the probabilistic programming language Stan <span
+class="citation" data-cites="carpenter2017">(<a
+href="#ref-carpenter2017" role="doc-biblioref">Carpenter et al.,
+2017</a>)</span>. A Bayesian model is used here since our
+data-generating process includes an ordinary differential equation (ODE)
+to model the nonlinear growth of the P-process. Such ODE-based models
+are harder to fit within a frequentist framework and require specialized
+software. In addition, Bayesian models are more transparent concerning
+issues such as identifiability and model convergence. When fitting
+complex models that include nonlinearity and multiple latent variables,
+it is nearly impossible to not run into convergence problems. Bayesian
+models—Stan models in particular—provide valuable information such as
+MCMC traces and warnings of problematic posterior sampling (e.g.,
+divergent transitions) for diagnosing potential causes of the model’s
+pathological behaviors.</p>
+<p>We code the data-generating process in Eq. (<a href="#eq:dgp">4</a>)
+into our statistical model and assign weakly informative prior
+distributions to the parameters. The last column in Table <a
+href="#tbl:params">1</a> lists the assigned priors. The superscript
+“<span class="math inline">\(+\)</span>” on some of the priors indicates
+that they are restricted to positive values.</p>
 <section id="more-observations-better-inference" class="level2"
 data-number="4.1">
 <h2 data-number="4.1"><span class="header-section-number">4.1</span>
 More observations, better inference?</h2>
-<p>In section , we simulated <span class="math inline">98</span> time
-series observations. To test the ability of our statistical model under
-different conditions, we first use <em>half</em> of the observations to
-fit the model and inspect how well the parameters are recovered. We then
-include all the <span class="math inline">98</span> observations to see
-how the inference benefits from more repeated measures.</p>
+<p>In section <a href="#sec:simulation">3</a>, we simulated <span
+class="math inline">\(98\)</span> time series observations. To test the
+ability of our statistical model under different conditions, we first
+use <em>half</em> of the observations to fit the model and inspect how
+well the parameters are recovered. We then include all the <span
+class="math inline">\(98\)</span> observations to see how the inference
+benefits from more repeated measures.</p>
 <p>Although adding more data does improve the recovery of parameters,
 the recovery is far from satisfying—the posterior predictions of the
 N-process do not converge to the true values, thus failing to separate
@@ -685,37 +711,38 @@ the model. In fact, lowering the measurement error leads to pathological
 behaviors in the MCMC samplers, which signals that the model may have
 identifiability issues<a href="#fn4" class="footnote-ref" id="fnref4"
 role="doc-noteref"><sup>4</sup></a>. The first 3 panels (the panels with
-titles beginning with “Model 1”) in plot the predictions computed from
-<span class="math inline">20</span> draws of the posterior samples
-against the true (i.e., simulated) values. As shown in the plots on the
-first row, increasing the sample size from 49 to 98 does not help the
-thin gray lines (20 draws of the N-process posterior predictions)
-converge to the thick gray line (the true N-process). Although the lower
-left plot seems to indicate a better inference when the model is fitted
-with data from more accurate measures, the inference cannot be trusted
-due to the aforementioned pathologies of the posterior sampling. In sum,
-including more repeated measures, and even more <em>accurate</em>
-repeated measures, brings about a limited benefit to the inference of
-the latent dynamics.</p>
+titles beginning with “Model 1”) in <span
+class="smallcaps">Figure</span> <a href="#fig:post">4</a> plot the
+predictions computed from <span class="math inline">\(20\)</span> draws
+of the posterior samples against the true (i.e., simulated) values. As
+shown in the plots on the first row, increasing the sample size from 49
+to 98 does not help the thin gray lines (20 draws of the N-process
+posterior predictions) converge to the thick gray line (the true
+N-process). Although the lower left plot seems to indicate a better
+inference when the model is fitted with data from more accurate
+measures, the inference cannot be trusted due to the aforementioned
+pathologies of the posterior sampling. In sum, including more repeated
+measures, and even more <em>accurate</em> repeated measures, brings
+about a limited benefit to the inference of the latent dynamics.</p>
 <figure id="fig:post">
 <img src="fig/post_predict.svg"
-alt="Posterior predictions generated from the fitted models. Model 1 is fitted to a single set of time series observations that have information about the P-process and the N-process. Model 2 is fitted to the same observations and another set that has information about the N-process. Each panel represents a fit with different configurations, as indicated by the plot titles. The thick red and black curves plot the trajectory of the true P- and N-processes respectively. The 20 thin curves scattering around a thick line are a set of 20 predictions computed from 20 draws of posterior samples. For the measurement, the red and black dots plot the time series observations, and the densely distributed curves underneath them are the posterior predictions of their latent scores. Note that to avoid cluttering the plots, the originally zero-centered black curves (the true and estimated N-process) are shifted downwards by 8 units. Otherwise, the thick black curves should perfectly match the dashed gray line in  ." />
-<figcaption aria-hidden="true">Posterior predictions generated from the
-fitted models. Model 1 is fitted to a single set of time series
-observations that have information about the P-process and the
-N-process. Model 2 is fitted to the same observations and another set
-that has information about the N-process. Each panel represents a fit
-with different configurations, as indicated by the plot titles. The
-thick red and black curves plot the trajectory of the true P- and
-N-processes respectively. The 20 thin curves scattering around a thick
-line are a set of 20 predictions computed from 20 draws of posterior
-samples. For the measurement, the red and black dots plot the time
-series observations, and the densely distributed curves underneath them
-are the posterior predictions of their latent scores. Note that to avoid
-cluttering the plots, the originally zero-centered black curves (the
-true and estimated N-process) are shifted downwards by 8 units.
-Otherwise, the thick black curves should perfectly match the dashed gray
-line in .</figcaption>
+alt="Posterior predictions generated from the fitted models. Model 1 is fitted to a single set of time series observations that have information about the P-process and the N-process. Model 2 is fitted to the same observations and another set that has information about the N-process. Each panel represents a fit with different configurations, as indicated by the plot titles. The thick red and black curves plot the trajectory of the true P- and N-processes respectively. The 20 thin curves scattering around a thick line are a set of 20 predictions computed from 20 draws of posterior samples. For the measurement, the red and black dots plot the time series observations, and the densely distributed curves underneath them are the posterior predictions of their latent scores. Note that to avoid cluttering the plots, the originally zero-centered black curves (the true and estimated N-process) are shifted downwards by 8 units. Otherwise, the thick black curves should perfectly match the dashed gray line in Figure 3." />
+<figcaption>Figure 4: Posterior predictions generated from the fitted
+models. Model 1 is fitted to a single set of time series observations
+that have information about the P-process and the N-process. Model 2 is
+fitted to the same observations and another set that has information
+about the N-process. Each panel represents a fit with different
+configurations, as indicated by the plot titles. The thick red and black
+curves plot the trajectory of the true P- and N-processes respectively.
+The 20 thin curves scattering around a thick line are a set of 20
+predictions computed from 20 draws of posterior samples. For the
+measurement, the red and black dots plot the time series observations,
+and the densely distributed curves underneath them are the posterior
+predictions of their latent scores. Note that to avoid cluttering the
+plots, the originally zero-centered black curves (the true and estimated
+N-process) are shifted downwards by 8 units. Otherwise, the thick black
+curves should perfectly match the dashed gray line in <span
+class="smallcaps">Figure</span> <a href="#fig:sim">3</a>.</figcaption>
 </figure>
 </section>
 <section id="the-power-of-parallel-measurement" class="level2"
@@ -735,46 +762,49 @@ the variations introduced by the N-process are shared across measure
 types.</p>
 <p>To explore such a possibility, we modify the simulation to include an
 additional time series along with the original one. This is formally
-expressed as the expanded measurement model in Eq ():</p>
-<p><span class="math display">\begin{equation}
-    \begin{aligned}
-        \mathrm{ P_{t}^{obs} } &amp; \sim \text{Normal}( M_t^1, \sigma_1
+expressed as the expanded measurement model in Eq (<a
+href="#eq:measurement-model2">5</a>):</p>
+<p><span id="eq:measurement-model2"><span class="math display">\[
+\begin{aligned}
+    \mathrm{ P_{t}^{obs} } &amp; \sim \text{Normal}( M_t^1, \sigma_1
 )  \\
-        M_t^1                  &amp; =  b ~ \left[ a_1 P_t - \left( 1 -
-a_1 \right) N_t \right] - c_1 \\
-        \mathrm{ N_{t}^{obs} } &amp; \sim \text{Normal}( M_t^2, \sigma_2
+    M_t^1                  &amp; =  b ~ \left[ a_1 P_t - \left( 1 - a_1
+\right) N_t \right] - c_1 \\
+    \mathrm{ N_{t}^{obs} } &amp; \sim \text{Normal}( M_t^2, \sigma_2
 )  \\
-        M_t^2                  &amp; =  a_2 N_t - c_2  \\
-    \end{aligned} \label{eq:measurement-model2} \tag{5}
-\end{equation}</span></p>
-<p>The first two lines of Eq. () are identical to those in Eq. () except
-for the indices added to distinguish them from the parameters of the new
-measure. The model for the newly added measure is shown in the remaining
-lines of Eq. (). Here, the parameter <span
-class="math inline">a_2</span> specifies the contribution of the
-N-process to the latent score <span class="math inline">M_t^2</span>.
-Together with the intercept <span class="math inline">c_2</span> and the
-standard deviation of the measurement error <span
-class="math inline">\sigma_2</span>, <span
-class="math inline">a_2</span> maps the N-process to the observed scores
-<span class="math inline">\mathrm{N_t^{obs}}</span>.</p>
+    M_t^2                  &amp; =  a_2 N_t - c_2  \\
+\end{aligned} %\label{eq:measurement-model2} \tag{5}
+\qquad{(5)}\]</span></span></p>
+<p>The first two lines of Eq. (<a href="#eq:measurement-model2">5</a>)
+are identical to those in Eq. (<a href="#eq:measurement-model">3</a>)
+except for the indices added to distinguish them from the parameters of
+the new measure. The model for the newly added measure is shown in the
+remaining lines of Eq. (<a href="#eq:measurement-model2">5</a>). Here,
+the parameter <span class="math inline">\(a_2\)</span> specifies the
+contribution of the N-process to the latent score <span
+class="math inline">\(M_t^2\)</span>. Together with the intercept <span
+class="math inline">\(c_2\)</span> and the standard deviation of the
+measurement error <span class="math inline">\(\sigma_2\)</span>, <span
+class="math inline">\(a_2\)</span> maps the N-process to the observed
+scores <span class="math inline">\(\mathrm{N_t^{obs}}\)</span>.</p>
 <p>The parameters of the extended simulation have values identical to
 the original simulation. For newly added parameters, their values are
-set to <span class="math inline">a_2=0.6</span>, <span
-class="math inline">c_2=0</span>, and <span
-class="math inline">\sigma_2=0.5</span>. Likewise, the statistical model
-is expanded to incorporate the new measurement model. The new parameters
-are assigned the priors listed below:</p>
-<p><span class="math display">\begin{align*}
+set to <span class="math inline">\(a_2=0.6\)</span>, <span
+class="math inline">\(c_2=0\)</span>, and <span
+class="math inline">\(\sigma_2=0.5\)</span>. Likewise, the statistical
+model is expanded to incorporate the new measurement model. The new
+parameters are assigned the priors listed below:</p>
+<p><span class="math display">\[\begin{align*}
     a_2      &amp; \sim \text{Beta}(3, 3)   \\
     c_2      &amp; \sim \text{Normal}(0,1)  \\
     \sigma_2 &amp; \sim \text{Normal}(0,1)
-\end{align*}</span></p>
+\end{align*}\]</span></p>
 <p>Refitting the extended model with two sets of time series
 observations confirms our reasoning. The model now greatly improves in
 separating the N-process from measurement errors and better recovers the
 true variation of the environmental impact, as shown in the lower right
-panel of .</p>
+panel of <span class="smallcaps">Figure</span> <a
+href="#fig:post">4</a>.</p>
 </section>
 </section>
 <section id="discussion" class="level1" data-number="5">
@@ -859,46 +889,52 @@ theorizing of the latent process dynamics, it would be impossible to
 separate and make inferences about such processes. For instance, in our
 preliminary illustration, the P-process, the N-process, and the
 measurement process are assumed to operate at a slow, a fast, and an
-instant timescale respectively, as labeled on the arrows in . The change
-in <span class="math inline">P</span> is assumed to be driven by therapy
-<span class="math inline">T</span>, which occurs at the slowest
-timescale among all the processes. <span class="math inline">N</span>,
-on the other hand, changes faster as the result of external
-environmental fluctuations <span class="math inline">E</span>. Finally,
-all arrows pointing to and out from the latent measurement score <span
-class="math inline">M</span> operate at the fastest timescale as they
-happen within minutes or even seconds when a measurement is made. The
-measurement process could thus be considered to occur <em>instantly</em>
-compared to the former two processes.</p>
+instant timescale respectively, as labeled on the arrows in <span
+class="smallcaps">Figure</span> <a href="#fig:dag2">5</a>. The change in
+<span class="math inline">\(P\)</span> is assumed to be driven by
+therapy <span class="math inline">\(T\)</span>, which occurs at the
+slowest timescale among all the processes. <span
+class="math inline">\(N\)</span>, on the other hand, changes faster as
+the result of external environmental fluctuations <span
+class="math inline">\(E\)</span>. Finally, all arrows pointing to and
+out from the latent measurement score <span
+class="math inline">\(M\)</span> operate at the fastest timescale as
+they happen within minutes or even seconds when a measurement is made.
+The measurement process could thus be considered to occur
+<em>instantly</em> compared to the former two processes.</p>
 <figure id="fig:dag2">
 <img src="fig/dag2.svg"
 alt="Timescales at which the P-process, the N-process, and the measurement process operate in our theory-driven analysis." />
-<figcaption aria-hidden="true">Timescales at which the P-process, the
-N-process, and the measurement process operate in our theory-driven
+<figcaption>Figure 5: Timescales at which the P-process, the N-process,
+and the measurement process operate in our theory-driven
 analysis.</figcaption>
 </figure>
 <p>Now consider a potential influence that <span
-class="math inline">P</span> may have on <span
-class="math inline">N</span> in the long run, as shown in the dashed
-arrow pointing from <span class="math inline">P</span> to <span
-class="math inline">N</span>. Specifically, this relationship intends to
-model the idea that cognitive reappraisal moderates the adverse impact
-of the environment on the individual, which is one of the theoretical
-reasons why developing better reappraisal skills leads to improved
-outcomes. How, then, could we extend our previous model to incorporate
-this relationship? Holding on to the timescales at which the processes
-operate can guide us through. Since now two independent processes are
-driving <span class="math inline">N</span> at different timescales, we
-need to <em>simultaneously</em> model the short- and long-term change in
-<span class="math inline">N</span>. This can be achieved by linking the
-influence of <span class="math inline">P</span> on <span
-class="math inline">N</span> to the means of the multivariate normal
-from which <span class="math inline">N</span> is drawn, as shown in the
-modified model (), where the means of <span class="math inline">N_1,
-N_2, \hdots, N_T</span> are linked to the values of P at the
-corresponding times <span class="math inline">P^1, P^2, \hdots,
-P^T</span>. The resulting effect of () is visualized in .</p>
-<p><span class="math display">\begin{align*}
+class="math inline">\(P\)</span> may have on <span
+class="math inline">\(N\)</span> in the long run, as shown in the dashed
+arrow pointing from <span class="math inline">\(P\)</span> to <span
+class="math inline">\(N\)</span>. Specifically, this relationship
+intends to model the idea that cognitive reappraisal moderates the
+adverse impact of the environment on the individual, which is one of the
+theoretical reasons why developing better reappraisal skills leads to
+improved outcomes. How, then, could we extend our previous model to
+incorporate this relationship? Holding on to the timescales at which the
+processes operate can guide us through. Since now two independent
+processes are driving <span class="math inline">\(N\)</span> at
+different timescales, we need to <em>simultaneously</em> model the
+short- and long-term change in <span class="math inline">\(N\)</span>.
+This can be achieved by linking the influence of <span
+class="math inline">\(P\)</span> on <span
+class="math inline">\(N\)</span> to the means of the multivariate normal
+from which <span class="math inline">\(N\)</span> is drawn, as shown in
+the modified model (<a href="#eq:dgp2">6</a>), where the means of <span
+class="math inline">\(N_1, N_2, ..., N_T\)</span> are linked to the
+values of P at the corresponding times <span class="math inline">\(P^1,
+P^2, ..., P^T\)</span>. The resulting effect of (<a
+href="#eq:dgp2">6</a>) is visualized in <span
+class="smallcaps">Figure</span> <a href="#fig:GP2">6</a>.</p>
+<p><span id="eq:dgp2"><span class="math display">\[
+\begin{aligned}
     &amp;\begin{cases}
         P_\text{t=0}  ~~ = P_0 \\
         P_{t + \Delta t} = P_t + r P_t (1 - \frac{P_t}{K}) \Delta t \\
@@ -917,25 +953,29 @@ P^T</span>. The resulting effect of () is visualized in .</p>
             \vdots \\
             P^T
         \end{bmatrix},
-    \textbf{K} )   \label{eq:dgp2} \tag{4.1}
+    \textbf{K} )
     \\
     &amp; ~~~~ k_{i,j} = \eta ~ \text{exp}( -\rho
 \text{d}^\text{2}_{i,j} ) \\
-\end{align*}</span></p>
+\end{aligned} \tag{4.1}
+\qquad{(6)}\]</span></span></p>
 <figure id="fig:GP2">
 <img src="fig/GaussianProcess2.svg"
-alt="Reproduction of   with the added influence of P on N over time. The parameters for the growth of P are r = .3, P_0 = .01, K = 10. The scaling parameter \gamma for the influence of P on the multivariate normal means is set to .3, and the parameters for the Gaussian kernel \eta and \rho are identical to those set for generating  ." />
-<figcaption aria-hidden="true">Reproduction of with the added influence
-of <span class="math inline">P</span> on <span
-class="math inline">N</span> over time. The parameters for the growth of
-<span class="math inline">P</span> are <span class="math inline">r = .3,
-P_0 = .01, K = 10</span>. The scaling parameter <span
-class="math inline">\gamma</span> for the influence of <span
-class="math inline">P</span> on the multivariate normal means is set to
-<span class="math inline">.3</span>, and the parameters for the Gaussian
-kernel <span class="math inline">\eta</span> and <span
-class="math inline">\rho</span> are identical to those set for
-generating .</figcaption>
+alt="Reproduction of Figure 2 with the added influence of P on N over time. The parameters for the growth of P are r = .3, P_0 = .01, K = 10. The scaling parameter \gamma for the influence of P on the multivariate normal means is set to .3, and the parameters for the Gaussian kernel \eta and \rho are identical to those set for generating Figure 2." />
+<figcaption>Figure 6: Reproduction of <span
+class="smallcaps">Figure</span> <a href="#fig:GP">2</a> with the added
+influence of <span class="math inline">\(P\)</span> on <span
+class="math inline">\(N\)</span> over time. The parameters for the
+growth of <span class="math inline">\(P\)</span> are <span
+class="math inline">\(r = .3, P_0 = .01, K = 10\)</span>. The scaling
+parameter <span class="math inline">\(\gamma\)</span> for the influence
+of <span class="math inline">\(P\)</span> on the multivariate normal
+means is set to <span class="math inline">\(.3\)</span>, and the
+parameters for the Gaussian kernel <span
+class="math inline">\(\eta\)</span> and <span
+class="math inline">\(\rho\)</span> are identical to those set for
+generating <span class="smallcaps">Figure</span> <a
+href="#fig:GP">2</a>.</figcaption>
 </figure>
 <p>Knowing at which timescales the latent processes operate is not only
 important for constructing statistical models but also necessary for
@@ -960,7 +1000,9 @@ in about 2 hours, the first group may conclude that lunch
 inferring that lunch has <em>no</em> impact on (when the meal is
 starch-rich), or even <em>decreases</em> (when the meal is
 sucrose-rich), blood sugar level (see <span class="citation"
-data-cites="daly1998">Daly et al. (1998)</span>, 2).</p>
+data-cites="daly1998">Daly et al. (<a href="#ref-daly1998"
+role="doc-biblioref">1998</a>)</span>, <span
+class="smallcaps">Figure</span> 2).</p>
 <p>This toy example of blood sugar dynamics illustrates that simply
 establishing the temporal sequence of events does not automatically
 license valid causal inference. It also highlights that relationships
@@ -1008,29 +1050,31 @@ represented through the stochastic components of the equations, are used
 to model external perturbations pushing the system <em>away from</em>
 its equilibrium. The non-stochastic components of the equations model
 the driving of the system <em>back to</em> equilibrium when perturbed by
-external forces <span class="citation" data-cites="ryan2022">(Ryan &amp;
-Hamaker, 2022)</span>. Since external perturbations are treated
-identically as random noise, these models essentially
-<em>homogenize</em> the whole time series—no matter the causes or
-magnitude of the perturbations, the system is assumed to move back to
-equilibrium in a similar fashion, according to the governing
-equations.</p>
+external forces <span class="citation" data-cites="ryan2022">(<a
+href="#ref-ryan2022" role="doc-biblioref">Ryan &amp; Hamaker,
+2022</a>)</span>. Since external perturbations are treated identically
+as random noise, these models essentially <em>homogenize</em> the whole
+time series—no matter the causes or magnitude of the perturbations, the
+system is assumed to move back to equilibrium in a similar fashion,
+according to the governing equations.</p>
 <p>To provide some context, let’s consider the theories of a “vicious
 cycle” often used to explain Panic Disorder. Borrowing the terminology
 from <span class="citation" data-cites="robinaugh2019">Robinaugh et al.
-(2019)</span>, a simplified hypothesis for the vicious cycle is given as
-follows: heightened physiological arousal (<span
-class="math inline">A</span>) raises perceived threat (<span
-class="math inline">T</span>), which in turn leads to even higher
-physiological arousal (<span class="math inline">A</span>), resulting in
-a positive-feedback loop between physiological arousal and perceived
-threat that eventually culminates in a panic attack. A clinician might
-want to see if this vicious cycle can be shown empirically with data.
-Without further elaborating on the theory, however, an EMA study is
-planned to collect the measures of <span class="math inline">A</span>
-and <span class="math inline">T</span> quite densely—once every hour
-during daytime for 2 weeks—to infer a network of relationships among
-these variables. What can we learn from this empirical network? If the
+(<a href="#ref-robinaugh2019" role="doc-biblioref">2019</a>)</span>, a
+simplified hypothesis for the vicious cycle is given as follows:
+heightened physiological arousal (<span
+class="math inline">\(A\)</span>) raises perceived threat (<span
+class="math inline">\(T\)</span>), which in turn leads to even higher
+physiological arousal (<span class="math inline">\(A\)</span>),
+resulting in a positive-feedback loop between physiological arousal and
+perceived threat that eventually culminates in a panic attack. A
+clinician might want to see if this vicious cycle can be shown
+empirically with data. Without further elaborating on the theory,
+however, an EMA study is planned to collect the measures of <span
+class="math inline">\(A\)</span> and <span
+class="math inline">\(T\)</span> quite densely—once every hour during
+daytime for 2 weeks—to infer a network of relationships among these
+variables. What can we learn from this empirical network? If the
 hypothesized network of relationships indeed exists and is <em>robust
 across situations</em> such that, for instance, heightened perceived
 threat leads to higher physiological arousal (and vice versa)
@@ -1076,7 +1120,8 @@ questions.</p>
 <p>The difficulty is threefold. First, the complexity of human behaviors
 in the first place makes it extremely hard to even establish phenomena
 that are robust and reliable <span class="citation"
-data-cites="eronen2021">(Eronen &amp; Bringmann, 2021)</span>.
+data-cites="eronen2021">(<a href="#ref-eronen2021"
+role="doc-biblioref">Eronen &amp; Bringmann, 2021</a>)</span>.
 Non-robust phenomena, in turn, weaken the foundation of theory building,
 and verbal theories constructed from these phenomena are only vague at
 best. Finally, the vagueness in theories feeds back to the observation
@@ -1118,8 +1163,9 @@ information from multiple measures to address the imperfect and noisy
 nature of psychological measurements. These attempts may not only lead
 to improvements in measurement. Indeed, measurement is <em>part of</em>
 the theory and should be refined hand in hand with the advancement of
-knowledge <span class="citation" data-cites="bringmann2016">(Bringmann
-&amp; Eronen, 2016)</span>.</p>
+knowledge <span class="citation" data-cites="bringmann2016">(<a
+href="#ref-bringmann2016" role="doc-biblioref">Bringmann &amp; Eronen,
+2016</a>)</span>.</p>
 <p>In practice, the above attempts may all fail. After all, it is likely
 that at least some rapid-changing phenomena do not leave reliable traces
 in passive physiological measures that could be monitored continuously.
@@ -1130,11 +1176,12 @@ quantitative assessments. There is no reason why these kinds of
 qualitative analyses cannot be brought into a temporally fine-grained
 setting. Voice recording along with highly accurate automated audio
 transcription technologies <span class="citation"
-data-cites="radford2022">(e.g., Radford et al., 2022)</span> have
-lowered the barrier for collecting such qualitative data. Gathering
-qualitative data in such finer-grained details can better deal with
-reporting and recall biases and might reveal properties that are not
-apparent or visible in traditional therapy sessions.</p>
+data-cites="radford2022">(e.g., <a href="#ref-radford2022"
+role="doc-biblioref">Radford et al., 2022</a>)</span> have lowered the
+barrier for collecting such qualitative data. Gathering qualitative data
+in such finer-grained details can better deal with reporting and recall
+biases and might reveal properties that are not apparent or visible in
+traditional therapy sessions.</p>
 </section>
 </section>
 <section id="references" class="level1 unnumbered">
@@ -1236,19 +1283,21 @@ role="doc-endnotes">
 <hr />
 <ol>
 <li id="fn1"><p>We further elaborate on and justify this treatment in
-section .<a href="#fnref1" class="footnote-back"
-role="doc-backlink">↩︎</a></p></li>
+section <a href="#sec:n-process">3.2</a>.<a href="#fnref1"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>See the supplementary analysis documentation for more
 details. Also, refer to <span class="citation"
-data-cites="wang2022">Wang (2022)</span> and Chapter 4 of <span
-class="citation" data-cites="mcelreath2020">McElreath (2020)</span> for
-an accessible introduction.<a href="#fnref2" class="footnote-back"
+data-cites="wang2022">Wang (<a href="#ref-wang2022"
+role="doc-biblioref">2022</a>)</span> and Chapter 4 of <span
+class="citation" data-cites="mcelreath2020">McElreath (<a
+href="#ref-mcelreath2020" role="doc-biblioref">2020</a>)</span> for an
+accessible introduction.<a href="#fnref2" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>A better alternative is to model the <span
-class="math inline">\mathrm{P_t^{obs}}</span> as <em>ratings</em>, which
-would then require a distribution other than the normal to map the
-latent <span class="math inline">M_t</span> to the observed <span
-class="math inline">\mathrm{P_t^{obs}}</span>. For the sake of
+class="math inline">\(\mathrm{P_t^{obs}}\)</span> as <em>ratings</em>,
+which would then require a distribution other than the normal to map the
+latent <span class="math inline">\(M_t\)</span> to the observed <span
+class="math inline">\(\mathrm{P_t^{obs}}\)</span>. For the sake of
 simplicity, we adopt the normal distribution for modeling measurement
 errors.<a href="#fnref3" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
@@ -1261,13 +1310,16 @@ reliability of <em>the scale</em>, not the <em>change</em> of the
 measured construct over time.<a href="#fnref5" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>See <span class="citation" data-cites="ong2022">Ong,
-Hayes, &amp; Hofmann (2022)</span> and <span class="citation"
-data-cites="burger2021">Burger et al. (2021)</span> for attempts to
-derive individualized networks with VAR models to facilitate case
+Hayes, &amp; Hofmann (<a href="#ref-ong2022"
+role="doc-biblioref">2022</a>)</span> and <span class="citation"
+data-cites="burger2021">Burger et al. (<a href="#ref-burger2021"
+role="doc-biblioref">2021</a>)</span> for attempts to derive
+individualized networks with VAR models to facilitate case
 conceptualization.<a href="#fnref6" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
 <li id="fn7"><p>See e.g., <span class="citation"
-data-cites="robinaugh2019">Robinaugh et al. (2019)</span> in which
+data-cites="robinaugh2019">Robinaugh et al. (<a
+href="#ref-robinaugh2019" role="doc-biblioref">2019</a>)</span> in which
 <em>context</em> is explicated in their model.<a href="#fnref7"
 class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
@@ -1312,5 +1364,18 @@ Hack to apply the style of <https://cran.r-project.org/web/packages/markdown/vig
       if (h.id) h.querySelector('h1,h2,h3,h4,h5,h6').innerHTML += ` <span class="anchor"><a href="#${h.id}">#</a></span>`;
     });
 </script>
+
+
+
+<!--
+Deal with multiple `\tag`s in equations
+-->
+<script>
+    const regex = /\\tag\{[0-9.]+\}/g;
+    document.querySelectorAll(".math.display").forEach(e => {
+        e.innerText = e.innerText.replace(regex, '');
+    })
+</script>
+
 </body>
 </html>
